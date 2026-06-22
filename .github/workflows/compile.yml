@@ -20,8 +20,7 @@ jobs:
 
       - name: Compile
         run: |
-          cd gamemodes
-          ../pawnc-3.10.10-linux/bin/pawncc LVRP.pwn -i ../pawno/include/ -o LVRP.amx
+          pawnc-3.10.10-linux/bin/pawncc gamemodes/LVRP.pwn -i$PWD/pawno/include -o gamemodes/LVRP.amx
 
       - name: Upload AMX
         uses: actions/upload-artifact@v4
