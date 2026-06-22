@@ -1,0 +1,29 @@
+name: Compile SAMP
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download pawncc
+        run: |
+          wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
+          tar -xzf pawnc-3.10.10-linux.tar.gz
+          chmod +x pawnc-3.10.10-linux/bin/pawncc
+          sudo cp pawnc-3.10.10-linux/lib/libpawnc.so /usr/lib/
+          sudo ldconfig
+
+      - name: Compile
+        run: |
+          pawnc-3.10.10-linux/bin/pawncc gamemodes/LVRP.pwn -i pawno/include -o gamemodes/LVRP.amx
+
+      - name: Upload AMX
+        uses: actions/upload-artifact@v4
+        with:
+          name: LVRP-amx
+          path: gamemodes/LVRP.amx
