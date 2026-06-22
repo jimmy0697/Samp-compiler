@@ -12,12 +12,7 @@ jobs:
 
       - name: Download pawncc
         run: |
-          wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
-          tar -xzf pawnc-3.10.10-linux.tar.gz
-          chmod +x pawnc-3.10.10-linux/bin/pawncc
-          sudo cp pawnc-3.10.10-linux/lib/libpawnc.so /usr/lib/
-          sudo ldconfig
-
+           pawncc -i$PWD/pawno/include gamemodes/LVRP.pwn -w0
       - name: Compile
         run: |
           pawnc-3.10.10-linux/bin/pawncc gamemodes/LVRP.pwn -i pawno/include -o gamemodes/LVRP.amx
