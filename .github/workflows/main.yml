@@ -8,7 +8,7 @@ jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Download pawncc
         run: |
@@ -21,7 +21,7 @@ jobs:
           pawnc-3.10.10-linux/bin/pawncc gamemodes/LVRP.pwn -i pawno/include -o gamemodes/LVRP.amx
 
       - name: Upload AMX
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: LVRP-amx
           path: gamemodes/LVRP.amx
