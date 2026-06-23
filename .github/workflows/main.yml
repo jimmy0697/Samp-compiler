@@ -12,10 +12,12 @@ jobs:
 
       - name: Download pawncc
         run: |
-           pawncc -i$PWD/pawno/include gamemodes/LVRP.pwn -w0
+          wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
+          tar -xzf pawnc-3.10.10-linux.tar.gz
+
       - name: Compile
         run: |
-          pawnc-3.10.10-linux/bin/pawncc gamemodes/LVRP.pwn -i pawno/include -o gamemodes/LVRP.amx
+          pawnc-3.10.10-linux/bin/pawncc gamemodes/LVRP.pwn -i pawno/include -o gamemodes/LVRP.amx -w0
 
       - name: Upload AMX
         uses: actions/upload-artifact@v4
