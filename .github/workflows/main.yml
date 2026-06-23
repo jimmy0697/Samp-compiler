@@ -18,7 +18,7 @@ jobs:
       - name: Compile
         run: |
           export LD_LIBRARY_PATH=$PWD/pawnc-3.10.10-linux/lib:$LD_LIBRARY_PATH
-          pawnc-3.10.10-linux/bin/pawncc -i$PWD/pawno/include gamemodes/LVRP.pwn -w0 2>&1 | grep -E "error [0-9]+" || true
+          pawnc-3.10.10-linux/bin/pawncc -i$PWD/pawno/include gamemodes/LVRP.pwn -o gamemodes/LVRP.amx -w0
 
       - name: Upload AMX
         uses: actions/upload-artifact@v4
