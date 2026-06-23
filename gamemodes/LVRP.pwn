@@ -1204,7 +1204,7 @@ new Float:four_pos[6][4] =             	// Positions fourri�re
 };
 
 
-new announce[ANNOUNCES][600] =// 10 mns
+new announce[ANNOUNCES][600]; // 10 mns
 {
 	{"~ Vous �tes nouveau et vous avez besoin d'aide ? Pas de probl�mes, utilisez /i et /aide ~"},
 	{"~ Vous avez vu un NO RP ou un cheater ? Utilisez /report ~"},
