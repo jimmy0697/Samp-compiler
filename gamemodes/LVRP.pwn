@@ -1204,7 +1204,7 @@ new Float:four_pos[6][4] =             	// Positions fourri�re
 };
 
 
-new announce[ANNOUNCES][600]; // 10 mns
+new announce[ANNOUNCES][600] =// 10 mns
 {
 	{"~ Vous �tes nouveau et vous avez besoin d'aide ? Pas de probl�mes, utilisez /i et /aide ~"},
 	{"~ Vous avez vu un NO RP ou un cheater ? Utilisez /report ~"},
@@ -3388,12 +3388,12 @@ stock MySQLReloadBans()
 {
     new bantemps_number, bantemps_time, bantemps_sqlid;
     mysql_format(MYSQL, sql, sizeof(sql), "SELECT * FROM salrp_users_bans");
-	mysql_query(MYSQL, sql);
+	mysql_query(MYSQL, sql, true);
  	cache_get_row_count(bantemps_number);
 	for(new i=0; i<bantemps_number; i++)
 	{
 		mysql_format(MYSQL, sql, sizeof(sql), "SELECT * FROM salrp_users_bans ORDER BY SQLid LIMIT %d,1",i);
-  		mysql_query(MYSQL, sql);
+  		mysql_query(MYSQL,sql, true);
 
 		new count = 0;
         if(cache_get_row_count(count) && count ==  1)
@@ -6649,38 +6649,37 @@ stock car_ChangeOffLineOwner(carid)
   	new count = 0;
 	if(cache_get_row_count(count) && count > 0)
 	{
-		new car = 0;
-		cache_get_value_name_int(0,"Car1", car);
+		new car = cache_get_value_name_int(0,"Car1", car);
 	    if(car == carid)
 		{
 		    format(sql, sizeof(sql), "UPDATE salrp_users SET Car1 = -1 WHERE Name='%s'",vehicle[carid][cOwner]);
   			mysql_query(MYSQL,sql);
 		}
-		cache_get_value_name_int(0,"Car2", car);
+		new car = cache_get_value_name_int(0,"Car2", car);
 	    if(car == carid)
 	    {
 	        format(sql, sizeof(sql), "UPDATE salrp_users SET Car2 = -1 WHERE Name='%s'",vehicle[carid][cOwner]);
   			mysql_query(MYSQL,sql);
 	    }
-	    cache_get_value_name_int(0,"Car3", car);
+	    new car = cache_get_value_name_int(0,"Car3", car);
 	    if(car == carid)
 	    {
 	        format(sql, sizeof(sql), "UPDATE salrp_users SET Car3 = -1 WHERE Name='%s'",vehicle[carid][cOwner]);
   			mysql_query(MYSQL,sql);
 	    }
-	    cache_get_value_name_int(0,"Car4", car);
+	    new car = cache_get_value_name_int(0,"Car4", car);
      	if(car == carid)
 	    {
 	        format(sql, sizeof(sql), "UPDATE salrp_users SET Car4 = -1 WHERE Name='%s'",vehicle[carid][cOwner]);
   			mysql_query(MYSQL,sql);
 	    }
-	    cache_get_value_name_int(0,"Car5", car);
+	   new car = cache_get_value_name_int(0,"Car5", car);
 	    if(car == carid)
 	    {
 	        format(sql, sizeof(sql), "UPDATE salrp_users SET Car5 = -1 WHERE Name='%s'",vehicle[carid][cOwner]);
   			mysql_query(MYSQL,sql);
 	    }
-	    cache_get_value_name_int(0,"Car6", car);
+	    new car = cache_get_value_name_int(0,"Car6", car);
 	    if(car == carid)
 	    {
 	        format(sql, sizeof(sql), "UPDATE salrp_users SET Car6 = -1 WHERE Name='%s'",vehicle[carid][cOwner]);
@@ -58093,7 +58092,7 @@ public beta_CheckKey(playerid,betaKey)
 	    return 1;
 	}
 	new string[128];
-format(string, sizeof(string), "{FF0000}Cette clé est invalide\n\n\n{FFFFFF}Entrez votre clé beta pour vous inscrire :");
+format(string, sizeof(string), "{FF0000}Cette cle est invalide\n\n\n{FFFFFF}Entrez votre cle beta pour vous inscrire :");
 	return ShowPlayerDialog(playerid,45,DIALOG_STYLE_INPUT,"� Beta Ferm�e �",string,"Valider",");
 }
 
