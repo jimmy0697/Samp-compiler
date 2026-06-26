@@ -1,3 +1,7 @@
+forward SetCarBlinking(veh, bool:side);
+forward DisableCarBlinking(veh);
+forward IsCarBlinking(vehicleid);
+forward removeDriveBy(playerid);
 /*
 ================================================================================
 NOM DU SERVEUR : San Andreas Life RolePlay
