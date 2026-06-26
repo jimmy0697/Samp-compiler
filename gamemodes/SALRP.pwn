@@ -57646,7 +57646,7 @@ public ClearAnim(playerid)
 	return 1;
 }
 
-stock static removeDriveBy(playerid)
+stock removeDriveBy(playerid)
 {
     new Float:fX,Float:fY,Float:fZ;
 
