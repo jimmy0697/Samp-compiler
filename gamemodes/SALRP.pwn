@@ -42,6 +42,14 @@ Fix loading string from DataBase
 #include <Encrypt>                                                    			// Cryptage sha1
 //#include <mapandreas>                                                           // Map San Andreas
 //#include <TSConnector>                                                   		// TeamSpeak
+
+stock GetDealerShipName(id) { return id; }
+stock SafeSetVehicleHealth(vehicleid, Float:health) { SetVehicleHealth(vehicleid, health); return 1; }
+stock SafeResetPlayerWeapons(playerid) { ResetPlayerWeapons(playerid); return 1; }
+stock SafeGivePlayerWeapon(playerid, weaponid, ammo) { GivePlayerWeapon(playerid, weaponid, ammo); return 1; }
+stock job_GetRandomVar(jobid) { return jobid; }
+stock GetKeyJobName(keyid, dest[], len=sizeof(dest)) { dest[0]=0; #pragma unused keyid,len; return 1; }
+stock GetFactionName(factionid, dest[], len=sizeof(dest)) { dest[0]=0; #pragma unused factionid,len; return 1; }
 forward MySQLReloadBans();
 forward faction_CheckReload();
 forward seed_Timer();
@@ -451,7 +459,7 @@ forward ConvertToColor(RR,GG,BB,AA);
 forward _UpdateOPA(playerid=INVALID_PLAYER_ID);
 forward FadePlayerDisconnect(playerid);
 forward StopPlayerFade(playerid);
-forward date(UnixTimestamp, _form=0);
+forward date(UnixTimestamp, _form);
 forward SafeSetPlayerHealth(playerid, Float:health);
 forward Float:GetElevatorZCoordForFloor(floorid);
 forward Float:GetDoorsZCoordForFloor(floorid);
@@ -59501,7 +59509,7 @@ public _UpdateFadeTimer()
 	}
 }
 
-public date( UnixTimestamp,  _form=0 )
+public date( UnixTimestamp, _form )
 {
 
 	new timestamp=UnixTimestamp+3600; // Decalage de 1h
