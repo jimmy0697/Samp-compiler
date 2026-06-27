@@ -37467,7 +37467,7 @@ stock anticheat_VehicleHealth(playerid)
 	return 1;
 }
 
-stock anticheat_AFK(i)
+public anticheat_AFK(i)
 {
 	if(afk_Check[i] == -1 || AdminDuty[i] || PlayerInfo[i][pJailed]!=0)
 		{return 1;}
