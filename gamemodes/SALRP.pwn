@@ -1,3 +1,47 @@
+/*
+================================================================================
+NOM DU SERVEUR : San Andreas Life RolePlay
+UPDATE : 28/07/2017
+FILE : http://sa-mp-fr.com/files/file/171-san-andreas-life-roleplay/
+GITHUB : https://github.com/jimmy06/SALRP
+
+=> San Andreas Life RolePlay �
+- D�veloppeur : Antony06
+- Mappeur : pat45
+- Version SA:MP : 0.3.7-R2
+- Base : u2c
+- Mysql : R41-2
+- Streamer : v2.9.1
+
+=> Credits du GameMode :
+- San Andreas Life R�lePlay
+- SA-MP forum
+- antony06
+- pat45
+ [Respectez les cr�dits merci]
+
+================================================================================
+*/
+/*
+
+UPDATE v5.0.2 :
+
+Fix loading string from DataBase
+
+*/
+/*
+================================================================================
+									Includes
+================================================================================
+*/
+
+#include <streamer> 															// Streamer
+#include <a_samp>                												// SA:MP
+#include <a_mysql>               												// Gestion du sql
+#include <mSelection>                                                    		// Selection
+#include <Encrypt>                                                    			// Cryptage sha1
+//#include <mapandreas>                                                           // Map San Andreas
+//#include <TSConnector>                                                   		// TeamSpeak
 forward faction_CheckReload();
 forward seed_Timer();
 forward SetPlayerFacingPlayer(playerid, giveplayerid);
@@ -387,50 +431,6 @@ forward SetCarBlinking(veh, bool:side);
 forward DisableCarBlinking(veh);
 forward IsCarBlinking(vehicleid);
 forward removeDriveBy(playerid);
-/*
-================================================================================
-NOM DU SERVEUR : San Andreas Life RolePlay
-UPDATE : 28/07/2017
-FILE : http://sa-mp-fr.com/files/file/171-san-andreas-life-roleplay/
-GITHUB : https://github.com/jimmy06/SALRP
-
-=> San Andreas Life RolePlay �
-- D�veloppeur : Antony06
-- Mappeur : pat45
-- Version SA:MP : 0.3.7-R2
-- Base : u2c
-- Mysql : R41-2
-- Streamer : v2.9.1
-
-=> Credits du GameMode :
-- San Andreas Life R�lePlay
-- SA-MP forum
-- antony06
-- pat45
- [Respectez les cr�dits merci]
-
-================================================================================
-*/
-/*
-
-UPDATE v5.0.2 :
-
-Fix loading string from DataBase
-
-*/
-/*
-================================================================================
-									Includes
-================================================================================
-*/
-
-#include <streamer> 															// Streamer
-#include <a_samp>                												// SA:MP
-#include <a_mysql>               												// Gestion du sql
-#include <mSelection>                                                    		// Selection
-#include <Encrypt>                                                    			// Cryptage sha1
-//#include <mapandreas>                                                           // Map San Andreas
-//#include <TSConnector>                                                   		// TeamSpeak
 forward anticheat_AFK(playerid);
 forward drop_Remove(dropid);
 forward anticheat_Check(playeri);
@@ -443,6 +443,159 @@ forward AndroExists(vehicleid);
 forward CreateAndroInt(vehicleid);
 forward SetPlayerPosInAndro(playerid, vehicleid);
 forward SafeSetPlayerPos(playerid, Float:x, Float:y, Float:z);
+forward SetPlayerSpawn(playerid);
+forward OnPlayerLogin(playerid,pass[]);
+forward car_EndTest(playerid,carid);                                            // Fin du test du v�hicule d'une concess
+forward uniquebizz_PaySpray(playerid, biz); 									// Apres �tre entr� dans le pay'n sray
+forward gym_TestCombatStyle(playerid,article);              					// Test d'une technique de combat
+forward skill_Trainning(playerid);                                              // Entrainement d'une arme
+forward bank_ResetRob();                                                        // Timer pour reset le timer de braquage
+forward bank_TakeMoney(playerid);                                               // Timer d'attente lors de l'obtention de l'argent au braquage de banque
+forward inscription_StartIntro(playerid, step);                                       // D�but de l'inscription
+forward inscription_EndIntro(playerid);                                         // Fin de l'inscription
+forward inscription_MoveObject(playerid,type);                                  // D�placement des objets de l'intro
+forward Encore_Lights(light1, light2, light3, light4);                          // **
+forward CommencementBlink(playerid);                                            // *
+forward TimerBlinkingLights(carid);                                             // * CLignotants
+forward TimerBlinkingLights2(carid);                                            // *
+forward ShutOffBlinkingLights(playerid);                                        // **
+forward anticheat_Sobeit(playerid);                                             // AntiCheat sobeit
+forward anticheat_Sobeit2(playerid);                                            // ANtiCheat sobeit
+forward _UpdateFadeTimer();                                                     // ** Fader
+forward OnFadeComplete(playerid,beforehold);                                    // ** //
+forward fire_StartFire(Float:x,Float:y,Float:z);                                // Cr�ation d'un feu pour les pompiers
+forward job_ResetFreeze(playerid,other);            							// Defreeze le joueur qui peche
+forward job_Apply(playerid, jobid, stepid);                                     // Job
+forward mariage_Step(playerid,giveplayerid,botid,stepid);                       // Etapes du mariage
+forward atm_Repair(id,phase);                                                   // R�paration ATM apr�s vandalisme
+forward boombox_Refresh();                                                      // Actualisation des boombox
+forward speedometer_Blinking(playerid,type);                                    // Clignotants
+forward camera_RemoveFlash(playerid);                                           // Cache le TD du flash du radar
+forward camera_Update(a);                                                       // Effet doppler
+forward WalkAnim(playerid);                                                     // Animation de la marche perso
+forward RunAnim(playerid);                                                      // Idem pour la course
+forward body_Remove(id);                                                        // Suppression du cadavre
+forward npc_Bus(id);                                							// **
+forward npc_Train(id);                                                          // *  NPCS
+forward npc_Tram(id);                                                           // **
+forward payday_HideTexts(playerid);                                             // Cache les TD du payday
+forward MySQLConnect(sqlhost[], sqluser[], sqlpass[], sqldb[]);                 // Connexion a la DB
+forward MySQLDisconnect();                                                      // Deconnexion de la DB
+forward MySQLCheckIp(ip[]);                                                     // Check si l'ip existe deja plusieurs fois (MAX_ACCOUNT_IP)
+forward MySQLCheckAccountLocked(sqlplayerid);                                   // Renvoit TRUE si le compte est lock
+forward MySQLCheckAccountOther(sqlplayerid);                                    // Renvoit TRUE si le compte est lock
+forward MySQLCheckIPBanned(ip[]);                                               // Renvoit TRUE si l'IP est bannie
+forward MySQLCheckConnexion();                                                  // Toujours connect� � la DB ?
+forward MySQLUpdatePlayerIntSingle(sqlplayerid, sqlvalname[], sqlupdateint);    // Update une seule valeur (table users)
+forward MySQLUpdatePlayerCharSingle(sqlplayerid, sqlvalname[], sqlupdateint[]); // Update une seule chaine de caract�re (table users)
+forward MySQLAddLoginRecord(sqlplayerid, ipaddr[]);                             // Ajoute une entr�e dans la table Logins
+forward MySQLCheckAccount(sqlplayersname[]);                                    // Renvoit l'ID sql d'un compte s'il existe
+forward MySQLFetchAcctSingle(sqlplayerid, sqlvalname[], sqlresult[]);           //                      //
+forward MySQLCreateAccount(newplayersname[], newpassword[], mail[], sex, origin, lang, age, regcity);// Cr�e pour le compte sur un UCP
+forward MySQLCheckChar(string[]);                                               //
+forward MySQLBan(playerid,by,reason[],times);									// Ban Mysql
+forward MySQLReloadBans();                                                      // Rechargement des bans temps
+forward MySQLKick(playerid,by,reason[]);                                        // Kick Mysql
+forward MySQLJail(playerid,by,reason[],times);                                  // Jail Mysql
+forward MySQLGetNameWithId(sql_id,resultName[MAX_PLAYER_NAME]);                 // Renvoie le nom du joueur � partir de son SQLid
+forward anime_Casque(playerid);                                                 // Annimatio du casque (/casque)
+forward RemiX_Time_Tools();         											// Reboot automatique du serveur.
+forward MeteoAleatoire();                                                       // M�t�o
+forward lotto(number);                                                          // lotto !
+forward defreeze(playerid);                         							// Defreeze du joueur
+forward ClearAnim(playerid);                                                    // Arr�ter l'annim en cours
+forward CommeBackOff(playerid);                     							// Timer restant du comeback
+forward TimerKick(playerid);                                                    // Kick
+forward UnsetFirstSpawn(playerid);                                              // Timer fin du /comeback
+forward ClearKnock(playerid);                                                   // Useless
+forward server_AntiHack(playerid);                                              // Timer de connexion
+forward server_TimerArmour(playerid);                                           // Timer armure
+forward server_FenceRoad(fence,stat);                                           // Ouverture fermeture passage � niveau
+forward player_ResetTimeRapport(playerid);                                      // Timer reset du temps d'attente des rapports et questions
+forward PlayerconnectPos1(playerid);                                            //
+forward TimerConnectOff(playerid);                                              // Kill le timer + Reset la vue
+forward TimersInit();                                                           // Start de timers
+forward timer_1s();                      										// Timer r�p�tif toutes les 1s
+forward timer_2s();                                                             // Timer r�p�tif toutes les 2s
+forward timer_5s();                                                             // Timer r�p�tif toutes les 5s
+forward timer_1mn();                      										// Timer r�p�tif toutes les 1 mns
+forward timer_90s();                      										// Timer r�p�tif toutes les 80s (1mn 20)
+forward timer_110s();                      										// Timer r�p�tif toutes les 100s (1mn 40)
+forward timer_5mns();                         									// Timer r�p�tif toutes les 5mn
+forward timer_30mns();                        									// Timer r�p�tif toutes les 30 mins
+forward timer_1h();                                                             // Timer r�p�tif toutes les 1 heure
+forward timer_Decrement(i);                                                     // Timer r�p�tif
+forward split(const strsrc[], strdest[][], delimiter);                          // S�parer un mot par un signe
+forward GameModeInitExitFunc();                                                 // Raboot du Serveur
+forward GameModeExitFunc();                                                     // Pr�pation du reboot
+forward AddsOn();                                                               // Pub
+forward StartingTheVehicle(playerid);                                           // D�marrage v�hicule
+forward StartingTheVehicleVoler(playerid);                                      // D�marrage v�hicule voler (/gang voler voiture)
+forward ExplodeShamal(vehicleid);                                               // Eplosion int�rieur shamal si crash
+forward Decodage(playerid);                                                     // D�codage de la porte de la banque
+forward StopCameraEffect(playerid);                                             // Arr�t des effets des drogues et alcool
+forward chargement(playerid);                                                   // Timer de chargement pour le mapping
+forward CallElevator(playerid, floorid);                                        // Elevateur San News
+forward ShowElevatorDialog(playerid);
+forward Float:GetElevatorZCoordForFloor(floorid);
+forward Float:GetDoorsZCoordForFloor(floorid);
+forward Float:GetDistanceBetweenPlayers(p1,p2);
+forward Elevator_Boost(floorid);
+forward Elevator_TurnToIdle();
+forward teamspeak_CreateChannel(name[64],desc[128],TSC_CHANNELTYPE:type,pass[16]);
+forward teamspeak_DeleteChannel(id);
+forward teamspeak_DeleteAllChannels();
+forward teamspeak_IsPlayerConnected(playerid);*/
+forward beta_CheckKey(playerid, betaKey);                                       // Check de la clef beta
+forward CreateDynamicSalrpActor(modelid, Float:X, Float:Y, Float:Z, Float:Rotation, vworld, bool:vulnera ,type, varia, labelHead[]); // Cr�ation actor
+forward DestroyDynamicSalrpActor(actorid);                                           // Sup actor
+forward SetActorChatBubble(playerid, text[], color, Float:drawdistance, expiretime);// Chat
+forward governement_Load();
+forward dealerShip_ShowDialog(playerid,dealerId);
+forward gate_Close(gateId);
+forward faction_Load();
+forward seed_Load();
+forward zone_Load();
+forward spawn_Load();
+forward dealerShip_Load();
+forward interior_Load();
+forward sannews_Load();
+forward police_Load();
+forward police_FineLoad();
+forward bizz_Load();
+forward house_Load();
+forward house_LoadFurnitures();
+forward uniquebizz_Load();
+forward stop_Load();
+forward gps_Load();
+forward tree_Load();
+forward garage_Load();
+forward drop_Load();
+forward tag_Load();
+forward atm_Load();
+forward gate_Load();
+forward sign_Load();
+forward ad_Load();
+forward camera_Load();
+forward trash_Load();
+forward bin_Load();
+forward phonecab_Load();
+forward map_Load();
+forward distrib_Load();
+forward teamspeak_Check(playerid);
+forward placeVehicle(playerid, vehicleid, seatid, weaponid);
+forward BallDown(playerid, Float:oldz, ballid);
+forward BallDown2(playerid,ballid);
+forward BallDown3(playerid,ballid);
+forward BallDown4(playerid,ballid);
+forward BallDown5(playerid,ballid);
+forward DestroyActorChatBubble(playerid);
+forward KickAll();
+forward vehicle_DeletePlayer(player_sqlid,vehicle_sqlid);
+forward vehicle_LoadPlayer(playerid);
+forward vehicle_Load();
+forward infoBoxClose(playerid);
+forward FadeColorForPlayer(playerid,RR1,GG1,BB1,AA1,RR2,GG2,BB2,AA2,steps,hold);
 
 /*
 ================================================================================
@@ -715,114 +868,7 @@ forward SafeSetPlayerPos(playerid, Float:x, Float:y, Float:z);
 ================================================================================
 */
 
-forward SetPlayerSpawn(playerid);
-forward OnPlayerLogin(playerid,pass[]);
-forward car_EndTest(playerid,carid);                                            // Fin du test du v�hicule d'une concess
-forward uniquebizz_PaySpray(playerid, biz); 									// Apres �tre entr� dans le pay'n sray
-forward gym_TestCombatStyle(playerid,article);              					// Test d'une technique de combat
-forward skill_Trainning(playerid);                                              // Entrainement d'une arme
-forward bank_ResetRob();                                                        // Timer pour reset le timer de braquage
-forward bank_TakeMoney(playerid);                                               // Timer d'attente lors de l'obtention de l'argent au braquage de banque
-forward inscription_StartIntro(playerid, step);                                       // D�but de l'inscription
-forward inscription_EndIntro(playerid);                                         // Fin de l'inscription
-forward inscription_MoveObject(playerid,type);                                  // D�placement des objets de l'intro
-forward Encore_Lights(light1, light2, light3, light4);                          // **
-forward CommencementBlink(playerid);                                            // *
-forward TimerBlinkingLights(carid);                                             // * CLignotants
-forward TimerBlinkingLights2(carid);                                            // *
-forward ShutOffBlinkingLights(playerid);                                        // **
-forward anticheat_Sobeit(playerid);                                             // AntiCheat sobeit
-forward anticheat_Sobeit2(playerid);                                            // ANtiCheat sobeit
-forward _UpdateFadeTimer();                                                     // ** Fader
-forward OnFadeComplete(playerid,beforehold);                                    // ** //
-forward fire_StartFire(Float:x,Float:y,Float:z);                                // Cr�ation d'un feu pour les pompiers
-forward job_ResetFreeze(playerid,other);            							// Defreeze le joueur qui peche
-forward job_Apply(playerid, jobid, stepid);                                     // Job
-forward mariage_Step(playerid,giveplayerid,botid,stepid);                       // Etapes du mariage
-forward atm_Repair(id,phase);                                                   // R�paration ATM apr�s vandalisme
-forward boombox_Refresh();                                                      // Actualisation des boombox
-forward speedometer_Blinking(playerid,type);                                    // Clignotants
-forward camera_RemoveFlash(playerid);                                           // Cache le TD du flash du radar
-forward camera_Update(a);                                                       // Effet doppler
-forward WalkAnim(playerid);                                                     // Animation de la marche perso
-forward RunAnim(playerid);                                                      // Idem pour la course
-forward body_Remove(id);                                                        // Suppression du cadavre
-forward npc_Bus(id);                                							// **
-forward npc_Train(id);                                                          // *  NPCS
-forward npc_Tram(id);                                                           // **
-forward payday_HideTexts(playerid);                                             // Cache les TD du payday
-forward MySQLConnect(sqlhost[], sqluser[], sqlpass[], sqldb[]);                 // Connexion a la DB
-forward MySQLDisconnect();                                                      // Deconnexion de la DB
-forward MySQLCheckIp(ip[]);                                                     // Check si l'ip existe deja plusieurs fois (MAX_ACCOUNT_IP)
-forward MySQLCheckAccountLocked(sqlplayerid);                                   // Renvoit TRUE si le compte est lock
-forward MySQLCheckAccountOther(sqlplayerid);                                    // Renvoit TRUE si le compte est lock
-forward MySQLCheckIPBanned(ip[]);                                               // Renvoit TRUE si l'IP est bannie
-forward MySQLCheckConnexion();                                                  // Toujours connect� � la DB ?
-forward MySQLUpdatePlayerIntSingle(sqlplayerid, sqlvalname[], sqlupdateint);    // Update une seule valeur (table users)
-forward MySQLUpdatePlayerCharSingle(sqlplayerid, sqlvalname[], sqlupdateint[]); // Update une seule chaine de caract�re (table users)
-forward MySQLAddLoginRecord(sqlplayerid, ipaddr[]);                             // Ajoute une entr�e dans la table Logins
-forward MySQLCheckAccount(sqlplayersname[]);                                    // Renvoit l'ID sql d'un compte s'il existe
-forward MySQLFetchAcctSingle(sqlplayerid, sqlvalname[], sqlresult[]);           //                      //
-forward MySQLCreateAccount(newplayersname[], newpassword[], mail[], sex, origin, lang, age, regcity);// Cr�e pour le compte sur un UCP
-forward MySQLCheckChar(string[]);                                               //
-forward MySQLBan(playerid,by,reason[],times);									// Ban Mysql
-forward MySQLReloadBans();                                                      // Rechargement des bans temps
-forward MySQLKick(playerid,by,reason[]);                                        // Kick Mysql
-forward MySQLJail(playerid,by,reason[],times);                                  // Jail Mysql
-forward MySQLGetNameWithId(sql_id,resultName[MAX_PLAYER_NAME]);                 // Renvoie le nom du joueur � partir de son SQLid
-forward anime_Casque(playerid);                                                 // Annimatio du casque (/casque)
-forward RemiX_Time_Tools();         											// Reboot automatique du serveur.
-forward MeteoAleatoire();                                                       // M�t�o
-forward lotto(number);                                                          // lotto !
-forward defreeze(playerid);                         							// Defreeze du joueur
-forward ClearAnim(playerid);                                                    // Arr�ter l'annim en cours
-forward CommeBackOff(playerid);                     							// Timer restant du comeback
-forward TimerKick(playerid);                                                    // Kick
-forward UnsetFirstSpawn(playerid);                                              // Timer fin du /comeback
-forward ClearKnock(playerid);                                                   // Useless
-forward server_AntiHack(playerid);                                              // Timer de connexion
-forward server_TimerArmour(playerid);                                           // Timer armure
-forward server_FenceRoad(fence,stat);                                           // Ouverture fermeture passage � niveau
-forward player_ResetTimeRapport(playerid);                                      // Timer reset du temps d'attente des rapports et questions
-forward PlayerconnectPos1(playerid);                                            //
-forward TimerConnectOff(playerid);                                              // Kill le timer + Reset la vue
-forward TimersInit();                                                           // Start de timers
-forward timer_1s();                      										// Timer r�p�tif toutes les 1s
-forward timer_2s();                                                             // Timer r�p�tif toutes les 2s
-forward timer_5s();                                                             // Timer r�p�tif toutes les 5s
-forward timer_1mn();                      										// Timer r�p�tif toutes les 1 mns
-forward timer_90s();                      										// Timer r�p�tif toutes les 80s (1mn 20)
-forward timer_110s();                      										// Timer r�p�tif toutes les 100s (1mn 40)
-forward timer_5mns();                         									// Timer r�p�tif toutes les 5mn
-forward timer_30mns();                        									// Timer r�p�tif toutes les 30 mins
-forward timer_1h();                                                             // Timer r�p�tif toutes les 1 heure
-forward timer_Decrement(i);                                                     // Timer r�p�tif
-forward split(const strsrc[], strdest[][], delimiter);                          // S�parer un mot par un signe
-forward GameModeInitExitFunc();                                                 // Raboot du Serveur
-forward GameModeExitFunc();                                                     // Pr�pation du reboot
-forward AddsOn();                                                               // Pub
-forward StartingTheVehicle(playerid);                                           // D�marrage v�hicule
-forward StartingTheVehicleVoler(playerid);                                      // D�marrage v�hicule voler (/gang voler voiture)
-forward ExplodeShamal(vehicleid);                                               // Eplosion int�rieur shamal si crash
-forward Decodage(playerid);                                                     // D�codage de la porte de la banque
-forward StopCameraEffect(playerid);                                             // Arr�t des effets des drogues et alcool
-forward chargement(playerid);                                                   // Timer de chargement pour le mapping
-forward CallElevator(playerid, floorid);                                        // Elevateur San News
-forward ShowElevatorDialog(playerid);
-forward Float:GetElevatorZCoordForFloor(floorid);
-forward Float:GetDoorsZCoordForFloor(floorid);
-forward Float:GetDistanceBetweenPlayers(p1,p2);
-forward Elevator_Boost(floorid);
-forward Elevator_TurnToIdle();
 /*forward teamspeak_Connect(tshost[], tsport, tsuser[], tspass[], tsnick[]);
-forward teamspeak_CreateChannel(name[64],desc[128],TSC_CHANNELTYPE:type,pass[16]);
-forward teamspeak_DeleteChannel(id);
-forward teamspeak_DeleteAllChannels();
-forward teamspeak_IsPlayerConnected(playerid);*/
-forward beta_CheckKey(playerid, betaKey);                                       // Check de la clef beta
-forward CreateDynamicSalrpActor(modelid, Float:X, Float:Y, Float:Z, Float:Rotation, vworld, bool:vulnera ,type, varia, labelHead[]); // Cr�ation actor
-forward DestroyDynamicSalrpActor(actorid);                                           // Sup actor
-forward SetActorChatBubble(playerid, text[], color, Float:drawdistance, expiretime);// Chat
 
 /*
 ================================================================================
@@ -1056,7 +1102,6 @@ new mairie_DialogPlaqueChange[MAX_PLAYERS];  									// Dialogue pour changer l
 new marie_Temp[MAX_PLAYERS];
 
 
-forward governement_Load();
 new Text3D:governement_Label[4][6];
 new governement_Pickup[4][2];
 new governement_Icon[4];
@@ -6630,7 +6675,6 @@ stock bin_ShowDialog(playerid,binid)
 	return 1;
 }
 
-forward dealerShip_ShowDialog(playerid,dealerId);
 public dealerShip_ShowDialog(playerid,dealerId)
 {
 	new string[2048]="{FFFFFF}Mod�le\t{FFFFFF}Prix\n";
@@ -6785,7 +6829,6 @@ stock gate_Check(playerid,act, passw[])
 	return 1;
 }
 
-forward gate_Close(gateId);
 public gate_Close(gateId)
 {
     MoveDynamicObject(gate_Object[gateId],gate[gateId][pos][0],gate[gateId][pos][1],gate[gateId][pos][2],2.0,gate[gateId][pos][3],gate[gateId][pos][4],gate[gateId][pos][5]);
@@ -10019,7 +10062,6 @@ public GameModeExitFunc()
     return 1;
 }
 
-forward faction_Load();
 public faction_Load()
 {
 	totalFactions = cache_get_row_count();
@@ -10118,7 +10160,6 @@ stock faction_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward seed_Load();
 public seed_Load()
 {
 	totalSeeds = cache_get_row_count();
@@ -10148,7 +10189,6 @@ stock seed_Save(id)
 	return 1;
 }
 
-forward zone_Load();
 public zone_Load()
 {
 	totalZones = cache_get_row_count();
@@ -10179,7 +10219,6 @@ stock zone_Save(id)
 	return 1;
 }
 
-forward spawn_Load();
 public spawn_Load()
 {
 	for (new i=0; i<MAX_CITY; i++)
@@ -10208,7 +10247,6 @@ stock spawn_Save(id)
 	return 1;
 }
 
-forward dealerShip_Load();
 public dealerShip_Load()
 {
 	totalDealerShip = cache_get_row_count();
@@ -10240,7 +10278,6 @@ stock dealerShip_Save(id)
 	return 1;
 }
 
-forward interior_Load();
 public interior_Load()
 {
 	totalInteriors = cache_get_row_count();
@@ -10286,7 +10323,6 @@ stock interior_Save(id)
 	return 1;
 }
 
-forward sannews_Load();
 public sannews_Load()
 {
     new count = 0;
@@ -10664,7 +10700,6 @@ stock mecano_Save()
 	mysql_pquery(MYSQL,sql);
 }
 
-forward police_Load();
 public police_Load()
 {
 	for (new i=0; i<4; i++)
@@ -10737,7 +10772,6 @@ stock police_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward police_FineLoad();
 public police_FineLoad()
 {
 	totalFines = cache_get_row_count();
@@ -10915,7 +10949,6 @@ stock bizz_Save(id)
     mysql_pquery(MYSQL,sql);
 }
 
-forward bizz_Load();
 public bizz_Load()
 {
 	totalBizz = cache_get_row_count();
@@ -10994,7 +11027,6 @@ stock setting_Save()
     mysql_pquery(MYSQL,sql);
 }
 
-forward house_Load();
 public house_Load()
 {
 	totalHouses = cache_get_row_count();
@@ -11124,7 +11156,6 @@ stock house_LoadModels()
 	return 1;
 }
 
-forward house_LoadFurnitures();
 public house_LoadFurnitures()
 {
 	new mob=-1, tmp = 0;
@@ -11212,7 +11243,6 @@ stock uniquebizz_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward uniquebizz_Load();
 public uniquebizz_Load()
 {
 	for (new i=0; i<MAX_SBIZZ; i++)
@@ -11669,7 +11699,6 @@ stock uniquebizz_Create(id)
 	return 1;
 }
 
-forward stop_Load();
 public stop_Load()
 {
 	totalBusStop = cache_get_row_count();
@@ -11696,7 +11725,6 @@ stock stop_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward gps_Load();
 public gps_Load()
 {
 	totalGPS = cache_get_row_count();
@@ -11722,7 +11750,6 @@ stock gps_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward tree_Load();
 public tree_Load()
 {
 	totalTree = cache_get_row_count();
@@ -11743,7 +11770,6 @@ stock tree_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward garage_Load();
 public garage_Load()
 {
 	totalGarages = cache_get_row_count();
@@ -11777,7 +11803,6 @@ stock garage_Save(id)
 }
 
 
-forward drop_Load();
 public drop_Load()
 {
 	totalDrops = cache_get_row_count();
@@ -11802,7 +11827,6 @@ stock drop_Save(id)
 	return 1;
 }
 
-forward tag_Load();
 public tag_Load()
 {
 	totalTags = cache_get_row_count();
@@ -11834,7 +11858,6 @@ stock tag_Save(id)
 	return 1;
 }
 
-forward atm_Load();
 public atm_Load()
 {
 	totalATMs = cache_get_row_count();
@@ -11858,7 +11881,6 @@ stock atm_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward gate_Load();
 public gate_Load()
 {
 	new tmp = 0;
@@ -11897,7 +11919,6 @@ stock gate_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward sign_Load();
 public sign_Load()
 {
 	totalSigns = cache_get_row_count();
@@ -11934,7 +11955,6 @@ stock sign_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward ad_Load();
 public ad_Load()
 {
 	totalAds = cache_get_row_count();
@@ -11959,7 +11979,6 @@ stock ad_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward camera_Load();
 public camera_Load()
 {
 	totalCameras = cache_get_row_count();
@@ -11985,7 +12004,6 @@ stock camera_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward trash_Load();
 public trash_Load()
 {
 	totalTrash = cache_get_row_count();
@@ -12010,7 +12028,6 @@ stock trash_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward bin_Load();
 public bin_Load()
 {
 	totalBins = cache_get_row_count();
@@ -12056,7 +12073,6 @@ stock bin_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward phonecab_Load();
 public phonecab_Load()
 {
 	totalPhoneCabs = cache_get_row_count();
@@ -12080,7 +12096,6 @@ stock phonecab_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward map_Load();
 public map_Load()
 {
 	totalMaps = cache_get_row_count();
@@ -12103,7 +12118,6 @@ stock map_Save(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-forward distrib_Load();
 public distrib_Load()
 {
 	totalDistribs = cache_get_row_count();
@@ -12630,7 +12644,6 @@ public teamspeak_IsPlayerConnected(playerid)
 	    {return 1;}
 	return 0;
 }
-forward teamspeak_Check(playerid);
 public teamspeak_Check(playerid)
 {
 	if(!teamspeak_IsPlayerConnected(playerid))
@@ -58041,7 +58054,6 @@ stock removeDriveBy(playerid)
 	SetTimerEx("placeVehicle", 200, false, "dddd", playerid, GetPlayerVehicleID(playerid), GetPlayerVehicleSeat(playerid), GetPlayerWeapon(playerid));
 }
 
-forward placeVehicle(playerid, vehicleid, seatid, weaponid);
 public placeVehicle(playerid, vehicleid, seatid, weaponid)
 {
 	if (!IsPlayerConnected(playerid) || GetPlayerState(playerid) != PLAYER_STATE_ONFOOT)
@@ -58052,7 +58064,6 @@ public placeVehicle(playerid, vehicleid, seatid, weaponid)
 	return 1;
 }
 
-forward BallDown(playerid, Float:oldz, ballid);
 public BallDown(playerid, Float:oldz, ballid)
 {
 	new Float:x, Float:y, Float:z;
@@ -58070,7 +58081,6 @@ public BallDown(playerid, Float:oldz, ballid)
 	return 1;
 }
 
-forward BallDown2(playerid,ballid);
 public BallDown2(playerid,ballid)
 {
 	MoveDynamicObject(basket[ballid][object], 2795.5237,-2019.6152,13.5547-0.8, 10.0+random(3));
@@ -58081,7 +58091,6 @@ public BallDown2(playerid,ballid)
 	return 1;
 }
 
-forward BallDown3(playerid,ballid);
 public BallDown3(playerid,ballid)
 {
 	MoveDynamicObject(basket[ballid][object], 2768.3669,-2019.6644,13.5547-0.8, 10.0+random(3));
@@ -58092,7 +58101,6 @@ public BallDown3(playerid,ballid)
 	return 1;
 }
 
-forward BallDown4(playerid,ballid);
 public BallDown4(playerid,ballid)
 {
 	MoveDynamicObject(basket[ballid][object], 2795.5237+random(5),-2019.6152+random(5),13.5547-0.8, 10.0+random(3));
@@ -58103,7 +58111,6 @@ public BallDown4(playerid,ballid)
 	return 1;
 }
 
-forward BallDown5(playerid,ballid);
 public BallDown5(playerid,ballid)
 {
 	MoveDynamicObject(basket[ballid][object], 2768.3669+random(5),-2019.6644+random(5),13.5547-0.8, 10.0+random(3));
@@ -58154,7 +58161,6 @@ public SetActorChatBubble(playerid, text[], color, Float:drawdistance, expiretim
 	return 1;
 }
 
-forward DestroyActorChatBubble(playerid);
 public DestroyActorChatBubble(playerid)
 {
 	DestroyDynamic3DTextLabel(actorChatLabel[playerid]);
@@ -58280,7 +58286,6 @@ public chargement(playerid)
 	return TogglePlayerControllable(playerid, 1), 1;
 }
 
-forward KickAll();
 public KickAll()
 {
 	for (new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
@@ -58533,7 +58538,6 @@ format(string, sizeof(string), "{FF0000}Cette clé est invalide\n\n\n{FFFFFF}Ent
 	return ShowPlayerDialog(playerid,45,DIALOG_STYLE_INPUT,"� Beta Ferm�e �",string,"Valider","");
 }
 
-forward vehicle_DeletePlayer(player_sqlid,vehicle_sqlid);
 public vehicle_DeletePlayer(player_sqlid,vehicle_sqlid)
 {
     new vehicleid = vehicle_GetId(vehicle_sqlid);
@@ -58572,7 +58576,6 @@ public vehicle_DeletePlayer(player_sqlid,vehicle_sqlid)
 	return 1;
 }
 
-forward vehicle_LoadPlayer(playerid);
 public vehicle_LoadPlayer(playerid)
 {
 	new mod, Float:x,Float:y,Float:z,Float:a,string[145];
@@ -58703,7 +58706,6 @@ public vehicle_LoadPlayer(playerid)
 	return 1;
 }
 
-forward vehicle_Load();
 public vehicle_Load()
 {
 	new tmpVehicles=1;
@@ -59355,7 +59357,6 @@ stock msg_Box(playerid, color[], prefixInfo[], msg[], timeclose)
 	return 1;
 }
 
-forward infoBoxClose(playerid);
 public infoBoxClose(playerid)
 {
 	TextDrawHideForPlayer(playerid,infoBox[0]);
@@ -59543,7 +59544,6 @@ stock _UpdateOPA(playerid=INVALID_PLAYER_ID) //my version of foreach (I made it 
 	}
 }
 
-forward FadeColorForPlayer(playerid,RR1,GG1,BB1,AA1,RR2,GG2,BB2,AA2,steps,hold);
 public FadeColorForPlayer(playerid,RR1,GG1,BB1,AA1,RR2,GG2,BB2,AA2,steps,hold)
 {
 	_pStep[playerid]=steps;//countdown, sorta
