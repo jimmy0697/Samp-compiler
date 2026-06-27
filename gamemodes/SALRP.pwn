@@ -204,7 +204,7 @@ forward biker_Save();
 forward bizz_Save(id);
 forward setting_Load();
 forward setting_Save();
-forward house_Save(id,bool:saveSafe=false);
+forward house_Save(id,bool:saveSafe);
 forward house_LoadModels();
 forward house_SaveFurniture(id,objectid);
 forward uniquebizz_Save(id);
@@ -10942,7 +10942,7 @@ public house_Load()
     if(gServerReload==0)
 		{printf("    .. %d maison(s) charg�e(s)",totalHouses);}
 }
-public house_Save(id,bool:saveSafe=false)
+public house_Save(id,bool:saveSafe)
 {
     new esc_owner[64],message[64];
     mysql_escape_string(house[id][owner], esc_owner);
