@@ -159,7 +159,7 @@ forward log_Chat(string[]);
 forward log_Governement(playerid,montant,string[]);
 forward player_GetSlotObject(playerid);
 forward car_GetBridVehicle(carid);
-forward car_Reset(carid,save,bool:recreate=true,bool:sqlidd=false);
+forward car_Reset(carid,save,bool:recreate,bool:sqlidd);
 forward car_Engine(playerid);
 forward gang_PlayerTimerVoleBizz(playerid);
 forward garage_Reset(id);
@@ -8064,7 +8064,7 @@ public car_GetBridVehicle(carid)
 	    {return 0;}
 }
 
-public car_Reset(carid,save,bool:recreate=true,bool:sqlidd=false)
+public car_Reset(carid,save,bool:recreate,bool:sqlidd)
 {
 	if(save==1)
 	{
