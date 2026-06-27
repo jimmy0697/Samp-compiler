@@ -383,13 +383,6 @@ forward _UpdateOPA(playerid=INVALID_PLAYER_ID);
 forward FadePlayerDisconnect(playerid);
 forward StopPlayerFade(playerid);
 forward date( UnixTimestamp,  _form=0 );
-forward randomEx(min, max);
-forward SafeGivePlayerMoney(playerid, amount);
-forward SafeSetPlayerArmour(playerid, Float:armour);
-forward gym_SetCombatStyle(playerid, style, skill);
-forward GetGangColor(gangid);
-forward GetCityName(playerid, city[], len);
-forward GetInteriorName(interiorid, name[], len);
 forward SetCarBlinking(veh, bool:side);
 forward DisableCarBlinking(veh);
 forward IsCarBlinking(vehicleid);
@@ -36700,7 +36693,6 @@ public skill_Trainning(playerid)
 }
 
 
-forward SafeSetPlayerHealth(playerid,Float:amount);
 public SafeSetPlayerHealth(playerid,Float:amount)
 {
     if(IsPlayerNPC(playerid))
