@@ -437,6 +437,15 @@ forward GetVehicleRotation(vehicleid, &Float: heading, &Float: attitude, &Float:
 forward ConvertNonNormaQuatToEuler(Float: qw, Float: qx, Float: qy, Float: qz, &Float: heading, &Float: attitude, &Float: bank);
 forward IsPlayerAiming(playerid);
 forward msg_Client(playerid, color, const msg[]);
+forward TimerKick(playerid);
+forward MySQLJail(playerid);
+forward MySQLKick(playerid);
+forward MySQLBan(playerid);
+forward fire_StartFire(playerid);
+forward job_ResetFreeze(playerid);
+forward GetFactionName(factionid);
+forward SafeResetPlayerWeapons(playerid);
+
 forward msg_Box(playerid, color[], prefixInfo[], msg[], timeclose);
 forward ConvertToColor(RR,GG,BB,AA);
 forward _UpdateOPA(playerid=INVALID_PLAYER_ID);
@@ -9251,7 +9260,7 @@ public GetWeaponSlot(weaponid)
     return -1;
 }
 
-public GetCheatName(cheatid)
+stock GetCheatName(cheatid)
 {
 	new name[32]="Aucun";
     switch(cheatid)
