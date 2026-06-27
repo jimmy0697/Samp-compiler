@@ -497,7 +497,6 @@ forward Float:GetDistanceBetweenPlayers(p1,p2);
 // Couleurs
 #define 			COLOR_RED               0xFF6347AA              			// Couleur rouge / Color red
 #define 			COLOR_YELLOW            0xDABB3EAA              			// Couleur jaune / Color yellow
-#define 			COLOR_BLUE              0x2641FEAA              			// Couleur bleu / Color blue
 #define 			COLOR_GREY              0xAFAFAFAA              			// Couleur gris / Color grey
 #define 			COLOR_PINK              0xFFC0CBAA              			// Couleur rose / Color pink
 #define 			COLOR_WHITE             0xFFFFFFAA              			// Couleur blanc / Color white
