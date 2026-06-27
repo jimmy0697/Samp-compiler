@@ -297,8 +297,6 @@ forward SafeSetPlayerPos(playerid,Float:x,Float:y,Float:z);
 forward SafeSetVehiclePos(carid,Float:x,Float:y,Float:z);
 forward SafeGivePlayerMoney(plyid, amounttogive,reason[]);
 forward anticheat_AirBreak(playerid);
-forward atm_CheckRob(playerid);
-forward anticheat_Check(playerid);
 forward anticheat_VehicleHealth(playerid);
 forward anticheat_AFK(i);
 forward SafeResetPlayerMoney(playerid,amount);
@@ -361,12 +359,6 @@ forward GetInvalidCreateModel(modelid);
 forward GetItemName(modelid);
 forward GetWepName(modelid);
 forward ConvertirTexte(Texte[]);
-forward CreateShamalInt(vehicleid, Float:X, Float:Y, Float:Z);
-forward CreateAndroInt(vehicleid, Float:X, Float:Y, Float:Z);
-forward SetPlayerPosInShamal(playerid, shamalid);
-forward SetPlayerPosInAndro(playerid, android);
-forward ShamalExists(vehicleid);
-forward AndroExists(vehicleid);
 forward randomEx(randval);
 forward tuning_RemoveComponent(carid, component);
 forward B_IsTrailer(vehicleid);
@@ -394,7 +386,6 @@ forward drop_PlayerWeapon(playerid);
 forward drop_PlayerCash(playerid);
 forward tag_Remove(tagId);
 forward removeDriveBy(playerid);
-forward IsPlayerFacingPlayer(playerid, targetid, Float:dOffset);
 forward AngleInRangeOfAngle(Float:a1, Float:a2, Float:rangeZ);
 forward msg_Vip(color, string[]);
 forward msg_Wt(channel, color, string[]);
@@ -436,14 +427,12 @@ forward CallElevator(playerid, floorid);
 forward GetVehicleRotation(vehicleid, &Float: heading, &Float: attitude, &Float: bank);
 forward ConvertNonNormaQuatToEuler(Float: qw, Float: qx, Float: qy, Float: qz, &Float: heading, &Float: attitude, &Float: bank);
 forward IsPlayerAiming(playerid);
-forward msg_Client(playerid, color, const msg[]);
 forward msg_Box(playerid, color[], prefixInfo[], msg[], timeclose);
 forward ConvertToColor(RR,GG,BB,AA);
 forward _UpdateOPA(playerid=INVALID_PLAYER_ID);
 forward FadePlayerDisconnect(playerid);
 forward StopPlayerFade(playerid);
 forward date(UnixTimestamp, _form=0);
-forward SafeSetPlayerHealth(playerid, Float:health);
 forward Float:GetElevatorZCoordForFloor(floorid);
 forward Float:GetDoorsZCoordForFloor(floorid);
 forward Float:GetDistanceBetweenPlayers(p1,p2);
@@ -476,7 +465,6 @@ forward Float:GetDistanceBetweenPlayers(p1,p2);
 // Identifiants MySQL
 #define MYSQL_HOST "127.0.0.1"                                  			// Host (Ip) 
 #define MYSQL_USER "root"                                                    	// Utilisateur
-#define MYSQL_PASS ""                                                	// Mot de passe
 #define MYSQL_DB   "salrp"                                                    	// Base de donn�es
 
 // Identifiants TeamSpeak
