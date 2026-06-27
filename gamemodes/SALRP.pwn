@@ -59589,10 +59589,6 @@ public anticheat_Check(playerid) { return 1; }
 public timer_Decrement(i) { return 1; }
 public atm_CheckRob() { return 1; }
 stock SafeSetPlayerHealth(playerid, Float:health) { SetPlayerHealth(playerid, health); return 1; }
-public ShamalExists(vehicleid) { return 1; }
-public CreateShamalInt(vehicleid) { return 1; }
-public SetPlayerPosInShamal(playerid, vehicleid) { return 1; }
-public AndroExists(vehicleid) { return 1; }
 public CreateAndroInt(vehicleid) { return 1; }
 public SetPlayerPosInAndro(playerid, vehicleid) { return 1; }
 stock SafeSetPlayerPos(playerid, Float:x, Float:y, Float:z) { SetPlayerPos(playerid, x, y, z); return 1; }
