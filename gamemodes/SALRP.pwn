@@ -3644,6 +3644,7 @@ main()
 	//teamspeak_CreateChannel("IC #1","Channel IC #1 Test",SEMI_PERMANENT,"test");
 }
 
+forward timer_30mns();
 public timer_30mns()
 {
     for(new i=0; i < MAX_PLAYERS_CURRENT+1; i++)
@@ -3664,6 +3665,7 @@ public timer_30mns()
 	}
 }
 
+forward timer_1h();
 public timer_1h()
 {
     for(new car=0; car<=totalVehicles; car++)
