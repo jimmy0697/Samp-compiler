@@ -56216,8 +56216,6 @@ public SetPlayerPosInAndro(playerid, android)
         SetCameraBehindPlayer(playerid);
 }
 
-public ShamalExists(vehicleid)
-{
         if (floatsqroot(floatadd(ShamalPos[vehicleid][0], floatadd(ShamalPos[vehicleid][1], ShamalPos[vehicleid][2]))))
         	{return 1;}
         return 0;
@@ -59188,8 +59186,6 @@ public IsPlayerAiming(playerid)
 	
 }
 
-public msg_Client(playerid, color, const msg[])
-{
 	return SendClientMessage(playerid,color,msg);
 }
 
