@@ -18,7 +18,7 @@ jobs:
       - name: Compile
         run: |
           export LD_LIBRARY_PATH=$PWD/pawnc-3.10.10-linux/lib:$LD_LIBRARY_PATH
-          pawnc-3.10.10-linux/bin/pawncc -i$PWD/include gamemodes/SALRP.pwn -w0 2>&1 | tee compile_log.txt; exit 0
+          pawnc-3.10.10-linux/bin/pawncc -i$PWD/include gamemodes/SALRP.pwn -w0 2>&1 | tee compile_log.txt; true
 
       - name: Upload log
         uses: actions/upload-artifact@v4
