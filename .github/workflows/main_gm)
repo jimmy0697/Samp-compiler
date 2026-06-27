@@ -18,14 +18,15 @@ jobs:
       - name: Compile
         run: |
           export LD_LIBRARY_PATH=$PWD/pawnc-3.10.10-linux/lib:$LD_LIBRARY_PATH
-          pawnc-3.10.10-linux/bin/pawncc -i$PWD/pawno/include gamemodes/SALRP.pwn -w0 2>&1 | tee compile_log.txt || true
+          pawnc-3.10.10-linux/bin/pawncc -i$PWD/include gamemodes/SALRP.pwn -w0 2>&1 | tee compile_log.txt; exit 0
 
       - name: Upload log
-      uses: actions/upload-artifact@v4
-      with:
-        name: compile-log
-        path: compile_log.txt
-    - name: Upload AMX
+        uses: actions/upload-artifact@v4
+        with:
+          name: compile-log
+          path: compile_log.txt
+
+      - name: Upload AMX
         uses: actions/upload-artifact@v4
         with:
           name: SALRP-amx
