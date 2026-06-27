@@ -3681,7 +3681,7 @@ public timer_1h()
     MySQLReloadBans();
 }
 
-stock MySQLReloadBans()
+public MySQLReloadBans()
 {
     new bantemps_number, bantemps_time, bantemps_sqlid;
     mysql_format(MYSQL, sql, sizeof(sql), "SELECT * FROM salrp_users_bans");
@@ -3717,7 +3717,7 @@ stock MySQLReloadBans()
 	}
 }
 
-stock faction_CheckReload()
+public faction_CheckReload()
 {
     //new hasedited=0;
     // LSPD
@@ -3826,7 +3826,7 @@ public timer_5mns()
 	}
 }
 
-stock seed_Timer()
+public seed_Timer()
 {
 	//seed_Load();
 	for(new i=0; i<totalSeeds; i++)
@@ -4214,7 +4214,7 @@ ReturnUser(text[], playerid = INVALID_PLAYER_ID)
 }
 
 
-stock SetPlayerFacingPlayer(playerid, giveplayerid)
+public SetPlayerFacingPlayer(playerid, giveplayerid)
 {
 	new Float:angle,
 		Float:misc = 5.0,
@@ -4228,7 +4228,7 @@ stock SetPlayerFacingPlayer(playerid, giveplayerid)
 	SetPlayerFacingAngle(playerid, angle+misc);
 }
 
-stock SetPlayerFacingActor(playerid, giveplayerid)
+public SetPlayerFacingActor(playerid, giveplayerid)
 {
 	new Float:angle,
 		Float:misc = 5.0,
@@ -4240,7 +4240,7 @@ stock SetPlayerFacingActor(playerid, giveplayerid)
 	SetPlayerFacingAngle(playerid, angle+misc);
 }
 
-stock house_CheckUnusedFurniture(id)
+public house_CheckUnusedFurniture(id)
 {
 	for(new i=0; i<MAX_FURNITURES; i++)
 	{
@@ -4250,7 +4250,7 @@ stock house_CheckUnusedFurniture(id)
 	return -1;
 }
 
-stock interior_GetActorInfos(id, &Float:x, &Float:y, &Float:z, &Float:a, &sk, botid, &stepp)
+public interior_GetActorInfos(id, &Float:x, &Float:y, &Float:z, &Float:a, &sk, botid, &stepp)
 {
     switch(id)
 	{
@@ -4298,7 +4298,7 @@ stock interior_GetActorInfos(id, &Float:x, &Float:y, &Float:z, &Float:a, &sk, bo
 	}
 }
 
-stock bizz_GetActorInfos(id, &Float:x, &Float:y, &Float:z, &Float:a, &sk, botid, &stepp)
+public bizz_GetActorInfos(id, &Float:x, &Float:y, &Float:z, &Float:a, &sk, botid, &stepp)
 {
     switch(id)
 	{
@@ -4410,7 +4410,7 @@ stock bizz_GetActorInfos(id, &Float:x, &Float:y, &Float:z, &Float:a, &sk, botid,
 	}
 }
 
-stock house_GetCreateInfos(id, &Int, &Float:x, &Float:y, &Float:z, &Float:a, desc[64])
+public house_GetCreateInfos(id, &Int, &Float:x, &Float:y, &Float:z, &Float:a, desc[64])
 {
     switch(id)
 	{
@@ -4517,7 +4517,7 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 	return 1;
 }
 
-stock IsABadWeapon(weaponid)
+public IsABadWeapon(weaponid)
 {
  	switch(weaponid)
  	{
@@ -4527,7 +4527,7 @@ stock IsABadWeapon(weaponid)
  	return false;
 }
 
-stock IsAtDealership(playerid)
+public IsAtDealership(playerid)
 {
 	for(new i=0; i<totalDealerShip; i++)
 	{
@@ -4537,7 +4537,7 @@ stock IsAtDealership(playerid)
 	return 0;
 }
 
-stock IsAtArrestedPlace(playerid)
+public IsAtArrestedPlace(playerid)
 {
     if(PlayerToPoint(6.0, playerid, 1535.5748,-1672.8845,13.3828) || PlayerToPoint(6.0, playerid, 1528.9774,-1677.7332,5.8906) || PlayerToPoint(6.0, playerid, 220.6070,64.8025,1105.6499))
 		{return 0;}
@@ -4551,7 +4551,7 @@ stock IsAtArrestedPlace(playerid)
 }
 
 // Types de V�hicules
-stock IsABoat(carid) // Tous les types de bateaux
+public IsABoat(carid) // Tous les types de bateaux
 {
     new mdv = GetVehicleModel(carid);
 	if((mdv == 472) || (mdv == 473) || (mdv == 484) || (mdv == 493) || (mdv == 595) || (mdv == 430) || (mdv == 453) || (mdv == 452) || (mdv == 446) || (mdv == 454))
@@ -4559,7 +4559,7 @@ stock IsABoat(carid) // Tous les types de bateaux
 		
 	return false;
 }
-stock IsAPlane(carid) // Tous les types d'avions
+public IsAPlane(carid) // Tous les types d'avions
 {
     new mdv = GetVehicleModel(carid);
 	if(mdv == 460 || mdv == 476 || mdv == 511 || mdv == 512 || mdv == 513 || mdv == 520 || mdv == 553 || mdv == 577 || mdv == 592 || mdv == 593)
@@ -4567,7 +4567,7 @@ stock IsAPlane(carid) // Tous les types d'avions
 		
 	return false;
 }
-stock IsAMoto(carid) // Tous les types de motos ( + quade )
+public IsAMoto(carid) // Tous les types de motos ( + quade )
 {
 	new modelveh = GetVehicleModel(carid);
 	if(modelveh == 462 || modelveh == 448 || modelveh == 581 || modelveh == 522 || modelveh == 461 || modelveh == 521 || modelveh == 523 || modelveh == 463 || modelveh == 586 || modelveh == 468 || modelveh == 471)
@@ -4575,7 +4575,7 @@ stock IsAMoto(carid) // Tous les types de motos ( + quade )
 	return false;
 }
 
-stock IsABike(carid) // Tous les types de velos
+public IsABike(carid) // Tous les types de velos
 {
 	new modelveh = GetVehicleModel(carid);
 	if(modelveh == 509 || modelveh == 481 || modelveh == 510)
@@ -4584,7 +4584,7 @@ stock IsABike(carid) // Tous les types de velos
 	return false;
 }
 
-stock IsACar(carid)
+public IsACar(carid)
 {
 	switch(GetVehicleModel(carid))
 	{
@@ -4601,7 +4601,7 @@ stock IsACar(carid)
 	return 0;
 }
 
-stock IsPoidLourd(carid) // Tous les types de camions
+public IsPoidLourd(carid) // Tous les types de camions
 {
 	new modelveh = GetVehicleModel(carid);
 	if(modelveh == 403 || modelveh == 406 || modelveh == 408 || modelveh == 443 || modelveh == 455 || modelveh == 514 || modelveh == 515 || modelveh == 524 || modelveh == 573 || modelveh == 578)
@@ -4609,7 +4609,7 @@ stock IsPoidLourd(carid) // Tous les types de camions
 		
 	return false;
 }
-stock IsARemorque(carid) // Tous les types de remorque
+public IsARemorque(carid) // Tous les types de remorque
 {
 	new modelveh = GetVehicleModel(carid);
 	if(modelveh == 435 || modelveh == 450 || modelveh == 591)
@@ -4617,7 +4617,7 @@ stock IsARemorque(carid) // Tous les types de remorque
 		
 	return false;
 }
-stock IsAHelicopter(carid) // Tous les types d'h�licopter
+public IsAHelicopter(carid) // Tous les types d'h�licopter
 {
 	new modelveh = GetVehicleModel(carid);
 	if(modelveh == 417 || modelveh == 425 || modelveh == 447 || modelveh == 469 || modelveh == 487 || modelveh == 488 || modelveh == 497 || modelveh == 548 || modelveh == 563)
@@ -4625,7 +4625,7 @@ stock IsAHelicopter(carid) // Tous les types d'h�licopter
 		
 	return false;
 }
-stock IsATrain(carid)
+public IsATrain(carid)
 {
     new modelveh = GetVehicleModel(carid);
 	if(modelveh == 537 || modelveh == 538)
@@ -4634,105 +4634,105 @@ stock IsATrain(carid)
 }
 
 // Jobs
-stock IsAPizzaCar(carid)
+public IsAPizzaCar(carid)
 {
     if (vehicle[carid][cType] == CAR_PIZZA) return 1;
 	return 0;
 }
-stock IsAFarmerCar(carid)
+public IsAFarmerCar(carid)
 {
     if (vehicle[carid][cType] == CAR_FARMER) return 1;
 	return 0;
 }
-stock IsATrashCar(carid)
+public IsATrashCar(carid)
 {
     if (vehicle[carid][cType] == CAR_TRASH) return 1;
 	return 0;
 }
-stock IsAWorkerCar(carid)
+public IsAWorkerCar(carid)
 {
     if (vehicle[carid][cType] == CAR_WORKER) return 1;
 	return 0;
 }
-stock IsAPiloteCar(carid)
+public IsAPiloteCar(carid)
 {
     if (vehicle[carid][cType] == CAR_PILOTE) return 1;
 	return 0;
 }
-stock IsAPostCar(carid)
+public IsAPostCar(carid)
 {
     if (vehicle[carid][cType] == CAR_POST) return 1;
 	return 0;
 }
-stock IsAFisherCar(carid)
+public IsAFisherCar(carid)
 {
     if (vehicle[carid][cType] == CAR_FISHER) return 1;
 	return 0;
 }
-stock IsAValetCar(carid)
+public IsAValetCar(carid)
 {
     if (vehicle[carid][cType] == CAR_VALET) return 1;
 	return 0;
 }
-stock IsATruckerCar(carid)
+public IsATruckerCar(carid)
 {
     if (vehicle[carid][cType] == CAR_TRUCKER) return 1;
 	return 0;
 }
-stock IsAMedicCar(carid)
+public IsAMedicCar(carid)
 {
     if (vehicle[carid][cType] == CAR_MEDIC) return 1;
 	return 0;
 }
-stock IsAMecanoCar(carid)
+public IsAMecanoCar(carid)
 {
     if (vehicle[carid][cType] == CAR_MECANO) return 1;
 	return 0;
 }
-stock IsAFundCar(carid)
+public IsAFundCar(carid)
 {
     if (vehicle[carid][cType] == CAR_FUND) return 1;
 	return 0;
 }
-stock IsABusCar(carid)
+public IsABusCar(carid)
 {
     if (vehicle[carid][cType] == CAR_BUS) return 1;
 	return 0;
 }
 
-stock IsABotCar(carid)
+public IsABotCar(carid)
 {
 	if(vehicle[carid][cType] == CAR_BOT) return 1;
 	return 0;
 }
 
 // Locations
-stock IsARentCar(carid)
+public IsARentCar(carid)
 {
 	if(vehicle[carid][cType] == CAR_LOC_CAR) return 1;
 	return 0;
 }
-stock IsARentMoto(carid)
+public IsARentMoto(carid)
 {
 	if(vehicle[carid][cType] == CAR_LOC_MOTO) return 1;
 	return 0;
 }
-stock IsARentBike(carid)
+public IsARentBike(carid)
 {
 	if(vehicle[carid][cType] == CAR_LOC_BIKE) return 1;
 	return 0;
 }
-stock IsARentBoat(carid)
+public IsARentBoat(carid)
 {
 	if(vehicle[carid][cType] == CAR_LOC_BOAT) return 1;
 	return 0;
 }
-stock IsARentPlane(carid)
+public IsARentPlane(carid)
 {
 	if(vehicle[carid][cType] == CAR_LOC_PLANE) return 1;
 	return 0;
 }
-stock IsASchoolCar(carid)
+public IsASchoolCar(carid)
 {
 	if(vehicle[carid][cType] == CAR_SCHOOL) return 1;
 	return 0;
@@ -4833,7 +4833,7 @@ public OnPlayerConnect(playerid)
     gPlayerLoad[playerid] = 1;
 	return 1;
 }
-stock server_SpecName(newName[])
+public server_SpecName(newName[])
 {
     new ValideName=true;
 	if(strlen(newName) < 6 || strlen(newName) > MAX_PLAYER_NAME)
@@ -4886,7 +4886,7 @@ stock server_SpecName(newName[])
 	return false;
 }
 
-stock server_PreloadAnims(playerid)
+public server_PreloadAnims(playerid)
 {
     LoopingAnim(playerid, "PED","CAR_doorlocked_LHS",4.0,0,0,0,0,0);
 	LoopingAnim(playerid, "SWEET", "Sweet_injuredloop", 4.0, 1, 0, 0, 0, 0);
@@ -4909,7 +4909,7 @@ stock server_PreloadAnims(playerid)
 	ClearAnimations(playerid);
 }
 
-stock IsPlayerFacingPoint(playerid, Float:dOffset, Float:pX, Float:pY, Float:pZ)
+public IsPlayerFacingPoint(playerid, Float:dOffset, Float:pX, Float:pY, Float:pZ)
 {
         #pragma unused pZ
         new
@@ -4934,7 +4934,7 @@ stock IsPlayerFacingPoint(playerid, Float:dOffset, Float:pX, Float:pY, Float:pZ)
 
 }
 
-stock car_IndicatorArray(modelid)
+public car_IndicatorArray(modelid)
 {
 	new tmp = 0;
 	switch (modelid)
@@ -4948,7 +4948,7 @@ stock car_IndicatorArray(modelid)
 	return tmp;
 }
 
-stock body_Create(playerid,Float:x,Float:y,Float:z,reason,killerid)
+public body_Create(playerid,Float:x,Float:y,Float:z,reason,killerid)
 {
     for(new i = 0; i < MAX_DEADBODY; i++)
   	{
@@ -5009,7 +5009,7 @@ public body_Remove(id)
 	return 1;
 }
 
-stock body_Carry(playerid,id)
+public body_Carry(playerid,id)
 {
 	new string[128];
     for(new i = 0; i < 5; i++)
@@ -5031,7 +5031,7 @@ stock body_Carry(playerid,id)
     return 1;
 }
 
-stock body_StopCarry(playerid,fromCar)
+public body_StopCarry(playerid,fromCar)
 {
 	new string[128], Float:x, Float:y, Float:z;
 	GetPlayerPos(playerid,x,y,z);
@@ -5061,7 +5061,7 @@ stock body_StopCarry(playerid,fromCar)
 	return 1;
 }
 
-stock trashcar_Create(Float:x,Float:y,Float:z,Float:Angle)
+public trashcar_Create(Float:x,Float:y,Float:z,Float:Angle)
 {
     for(new i = 0; i < MAX_TRASHCAR; i++)
   	{
@@ -5080,7 +5080,7 @@ stock trashcar_Create(Float:x,Float:y,Float:z,Float:Angle)
   	return 1;
 }
 
-stock trashcar_Remove(id)
+public trashcar_Remove(id)
 {
 	if(trashCar[id][used]==1)
 	{
@@ -5097,7 +5097,7 @@ stock trashcar_Remove(id)
 	return 1;
 }
 
-stock bar_Create(type,Float:x,Float:y,Float:z,Float:Angle,factionid)
+public bar_Create(type,Float:x,Float:y,Float:z,Float:Angle,factionid)
 {
     for(new i = 0; i < MAX_BAR; i++)
   	{
@@ -5115,7 +5115,7 @@ stock bar_Create(type,Float:x,Float:y,Float:z,Float:Angle,factionid)
   	}
   	return 1;
 }
-stock bar_Remove(playerid)
+public bar_Remove(playerid)
 {
     for(new i = 0; i < MAX_BAR; i++)
   	{
@@ -5141,7 +5141,7 @@ stock bar_Remove(playerid)
   	}
 	return 1;
 }
-stock bar_RemoveAll(playerid)
+public bar_RemoveAll(playerid)
 {
     for(new i = 0; i < MAX_BAR; i++)
   	{
@@ -5162,7 +5162,7 @@ stock bar_RemoveAll(playerid)
 	}
 	return 1;
 }
-stock spike_Create(Float:x,Float:y,Float:z,Float:Angle,factionid)
+public spike_Create(Float:x,Float:y,Float:z,Float:Angle,factionid)
 {
     for(new i = 0; i < MAX_SPIKE; i++)
   	{
@@ -5181,7 +5181,7 @@ stock spike_Create(Float:x,Float:y,Float:z,Float:Angle,factionid)
   	}
   	return 1;
 }
-stock spike_Remove(playerid)
+public spike_Remove(playerid)
 {
     for(new i = 0; i < MAX_SPIKE; i++)
   	{
@@ -5210,7 +5210,7 @@ stock spike_Remove(playerid)
   	}
 	return 1;
 }
-stock spike_RemoveAll(playerid)
+public spike_RemoveAll(playerid)
 {
     for(new i = 0; i < MAX_SPIKE; i++)
   	{
@@ -5233,7 +5233,7 @@ stock spike_RemoveAll(playerid)
 	}
 	return 1;
 }
-stock spike_PlayerIn(playerid)
+public spike_PlayerIn(playerid)
 {
 	if(IsPlayerInAnyVehicle(playerid))
  	{
@@ -5752,7 +5752,7 @@ public gym_TestCombatStyle(playerid, article)
     gym_TempStyle[playerid] = 0;
 	return 1;
 }
-stock faction_UpdateInfos(factionid)
+public faction_UpdateInfos(factionid)
 {
 	if(FactionInfo[factionid][fCreate] != 1)
 	    {return 1;}
@@ -5782,7 +5782,7 @@ stock faction_UpdateInfos(factionid)
 	return 1;
 }
 
-stock uniquebizz_UpdateInfos(bizzid)
+public uniquebizz_UpdateInfos(bizzid)
 {
     new string[256];
     if(IsValidDynamicPickup(uniquebizz_Pickup[bizzid]))
@@ -5817,7 +5817,7 @@ stock uniquebizz_UpdateInfos(bizzid)
 	return 1;
 }
 
-stock uniquebizz_CreateIcon(bizzid)
+public uniquebizz_CreateIcon(bizzid)
 {
 	if(IsValidDynamicMapIcon(uniquebizz_Icon[bizzid]))
 	    {DestroyDynamicMapIcon(uniquebizz_Icon[bizzid]);}
@@ -5833,7 +5833,7 @@ stock uniquebizz_CreateIcon(bizzid)
 	return 1;
 }
 
-stock bizz_UpdateInfos(BizzID)
+public bizz_UpdateInfos(BizzID)
 {
     new string[256];
     if(IsValidDynamicPickup(bizz_Pickup[BizzID]))
@@ -5883,7 +5883,7 @@ stock bizz_UpdateInfos(BizzID)
 	return 1;
 }
 
-stock bizz_CreateIcon(bizid)
+public bizz_CreateIcon(bizid)
 {
     if(bizz[bizid][typeZ] == 1)
 		{bizz_MapIcon[bizid] = CreateDynamicMapIcon(bizz[bizid][pos][0], bizz[bizid][pos][1], bizz[bizid][pos][2],52,COLOR_WHITE,-1,-1,-1,500.0);}
@@ -5940,7 +5940,7 @@ stock bizz_CreateIcon(bizid)
 	return 1;
 }
 
-stock stop_UpdateInfos(id)
+public stop_UpdateInfos(id)
 {
     new string[64];
     if(IsValidDynamic3DTextLabel(stop_Label[id]))
@@ -5961,7 +5961,7 @@ stock stop_UpdateInfos(id)
 	return 1;
 }
 
-stock garage_UpdateInfos(id)
+public garage_UpdateInfos(id)
 {
     new string[128];
     if(IsValidDynamicPickup(garage_Pickup[id]))
@@ -5980,7 +5980,7 @@ stock garage_UpdateInfos(id)
 	return 1;
 }
 
-stock atm_UpdateInfos(id)
+public atm_UpdateInfos(id)
 {
     new string[128];
     if(IsValidDynamic3DTextLabel(atm_Label[id]))
@@ -5996,7 +5996,7 @@ stock atm_UpdateInfos(id)
 	return 1;
 }
 
-stock Float:GetItemZ(modelid)
+public Float:GetItemZ(modelid)
 {
     switch(modelid)
 	{
@@ -6006,7 +6006,7 @@ stock Float:GetItemZ(modelid)
 	return 1.0;
 }
 
-stock Float:GetItemY(modelid)
+public Float:GetItemY(modelid)
 {
     switch(modelid)
 	{
@@ -6018,7 +6018,7 @@ stock Float:GetItemY(modelid)
 	return 0.0;
 }
 
-stock Float:GetItemX(modelid)
+public Float:GetItemX(modelid)
 {
     switch(modelid)
 	{
@@ -6029,7 +6029,7 @@ stock Float:GetItemX(modelid)
 }
 
 
-stock drop_Update(id)
+public drop_Update(id)
 {
     if(IsValidDynamicObject(drop_Object[id]))
 		{DestroyDynamicObject(drop_Object[id]);}
@@ -6046,7 +6046,7 @@ stock drop_Update(id)
 	return 1;
 }
 
-stock gate_Update(id)
+public gate_Update(id)
 {
 	if(IsValidDynamicObject(gate_Object[id]))
 		{DestroyDynamicObject(gate_Object[id]);}
@@ -6056,7 +6056,7 @@ stock gate_Update(id)
 }
 
 
-stock camera_UpdateInfos(id)
+public camera_UpdateInfos(id)
 {
     new string[128];
     if(IsValidDynamic3DTextLabel(camera_Label[id]))
@@ -6072,7 +6072,7 @@ stock camera_UpdateInfos(id)
 	return 1;
 }
 
-stock sign_UpdateInfos(id)
+public sign_UpdateInfos(id)
 {
 	if(IsValidDynamicObject(sign_Object[id]))
 		{DestroyDynamicObject(sign_Object[id]);}
@@ -6084,7 +6084,7 @@ stock sign_UpdateInfos(id)
 	return 1;
 }
 
-stock ad_Update(id)
+public ad_Update(id)
 {
 	if(IsValidDynamicObject(ad_Object[id][0]))
 		{DestroyDynamicObject(ad_Object[id][0]);}
@@ -6099,7 +6099,7 @@ stock ad_Update(id)
 	return 1;
 }
 
-stock tag_Update(id)
+public tag_Update(id)
 {
 	if(IsValidDynamicObject(tag_Object[id]))
 		{DestroyDynamicObject(tag_Object[id]);}
@@ -6111,7 +6111,7 @@ stock tag_Update(id)
 	return 1;
 }
 
-stock bin_UpdateInfos(id)
+public bin_UpdateInfos(id)
 {
     if(IsValidDynamic3DTextLabel(bin_Label[id]))
     	{DestroyDynamic3DTextLabel(bin_Label[id]);}
@@ -6125,7 +6125,7 @@ stock bin_UpdateInfos(id)
 	return 1;
 }
 
-stock trash_UpdateInfos(id)
+public trash_UpdateInfos(id)
 {
     new string[128];
     if(IsValidDynamic3DTextLabel(trash_Label[id]))
@@ -6141,7 +6141,7 @@ stock trash_UpdateInfos(id)
 	return 1;
 }
 
-stock phonecab_UpdateInfos(id)
+public phonecab_UpdateInfos(id)
 {
     new string[128];
     if(IsValidDynamic3DTextLabel(phonecab_Label[id]))
@@ -6157,7 +6157,7 @@ stock phonecab_UpdateInfos(id)
 	return 1;
 }
 
-stock map_UpdateInfos(id)
+public map_UpdateInfos(id)
 {
     if(IsValidDynamic3DTextLabel(map_Label[id]))
     	{DestroyDynamic3DTextLabel(map_Label[id]);}
@@ -6171,7 +6171,7 @@ stock map_UpdateInfos(id)
 	return 1;
 }
 
-stock distrib_UpdateInfos(id)
+public distrib_UpdateInfos(id)
 {
     if(IsValidDynamic3DTextLabel(distrib_Label[id]))
     	{DestroyDynamic3DTextLabel(distrib_Label[id]);}
@@ -6185,7 +6185,7 @@ stock distrib_UpdateInfos(id)
 	return 1;
 }
 
-stock tree_Update(i,Float:x,Float:y,Float:z)
+public tree_Update(i,Float:x,Float:y,Float:z)
 {
 	for(new ob=0; ob<10; ob++)
 	{
@@ -6208,7 +6208,7 @@ stock tree_Update(i,Float:x,Float:y,Float:z)
   	return 1;
 }
 
-stock house_UpdateInfos(id)
+public house_UpdateInfos(id)
 {
 	if(IsValidDynamicPickup(house_Pickup[id]))
     	{DestroyDynamicPickup(house_Pickup[id]);}
@@ -6246,7 +6246,7 @@ stock house_UpdateInfos(id)
 	return 1;
 }
 
-stock house_UpdateFurnitureInfos(id,objectid)
+public house_UpdateFurnitureInfos(id,objectid)
 {
     if(IsValidDynamicObject(house[id][hObject][objectid]))
 	    {DestroyDynamicObject(house[id][hObject][objectid]);}
@@ -6255,7 +6255,7 @@ stock house_UpdateFurnitureInfos(id,objectid)
 	return 1;
 }
 
-stock seed_UpdateInfos(id)
+public seed_UpdateInfos(id)
 {
     new string[128],name[MAX_PLAYER_NAME];
     if(IsValidDynamic3DTextLabel(seed_Label[id]))
@@ -6290,7 +6290,7 @@ stock seed_UpdateInfos(id)
 	return 1;
 }
 
-stock police_Update(id)
+public police_Update(id)
 {
 	for(new i=0; i<4; i++)
 	{
@@ -6316,7 +6316,7 @@ stock police_Update(id)
 	return 1;
 }
 
-stock governement_Update(id)
+public governement_Update(id)
 {
 	for(new i =0; i<6; i++)
 	{
@@ -6344,7 +6344,7 @@ stock governement_Update(id)
 	return 1;
 }
 
-stock fbi_Update()
+public fbi_Update()
 {
 	DestroyDynamicPickup(FBIInfo[arrestedPickup]);
 	DestroyDynamicPickup(FBIInfo[entrancePickup]);
@@ -6364,7 +6364,7 @@ stock fbi_Update()
 	return 1;
 }
 
-stock fire_Update()
+public fire_Update()
 {
 	DestroyDynamicPickup(FireInfo[entrancePickup]);
 	DestroyDynamicPickup(FireInfo[exitPickup]);
@@ -6390,7 +6390,7 @@ stock fire_Update()
 	return 1;
 }
 
-stock biker_Update()
+public biker_Update()
 {
     DestroyDynamicPickup(BikerInfo[entrancePickup]);
     DestroyDynamicPickup(BikerInfo[exitPickup]);
@@ -6405,7 +6405,7 @@ stock biker_Update()
 	return 1;
 }
 
-stock mecano_Update()
+public mecano_Update()
 {
     DestroyDynamicPickup(MecanoInfo[entrancePickup]);
 	DestroyDynamicPickup(MecanoInfo[exitPickup]);
@@ -6430,7 +6430,7 @@ stock mecano_Update()
 	return 1;
 }
 
-stock spawn_Update(id)
+public spawn_Update(id)
 {
 	new string[64];
 	if(IsValidDynamic3DTextLabel(spawn_Label[id]))
@@ -6443,7 +6443,7 @@ stock spawn_Update(id)
 	return 1;
 }
 
-stock interior_Update(id)
+public interior_Update(id)
 {
     new string[64];
     if(IsValidDynamic3DTextLabel(interior_Label[id]))
@@ -6485,7 +6485,7 @@ stock interior_Update(id)
 	return 1;
 }
 
-stock dealerShip_Update(id)
+public dealerShip_Update(id)
 {
     new string[64];
     if(IsValidDynamic3DTextLabel(dealerShip_Label[id]))
@@ -6505,7 +6505,7 @@ stock dealerShip_Update(id)
 	return 1;
 }
 
-stock car_ShowDialogTrunk(playerid,carid)
+public car_ShowDialogTrunk(playerid,carid)
 {
     new string[512];
     new Float:armure = vehicle[carid][cArmour];
@@ -6517,7 +6517,7 @@ stock car_ShowDialogTrunk(playerid,carid)
 	return 1;
 }
 
-stock bin_ShowDialog(playerid,binid)
+public bin_ShowDialog(playerid,binid)
 {
     DeletePVar(playerid,"bin_ItemSlot");
     ShowPlayerDialog(playerid,138,DIALOG_STYLE_LIST,"{00FFA0}� Poubelle �{FFFFFF}","{FFFFFF}- Jeter un objet ..\n- Jeter une arme\n- Fouiller la poubelle ..","Valider","Annuler");
@@ -6552,7 +6552,7 @@ public dealerShip_ShowDialog(playerid,dealerId)
 	return 1;
 }
 
-stock house_ShowDialogSafe(playerid,id)
+public house_ShowDialogSafe(playerid,id)
 {
 	new string[256];
 	DeletePVar(playerid,"house_ItemSlot");
@@ -6563,7 +6563,7 @@ stock house_ShowDialogSafe(playerid,id)
 	return 1;
 }
 
-stock house_Gestion(playerid,id)
+public house_Gestion(playerid,id)
 {
 	new string[256],gat[20],rent[20],insuranceZ[32]="Aucune", sDesc[8];
 	
@@ -6597,7 +6597,7 @@ stock house_Gestion(playerid,id)
 	return 1;
 }
 
-stock house_AdminEdit(playerid)
+public house_AdminEdit(playerid)
 {
     new string[128];
     format(string,sizeof(string),"Sauvegarder la nouvelle position\nChanger Le type d'interieur\nChanger le prix d'achat\nChanger Le propri�taire");
@@ -6606,7 +6606,7 @@ stock house_AdminEdit(playerid)
 	return 1;
 }
 
-stock gate_Dialog(playerid)
+public gate_Dialog(playerid)
 {
 	new own[32], acti[32];
 	
@@ -6634,7 +6634,7 @@ stock gate_Dialog(playerid)
 	return 1;
 }
 
-stock gate_Check(playerid,act, passw[])
+public gate_Check(playerid,act, passw[])
 {
 	new gateId=-1, bool:move=false;
 	for(new i=0; i<totalGates; i++)
@@ -6686,7 +6686,7 @@ public gate_Close(gateId)
 	return 1;
 }
 
-stock sannews_Gestion(playerid)
+public sannews_Gestion(playerid)
 {
 	new string[256];
 	format(string,sizeof(string),"D�poser de l'argent ($%d)\nRetirer de l'argent ($%d)\nPrix SMS ($%d)\nRang 1 (%s)\nRang 2 (%s)\nRang 3 (%s)\nRang 4 (%s)\nRang 5 (%s)\nRang 6 (%s)",
@@ -6696,7 +6696,7 @@ stock sannews_Gestion(playerid)
 	return 1;
 }
 
-stock police_Gestion(playerid)
+public police_Gestion(playerid)
 {
     new string[512],
 		id = PlayerInfo[playerid][pMember]-1;
@@ -6707,7 +6707,7 @@ stock police_Gestion(playerid)
 	return 1;
 }
 
-stock police_Jail(playerid,id)
+public police_Jail(playerid,id)
 {
 	switch(id)
 	{
@@ -6725,7 +6725,7 @@ stock police_Jail(playerid,id)
 	return 1;
 }
 
-stock police_TempJail(playerid)
+public police_TempJail(playerid)
 {
 	new rand = random(4);
 	switch(rand)
@@ -6741,7 +6741,7 @@ stock police_TempJail(playerid)
 	return 1;
 }
 
-stock police_FineGestion(playerid)
+public police_FineGestion(playerid)
 {
     new tmpstring[64],finestring[1024],string[512],ifx=1;
 	for(new fines=0;fines<totalFines; fines++)
@@ -6761,7 +6761,7 @@ stock police_FineGestion(playerid)
 	return 1;
 }
 
-stock prison_Jail(playerid,id)
+public prison_Jail(playerid,id)
 {
 	switch(id)
 	{
@@ -6805,7 +6805,7 @@ stock prison_Jail(playerid,id)
 	return 1;
 }
 
-stock fbi_Gestion(playerid)
+public fbi_Gestion(playerid)
 {
     new string[512];
 	format(string,sizeof(string),"Rang 1 (%s)\nRang 2 (%s)\nRang 3 (%s)\nRang 4 (%s)\nRang 5 (%s)\nRang 6 (%s)\nRang 7 (%s)\nSkin R1 (%d)\n\nSkin R2 (%d)\nSkin R3 (%d)\nSkin R4 (%d)\nSkin R5 (%d)\nSkin R6 (%d)\nSkin R7 (%d)\nSpawn Faction\nEntr� faction\nSortie faction",
@@ -6815,7 +6815,7 @@ stock fbi_Gestion(playerid)
 	return 1;
 }
 
-stock governement_Gestion(playerid)
+public governement_Gestion(playerid)
 {
     new string[512],
         id = PlayerInfo[playerid][pMember]-6;
@@ -6835,7 +6835,7 @@ stock governement_Gestion(playerid)
 	return 1;
 }
 
-stock fire_Gestion(playerid)
+public fire_Gestion(playerid)
 {
     new string[512];
 	format(string,sizeof(string),"Rang 1 (%s)\nRang 2 (%s)\nRang 3 (%s)\nRang 4 (%s)\nRang 5 (%s)\nRang 6 (%s)\nSkin R1 (%d)\n\nSkin R2 (%d)\nSkin R3 (%d)\nSkin R4 (%d)\nSkin R5 (%d)\nSkin R6 (%d)\nEntr� faction\nSortie faction\nSpawn Faction\n[Service]\n[Equipement]\n[Sonnette]",
@@ -6845,7 +6845,7 @@ stock fire_Gestion(playerid)
 	return 1;
 }
 
-stock biker_Gestion(playerid)
+public biker_Gestion(playerid)
 {
     new string[512];
 	format(string,sizeof(string),"Rang 1 (%s)\nRang 2 (%s)\nRang 3 (%s)\nRang 4 (%s)\nRang 5 (%s)\nRang 6 (%s)\nSkin R1 (%d)\n\nSkin R2 (%d)\nSkin R3 (%d)\nSkin R4 (%d)\nSkin R5 (%d)\nSkin R6 (%d)\nEntr� faction\nSortie faction\nSpawn Faction",
@@ -6855,7 +6855,7 @@ stock biker_Gestion(playerid)
 	return 1;
 }
 
-stock mecano_Gestion(playerid)
+public mecano_Gestion(playerid)
 {
     new string[512];
 	format(string,sizeof(string),"Rang 1 (%s)\nRang 2 (%s)\nRang 3 (%s)\nRang 4 (%s)\nRang 5 (%s)\nRang 6 (%s)\nSkin R1 (%d)\n\nSkin R2 (%d)\nSkin R3 (%d)\nSkin R4 (%d)\nSkin R5 (%d)\nSkin R6 (%d)\nEntr� faction\nSortie faction\nSpawn Faction\n[Service]\n[Sonnette]",
@@ -6865,7 +6865,7 @@ stock mecano_Gestion(playerid)
 	return 1;
 }
 /*
-stock ChangeNameOfPlayer(playerid, nvname[])
+public ChangeNameOfPlayer(playerid, nvname[])
 {
  	SetPlayerName(playerid,nvname);
  	for(new biz = 0; biz<totalBizz; biz++)
@@ -6924,7 +6924,7 @@ stock ChangeNameOfPlayer(playerid, nvname[])
 	return 1;
 }*/
 
-stock car_ChangeOffLineOwner(carid)
+public car_ChangeOffLineOwner(carid)
 {
 	for(new i=0; i<MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -6985,7 +6985,7 @@ stock car_ChangeOffLineOwner(carid)
 	return 1;
 }
 
-stock vehicle_Transfer(oldcar,newcar)
+public vehicle_Transfer(oldcar,newcar)
 {
 	printf("Old: %d - New: %d",oldcar,newcar);
 	if(newcar == oldcar)
@@ -7054,7 +7054,7 @@ stock vehicle_Transfer(oldcar,newcar)
 	return 1;
 }
 
-stock car_Recreate(playerid,carid)
+public car_Recreate(playerid,carid)
 {
 	if(IsPlayerConnected(playerid))
 	{
@@ -7591,14 +7591,14 @@ public OnPlayerSpawn(playerid)
 	return 1;
 }
 
-stock log_Admin(string[])
+public log_Admin(string[])
 {
 	MySQLCheckConnexion();
 	format(sql,sizeof(sql),"INSERT INTO salrp_log_admins (Date,Value)  VALUES (UNIX_TIMESTAMP(),'%s')",string);
 	mysql_pquery(MYSQL,sql);
 }
 
-stock log_Commands(playerid,string[])
+public log_Commands(playerid,string[])
 {
 	if(IsPlayerNPC(playerid))
 	    {return 1;}
@@ -7610,21 +7610,21 @@ stock log_Commands(playerid,string[])
 	return 1;
 }
 
-stock log_Chat(string[])
+public log_Chat(string[])
 {
     format(sql,sizeof(sql),"INSERT INTO salrp_log_chat (Date,Chat)  VALUES (UNIX_TIMESTAMP(),'%s')",string);
 	mysql_pquery(MYSQL,sql);
 	return 1;
 }
 
-stock log_Governement(playerid,montant,string[])
+public log_Governement(playerid,montant,string[])
 {
     format(sql,sizeof(sql),"INSERT INTO salrp_log_governements (SQLid,Date,City,Ip,Montant,Reason)  VALUES ('%d',UNIX_TIMESTAMP(),'%d','%s','%d','%s')",PlayerInfo[playerid][pSQLID],PlayerInfo[playerid][pCity],PlayerInfo[playerid][pIP],montant,string);
 	mysql_pquery(MYSQL,sql);
 	return 1;
 }
 
-stock player_GetSlotObject(playerid)
+public player_GetSlotObject(playerid)
 {
 	for(new slot=5; slot<10; slot++)
 	{
@@ -8039,7 +8039,7 @@ public OnPlayerLeaveCheckpoint(playerid)
 	return 1;
 }
 
-stock car_GetBridVehicle(carid)
+public car_GetBridVehicle(carid)
 {
 	new vmodel = GetVehicleModel(carid);
 	if(vmodel == 448 || vmodel == 462 || vmodel == 406 || vmodel == 486 || vmodel == 530 || vmodel == 532 || vmodel == 572 || vmodel == 574)
@@ -8054,7 +8054,7 @@ stock car_GetBridVehicle(carid)
 	    {return 0;}
 }
 
-stock car_Reset(carid,save,bool:recreate=true,bool:sqlidd=false)
+public car_Reset(carid,save,bool:recreate=true,bool:sqlidd=false)
 {
 	if(save==1)
 	{
@@ -8110,7 +8110,7 @@ stock car_Reset(carid,save,bool:recreate=true,bool:sqlidd=false)
 	return 1;
 }
 
-stock car_Engine(playerid)
+public car_Engine(playerid)
 {
 	new carid = GetPlayerVehicleID(playerid);
 	new bool:engine=false, Float:health, string[128];
@@ -8173,7 +8173,7 @@ stock car_Engine(playerid)
 	return 1;
 }
 
-stock gang_PlayerTimerVoleBizz(playerid)
+public gang_PlayerTimerVoleBizz(playerid)
 {
 	if(gang_TimerPlayerVoleBizz[playerid] == 0)
 	{
@@ -8205,7 +8205,7 @@ stock gang_PlayerTimerVoleBizz(playerid)
 	return 1;
 }
 
-stock garage_Reset(id)
+public garage_Reset(id)
 {
 	garage[id][owned] = 0;
 	garage[id][used] = 1;
@@ -8215,7 +8215,7 @@ stock garage_Reset(id)
 	garage_Save(id);
 }
 
-stock house_Reset(id)
+public house_Reset(id)
 {
     house[id][owned] = 0;
     strmid(house[id][owner], NO_ONE, 0, strlen(NO_ONE), 32);
@@ -8251,7 +8251,7 @@ stock house_Reset(id)
 	return 1;
 }
 
-stock bizz_Reset(bizid)
+public bizz_Reset(bizid)
 {
 	new bizname[32];
 	if(bizz[bizid][typeZ] == 1){format(bizname,sizeof(bizname),"24/7");}
@@ -8289,7 +8289,7 @@ stock bizz_Reset(bizid)
 	return 1;
 }
 
-stock bizz_Set(bizid,type)
+public bizz_Set(bizid,type)
 {
     new bizname[32], bizzid=bizid;
     if(type == 1)
@@ -8354,7 +8354,7 @@ stock bizz_Set(bizid,type)
 	return 1;
 }
 
-stock uniquebizz_Reset(bizid)
+public uniquebizz_Reset(bizid)
 {
 	sbizz[bizid][ubOwned] = 0;
     strmid(sbizz[bizid][ubOwner], NO_ONE, 0, strlen(NO_ONE), 64);
@@ -8628,7 +8628,7 @@ public anticheat_Sobeit(playerid)
     return 1;
 }
 
-stock speedometer_Show(playerid)
+public speedometer_Show(playerid)
 {
     TextDrawShowForPlayer(playerid, speedo_Box[0]);
     TextDrawShowForPlayer(playerid, speedo_Box[1]);
@@ -8659,7 +8659,7 @@ stock speedometer_Show(playerid)
         {SpeedoTimer[playerid] = SetTimerEx("speedometer_Blinking",1000,true,"ii",playerid,2);}
 }
 
-stock speedometer_Hide(playerid)
+public speedometer_Hide(playerid)
 {
     KillTimer(SpeedoTimer[playerid]);
     TextDrawHideForPlayer(playerid, speedo_Box[0]);
@@ -9229,7 +9229,7 @@ public MySQLBan(playerid,by,reason[],times)
 	return 1;
 }
 
-stock GetWeaponSlot(weaponid)
+public GetWeaponSlot(weaponid)
 {
     switch(weaponid)
     {
@@ -9250,7 +9250,7 @@ stock GetWeaponSlot(weaponid)
     return -1;
 }
 
-stock GetCheatName(cheatid)
+public GetCheatName(cheatid)
 {
 	new name[32]="Aucun";
     switch(cheatid)
@@ -9276,7 +9276,7 @@ stock GetCheatName(cheatid)
 	return name;
 }
 
-stock GetBizzActor(bizzid)
+public GetBizzActor(bizzid)
 {
 	new tmpId;
     switch(cheatid)
@@ -9298,7 +9298,7 @@ stock GetBizzActor(bizzid)
 	return name;
 }
 
-stock OnPlayerCheat(playerid, cheatid, optionid=0, bool:kick=true)
+public OnPlayerCheat(playerid, cheatid, optionid=0, bool:kick=true)
 {
 	new string[128],option[32]="",wep[32];
 	if(optionid > 0)
@@ -9321,7 +9321,7 @@ stock OnPlayerCheat(playerid, cheatid, optionid=0, bool:kick=true)
 	return 1;
 }
 
-stock ResetPlayerIntVar(playerid)
+public ResetPlayerIntVar(playerid)
 {
     gPlayerInBizz[playerid] = -1;
     gPlayerInSBizz[playerid] = -1;
@@ -9332,7 +9332,7 @@ stock ResetPlayerIntVar(playerid)
 	return 1;
 }
 
-stock SetPlayerCriminal(playerid,temoin,victim,reason[],nb)
+public SetPlayerCriminal(playerid,temoin,victim,reason[],nb)
 {
 	if(IsPlayerConnected(playerid))
 	{
@@ -9412,7 +9412,7 @@ stock SetPlayerCriminal(playerid,temoin,victim,reason[],nb)
 	return 1;
 }
 
-stock phone_SMS(playerid,giveplayerid,text[])
+public phone_SMS(playerid,giveplayerid,text[])
 {
     if(IsPlayerConnected(playerid) && IsPlayerConnected(giveplayerid))
 	{
@@ -9475,7 +9475,7 @@ stock phone_SMS(playerid,giveplayerid,text[])
 	return 1;
 }
 
-stock phone_CallTo(playerid,numero)
+public phone_CallTo(playerid,numero)
 {
 	new string[128];
     if(PlayerInfo[playerid][pNumber] == 0)
@@ -9561,7 +9561,7 @@ public OnVehicleRespray(playerid, vehicleid, color1, color2)
 	return 1;
 }
 
-stock job_UpdateTexts(playerid)
+public job_UpdateTexts(playerid)
 {
  	if(IsPlayerConnected(playerid))
  	{
@@ -9601,7 +9601,7 @@ stock job_UpdateTexts(playerid)
  	return 1;
 }
 
-stock stats_Show(playerid)
+public stats_Show(playerid)
 {
     PlayerTextDrawShow(playerid, TextVie[playerid]);
 	TextDrawShowForPlayer(playerid, DisigFaim1);
@@ -9617,7 +9617,7 @@ stock stats_Show(playerid)
 	return 1;
 }
 
-stock UpdateStatsTextsPlayers(i,id)
+public UpdateStatsTextsPlayers(i,id)
 {
     new string[128];
 	if(id==1)// Faim
@@ -9738,7 +9738,7 @@ stock UpdateStatsTextsPlayers(i,id)
 	return 1;
 }
 
-stock player_UpdateLabel(playerid)
+public player_UpdateLabel(playerid)
 {
 	//if(IsValidDynamic3DTextLabel(player_ID[playerid]))
 	//    {DestroyDynamic3DTextLabel(player_ID[playerid]);}
@@ -9771,7 +9771,7 @@ stock player_UpdateLabel(playerid)
 	return 1;
 }
 
-stock car_CheckGas()
+public car_CheckGas()
 {
 	for(new carid=1; carid<=totalVehicles; carid++)
 	{
@@ -9809,7 +9809,7 @@ public car_EndTest(playerid,carid)
 	return 1;
 }
 
-stock ShowStats(playerid,targetid)
+public ShowStats(playerid,targetid)
 {
 	new sexe[20],name[24]="Personne";
 	if(PlayerInfo[targetid][pSex] == 1) { sexe = "Homme"; }
@@ -9971,7 +9971,7 @@ public faction_Load()
 		{printf("    .. %d faction(s) ill�gale(s) charg�e(s).",totalFactions);}
 }
 
-stock faction_Save(id)
+public faction_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_factions_illegals SET Created=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Exit_x=%f, Exit_y=%f, Exit_z=%f, Safe_x=%f, Safe_y=%f, Safe_z=%f, Cash=%d, Armour=%f, Interior=%d, Name='%s', Locked=%d, Owned=%d, Type=%d, Color=%d, ChooseColor=%d, VW=%d, rank1='%s', rank2='%s', rank3='%s', rank4='%s', rank5='%s', rank6='%s', RobTime=%d WHERE id=%d",
@@ -10031,7 +10031,7 @@ public seed_Load()
 	return 1;
 }
 
-stock seed_Save(id)
+public seed_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_factions_illegals_seeds SET Created=%d, SQLid=%d, Time=%d, Step=%d, Model=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f WHERE id=%d",
@@ -10062,7 +10062,7 @@ public zone_Load()
 	return 1;
 }
 
-stock zone_Save(id)
+public zone_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_zones SET min_X=%f, min_Y=%f, max_X=%f, max_Y=%f WHERE id=%d",ZoneInfo[id][zMin][0],ZoneInfo[id][zMin][1],ZoneInfo[id][zMax][0],ZoneInfo[id][zMax][1],ZoneInfo[id][zSQLid]);
@@ -10085,7 +10085,7 @@ public spawn_Load()
 	return 1;
 }
 
-stock spawn_Save(id)
+public spawn_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_spawn SET Pos_x=%f, Pos_y=%f, Pos_z=%f, Pos_a=%f WHERE id=%d",
@@ -10114,7 +10114,7 @@ public dealerShip_Load()
 	return 1;
 }
 
-stock dealerShip_Save(id)
+public dealerShip_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_dealership SET Type=%d, City=%d, Used=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f WHERE id=%d",
@@ -10153,7 +10153,7 @@ public interior_Load()
 	return 1;
 }
 
-stock interior_Save(id)
+public interior_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_interiors SET Type=%d, City=%d, Interior=%d, Used=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Pos_a=%f, Exit_x=%f, Exit_y=%f, Exit_z=%f, Exit_a=%f WHERE id=%d",
@@ -10191,7 +10191,7 @@ public sannews_Load()
 	return 1;
 }
 
-stock sannews_Save()
+public sannews_Save()
 {
 	format(sql, sizeof(sql), "UPDATE salrp_factions_sannews SET Cash=%d, SMS=%d, Rank1='%s', Rank2='%s', Rank3='%s', Rank4='%s', Rank5='%s', Rank6='%s' WHERE id=1",
 	sanNews[abc_Cash],
@@ -10205,7 +10205,7 @@ stock sannews_Save()
 	mysql_pquery(MYSQL,sql);
 }
 
-stock fbi_Load()
+public fbi_Load()
 {
 	format(sql, sizeof(sql), "SELECT * FROM salrp_factions_fbi WHERE id=1");
 	mysql_query(MYSQL,sql);
@@ -10248,7 +10248,7 @@ stock fbi_Load()
 	return 1;
 }
 
-stock fbi_Save()
+public fbi_Save()
 {
 	format(sql, sizeof(sql), "UPDATE salrp_factions_fbi SET rank1='%s', Rank2='%s', Rank3='%s', Rank4='%s', Rank5='%s', Rank6='%s', Rank7='%s', Skin1=%d, Skin2=%d, Skin3=%d, Skin4=%d, Skin5=%d, Skin6=%d, Skin7=%d, Spawn_x=%f, Spawn_y=%f, Spawn_z=%f, Spawn_a=%f, Interior=%d, Arrested1_x=%f, Arrested1_y=%f, Arrested1_z=%f, Arrested2_x=%f, Arrested2_y=%f, Arrested2_z=%f WHERE id=1",
 	FBIInfo[rank1],
@@ -10326,7 +10326,7 @@ public governement_Load()
 	return 1;
 }
 
-stock governement_Save(id,bool:saveTax,bool:saveJob,bool:saveLicense,bool:savePos,bool:saveCmds,bool:saveSalary)
+public governement_Save(id,bool:saveTax,bool:saveJob,bool:saveLicense,bool:savePos,bool:saveCmds,bool:saveSalary)
 {
     format(sql, sizeof(sql), "UPDATE salrp_factions_governements SET rank1='%s', rank2='%s', rank3='%s', rank4='%s', rank5='%s', rank6='%s', skin1=%d, skin2=%d, skin3=%d, skin4=%d, skin5=%d, skin6=%d, interior=%d, safe=%d, ticket=%d, unemployment=%d WHERE id=%d",
 	governement[id][rank1],governement[id][rank2],governement[id][rank3],governement[id][rank4],governement[id][rank5],governement[id][rank6],governement[id][skin][0],governement[id][skin][1],governement[id][skin][2],governement[id][skin][3],governement[id][skin][4],
@@ -10375,7 +10375,7 @@ stock governement_Save(id,bool:saveTax,bool:saveJob,bool:saveLicense,bool:savePo
 	}
 }
 
-stock fire_Load()
+public fire_Load()
 {
 	format(sql, sizeof(sql), "SELECT * FROM salrp_factions_pompier WHERE id=1");
 	mysql_query(MYSQL,sql);
@@ -10423,7 +10423,7 @@ stock fire_Load()
 	return 1;
 }
 
-stock fire_Save()
+public fire_Save()
 {
 	format(sql, sizeof(sql), "UPDATE salrp_factions_pompier SET rank1='%s', Rank2='%s', Rank3='%s', Rank4='%s', Rank5='%s', Rank6='%s', Skin1=%d, Skin2=%d, Skin3=%d, Skin4=%d, Skin5=%d, Skin6=%d, Spawn_x=%f, Spawn_y=%f, Spawn_z=%f, Spawn_a=%f, Interior=%d, Duty_x=%f, Duty_y=%f, Duty_z=%f, Equip_x=%f, Equip_y=%f, Equip_z=%f  WHERE id=1",
 	FireInfo[rank1],
@@ -10466,7 +10466,7 @@ stock fire_Save()
 	mysql_pquery(MYSQL,sql);
 }
 
-stock mecano_Load()
+public mecano_Load()
 {
 	format(sql, sizeof(sql), "SELECT * FROM salrp_factions_mecano WHERE id=1");
 	mysql_query(MYSQL,sql);
@@ -10511,7 +10511,7 @@ stock mecano_Load()
 	return 1;
 }
 
-stock mecano_Save()
+public mecano_Save()
 {
 	format(sql, sizeof(sql), "UPDATE salrp_factions_mecano SET rank1='%s', Rank2='%s', Rank3='%s', Rank4='%s', Rank5='%s', Rank6='%s', Skin1=%d, Skin2=%d, Skin3=%d, Skin4=%d, Skin5=%d, Skin6=%d, Spawn_x=%f, Spawn_y=%f, Spawn_z=%f, Spawn_a=%f, Interior=%d, Duty_x=%f, Duty_y=%f, Duty_z=%f WHERE id=1",
 	MecanoInfo[rank1],
@@ -10577,7 +10577,7 @@ public police_Load()
 	return 1;
 }
 
-stock police_Save(id)
+public police_Save(id)
 {
 	format(sql, sizeof(sql), "UPDATE salrp_factions_polices SET rank1='%s', Rank2='%s', Rank3='%s', Rank4='%s', Rank5='%s', Rank6='%s', Rank7='%s', Rank8='%s', Skin1=%d, Skin2=%d, Skin3=%d, Skin4=%d, Skin5=%d, Skin6=%d, Skin7=%d, Skin8=%d, Spawn_x=%f, Spawn_y=%f, Spawn_z=%f, Spawn_a=%f, Interior=%d WHERE id=%d",
 	police[id][rank1],
@@ -10639,7 +10639,7 @@ public police_FineLoad()
 	if(gServerReload==0)
 		{printf("    ... %d Amendes police charg�e(s).",totalFines);}
 }
-stock police_FineSave(id)
+public police_FineSave(id)
 {
     new name[64];
     mysql_escape_string(fine[id][tmpName], name);
@@ -10648,7 +10648,7 @@ stock police_FineSave(id)
 	mysql_pquery(MYSQL,sql);
 }
 
-stock biker_Load()
+public biker_Load()
 {
 	/*format(sql, sizeof(sql), "SELECT * FROM salrp_factions_biker WHERE id=1");
 	mysql_query(MYSQL,sql);
@@ -10707,7 +10707,7 @@ stock biker_Load()
 	return 1;
 }
 
-stock biker_Save()
+public biker_Save()
 {
 	format(sql, sizeof(sql), "UPDATE salrp_factions_biker SET Rank1='%s', Rank2='%s', Rank3='%s', Rank4='%s', Rank5='%s', Rank6='%s', Skin1=%d, Skin2=%d, Skin3=%d, Skin4=%d, Skin5=%d, Skin6=%d, Spawn_x=%f, Spawn_y=%f, Spawn_z=%f, Spawn_a=%f, Interior=%d, Entrance_x=%f, Entrance_y=%f, Entrance_z=%f, Entrance_a=%f, Exit_x=%f, Exit_y=%f, Exit_z=%f, Exit_a=%f WHERE id=1",
 	BikerInfo[rank1],
@@ -10743,7 +10743,7 @@ stock biker_Save()
 	mysql_pquery(MYSQL,sql);
 }
 
-stock bizz_Save(id)
+public bizz_Save(id)
 {
     new esc_owner[64], message[64];
     mysql_escape_string(bizz[id][owner], esc_owner);
@@ -10852,7 +10852,7 @@ public bizz_Load()
 		{printf("    .. %d bizz charg�(s)",totalBizz);}
 }
 
-stock setting_Load()
+public setting_Load()
 {
 	new tmp = 0;
 	mysql_query(MYSQL,"SELECT * FROM salrp_server_settings WHERE id=1");
@@ -10867,7 +10867,7 @@ stock setting_Load()
 	printf("[SETTINGS] AntiCheat : %d - Inscription IG : %d - Beta : %d - Bots : %d",setting[anticheat],setting[inscription],setting[beta],setting[bot]);
 }
 
-stock setting_Save()
+public setting_Save()
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_settings SET anticheat=%d, inscription=%d, beta=%d, bot=%d WHERE id=1",
@@ -10941,7 +10941,7 @@ public house_Load()
     if(gServerReload==0)
 		{printf("    .. %d maison(s) charg�e(s)",totalHouses);}
 }
-stock house_Save(id,bool:saveSafe=false)
+public house_Save(id,bool:saveSafe=false)
 {
     new esc_owner[64],message[64];
     mysql_escape_string(house[id][owner], esc_owner);
@@ -10984,7 +10984,7 @@ stock house_Save(id,bool:saveSafe=false)
 	}
 }
 
-stock house_LoadModels()
+public house_LoadModels()
 {
     house_FurnituresList[0] = LoadModelSelectionMenu("SALRP/bath.txt");
 	house_FurnituresList[1] = LoadModelSelectionMenu("SALRP/beds.txt");
@@ -11037,7 +11037,7 @@ public house_LoadFurnitures()
 		{printf("    .. %d mobilier(s) charg�(s)",totalFurnitures);}
 }
 
-stock house_SaveFurniture(id,objectid)
+public house_SaveFurniture(id,objectid)
 {
     MySQLCheckConnexion();
     format(sql,sizeof(sql),"UPDATE salrp_server_houses_furnitures SET ObjectId=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Rot_x=%f, Rot_y=%f, Rot_z=%f WHERE id=%d",
@@ -11052,7 +11052,7 @@ stock house_SaveFurniture(id,objectid)
     mysql_pquery(MYSQL,sql);
 }
 
-stock uniquebizz_Save(id)
+public uniquebizz_Save(id)
 {
     new esc_owner[64],message[64];
     mysql_escape_string(sbizz[id][ubOwner], esc_owner);
@@ -11132,7 +11132,7 @@ public uniquebizz_Load()
 }
 
 
-stock uniquebizz_Create(id)
+public uniquebizz_Create(id)
 {
     sbizz[id][ubOwned] = 0;
     strmid(sbizz[id][ubOwner], "Personne", 0, strlen("Personne"), 255);
@@ -11567,7 +11567,7 @@ public stop_Load()
 		{printf("    .. %d Arret(s) de bus charg�(s)",totalBusStop);}
 }
 
-stock stop_Save(id)
+public stop_Save(id)
 {
     new name[64];
     mysql_escape_string(stop[id][description], name);
@@ -11592,7 +11592,7 @@ public gps_Load()
 		{printf("    .. %d GPS charg�(s).",totalGPS);}
 }
 
-stock gps_Save(id)
+public gps_Save(id)
 {
     new name[64];
     mysql_escape_string(gps[id][description], name);
@@ -11614,7 +11614,7 @@ public tree_Load()
 	}
 }
 
-stock tree_Save(id)
+public tree_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_tree SET Created=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f WHERE id=%d",SapinInfo[id][XmasTreeX],SapinInfo[id][XmasX],SapinInfo[id][XmasY],SapinInfo[id][XmasZ],id+1);
@@ -11643,7 +11643,7 @@ public garage_Load()
 		{printf("    .. %d garage(s) charg�(s)",totalGarages);}
 }
 
-stock garage_Save(id)
+public garage_Save(id)
 {
     new name[64];
     mysql_escape_string(garage[id][owner], name);
@@ -11670,7 +11670,7 @@ public drop_Load()
 	return 1;
 }
 
-stock drop_Save(id)
+public drop_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_drops SET Model=%d, Quantity=%d, Time=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f WHERE id=%d",drop[id][model],drop[id][quantity],drop[id][time],drop[id][pos][0],drop[id][pos][1],drop[id][pos][2],id+1);
@@ -11698,7 +11698,7 @@ public tag_Load()
 	return 1;
 }
 
-stock tag_Save(id)
+public tag_Save(id)
 {
     new name[128];
     mysql_escape_string(tag[id][description], name);
@@ -11725,7 +11725,7 @@ public atm_Load()
 	if(gServerReload==0)
 		{printf("    .. %d atm(s) charg�(s)",totalATMs);}
 }
-stock atm_Save(id)
+public atm_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_atms SET Created=%d, Cash=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Angle=%f WHERE id=%d",atm[id][used],atm[id][cash],atm[id][pos][0],atm[id][pos][1],atm[id][pos][2],atm[id][pos][3],id+1);
@@ -11762,7 +11762,7 @@ public gate_Load()
 		gate_Update(i);
 	}
 }
-stock gate_Save(id)
+public gate_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_gates SET Used=%d, Model=%d, Type=%d, ActionZ=%d, Text='%s', VariableZ=%d, UseTimer=%d, RangeZ=%f, Close_x=%f, Close_y=%f, Close_z=%f, Close_rx=%f, Close_ry=%f, Close_rz=%f, Open_x=%f, Open_y=%f, Open_z=%f, Open_rx=%f, Open_ry=%f, Open_rz=%f WHERE id=%d",
@@ -11798,7 +11798,7 @@ public sign_Load()
 		{printf("    .. %d panneau(x) charg�(s)",totalSigns);}
 }
 
-stock sign_Save(id)
+public sign_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_signs SET Created=%d, Type=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Rot_x=%f, Rot_y=%f, Rot_z=%f, Text='%s', Size=%d, mIndex=%d, UseBold=%d, Align=%d, FontName='%s', FontSize=%d, TextColor=%d, BackColor=%d WHERE id=%d",
@@ -11822,7 +11822,7 @@ public ad_Load()
 	}
 }
 
-stock ad_Save(id)
+public ad_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_ads SET Created=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Rot_x=%f, Rot_y=%f, Rot_z=%f WHERE id=%d",
@@ -11848,7 +11848,7 @@ public camera_Load()
 	if(gServerReload==0)
 		{printf("    .. %d radar(s) charg�(s)",totalCameras);}
 }
-stock camera_Save(id)
+public camera_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_camera SET Created=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Angle=%f, Limite=%d, Fine=%d, Ranged=%d WHERE id=%d",camera[id][used],camera[id][pos][0],camera[id][pos][1],camera[id][pos][2],camera[id][pos][3],camera[id][limit],camera[id][price],camera[id][range],id+1);
@@ -11872,7 +11872,7 @@ public trash_Load()
 		{printf("    .. %d grosse(s) poubelle(s) charg�e(s)",totalTrash);}
 }
 
-stock trash_Save(id)
+public trash_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_trash SET Created=%d, Trash=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Angle=%f WHERE id=%d",trash[id][used],trash[id][quantity],trash[id][pos][0],trash[id][pos][1],trash[id][pos][2],trash[id][pos][3],id+1);
@@ -11915,7 +11915,7 @@ public bin_Load()
 		{printf("    .. %d petite(s) poubelle(s) charg�e(s)",totalBins);}
 }
 
-stock bin_Save(id)
+public bin_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_bins SET Created=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Pos_a=%f, iM1=%d, iQ1=%d, iM2=%d, iQ2=%d, iM3=%d, iQ3=%d, iM4=%d, iQ4=%d, iM5=%d, iQ5=%d, iM6=%d, iQ6=%d, iM7=%d, iQ7=%d, iM8=%d, iQ8=%d, iM9=%d, iQ9=%d, iM10=%d, iQ10=%d WHERE id=%d",
@@ -11940,7 +11940,7 @@ public phonecab_Load()
 		{printf("    .. %d cabine(s) telephonique(s) charg�e(s)",totalPhoneCabs);}
 }
 
-stock phonecab_Save(id)
+public phonecab_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_phones SET Created=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Angle=%f WHERE id=%d",phone[id][used],phone[id][pos][0],phone[id][pos][1],phone[id][pos][2],phone[id][pos][3],id+1);
@@ -11962,7 +11962,7 @@ public map_Load()
 	if(gServerReload==0)
 		{printf("    .. %d carte(s) charg�e(s)",totalMaps);}
 }
-stock map_Save(id)
+public map_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_maps SET Created=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Angle=%f WHERE id=%d",map[id][used],map[id][pos][0],map[id][pos][1],map[id][pos][2],map[id][pos][3],id+1);
@@ -11984,14 +11984,14 @@ public distrib_Load()
 	if(gServerReload==0)
 		{printf("    .. %d distributeur(s) charg�(s)",totalDistribs);}
 }
-stock distrib_Save(id)
+public distrib_Save(id)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_server_distribs SET Created=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Angle=%f WHERE id=%d",distributor[id][used],distributor[id][pos][0],distributor[id][pos][1],distributor[id][pos][2],distributor[id][pos][3],id+1);
 	mysql_pquery(MYSQL,sql);
 }
 
-stock inscription_Question(playerid)
+public inscription_Question(playerid)
 {
 	new question[64],reponse1[64],reponse2[64],reponse3[64];
 	format(sql,sizeof(sql), "SELECT * FROM salrp_server_questions WHERE id=%d",inscription_Random[inscription_RandomList[playerid]][inscription_QuestionNumber[playerid]]);
@@ -12009,7 +12009,7 @@ stock inscription_Question(playerid)
 	ShowPlayerDialog(playerid,81,DIALOG_STYLE_LIST,titledialog,dialogStr,"Valider","");
 }
 
-stock IniStatsPanel(playerid)
+public IniStatsPanel(playerid)
 {
     if(IsPlayerConnected(Clicked[playerid]))
 	{
@@ -12164,7 +12164,7 @@ public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 	}
 	return 1;
 }
-stock streamer_Init()
+public streamer_Init()
 {
     Streamer_SetTickRate(TICKRATE);
 }
@@ -12199,7 +12199,7 @@ public npc_Tram(id)
     	{SetTimerEx("npc_Tram", 90000, false, "d", id);}
 }
 
-stock npc_Join()
+public npc_Join()
 {
 	// Jobs
 	/*ConnectNPC("jobPizza_Ls","jobPizza_Ls");
@@ -12270,7 +12270,7 @@ stock npc_Join()
 	npc_Train(1);
 	//npc_Tram(1);*/
 }
-stock npc_Spawn(playerid,npcname[])
+public npc_Spawn(playerid,npcname[])
 {
     if(IsPlayerNPC(playerid))
 	{
@@ -12727,7 +12727,7 @@ public MySQLCheckChar(string[])
 	return 0;
 }
 
-stock start_Timers()
+public start_Timers()
 {
     SetTimer("timer_1s", 1000, 1);
     SetTimer("timer_2s", 2000, 1);
@@ -12929,7 +12929,7 @@ public RemiX_Time_Tools()
 	}
 	return 1;
 }
-stock pay_CreateTexts()
+public pay_CreateTexts()
 {
     pay_TextDesigne1 = TextDrawCreate(318.000000, 153.000000, "~n~"); // 1
 	TextDrawAlignment(pay_TextDesigne1, 2);
@@ -13096,7 +13096,7 @@ stock pay_CreateTexts()
 	TextDrawSetSelectable(pay_TextExit,1);
 }
 
-stock LoadBankText()
+public LoadBankText()
 {
     Bank_TextBackGround = TextDrawCreate(612.000000, 118.000000, "_");
 	TextDrawBackgroundColor(Bank_TextBackGround, 255);
@@ -13184,7 +13184,7 @@ public payday_HideTexts(playerid)
 	return 1;
 }
 
-stock job_ShowTexts(playerid)
+public job_ShowTexts(playerid)
 {
     TextDrawShowForPlayer(playerid,job_TextBox[0]);
     TextDrawShowForPlayer(playerid,job_TextBox[1]);
@@ -13196,7 +13196,7 @@ stock job_ShowTexts(playerid)
 	job_UpdateTexts(playerid);
 	return 1;
 }
-stock job_HideTexts(playerid)
+public job_HideTexts(playerid)
 {
     TextDrawHideForPlayer(playerid,job_TextBox[0]);
     TextDrawHideForPlayer(playerid,job_TextBox[1]);
@@ -13207,7 +13207,7 @@ stock job_HideTexts(playerid)
 	TextDrawHideForPlayer(playerid,job_TextTitle);
 	return 1;
 }
-stock job_GetXp(playerid,job)
+public job_GetXp(playerid,job)
 {
     switch(job)
     {
@@ -13221,7 +13221,7 @@ stock job_GetXp(playerid,job)
     return 1;
 }
 
-stock job_TakePay(playerid,job)
+public job_TakePay(playerid,job)
 {
     new cashes=0,string[128];
     PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
@@ -13243,7 +13243,7 @@ stock job_TakePay(playerid,job)
 	return 1;
 }
 
-stock job_End(playerid)
+public job_End(playerid)
 {
     SetVehicleToRespawn(job_CarId[playerid]);
 	job_ExitTime[playerid]=0; job_CarId[playerid]=-1; job_Start[playerid]=0;
@@ -13284,7 +13284,7 @@ stock job_End(playerid)
 	return 1;
 }
 
-stock phone_Show(playerid)
+public phone_Show(playerid)
 {
 	TextDrawShowForPlayer(playerid,phone_Designe1);
 	TextDrawShowForPlayer(playerid,phone_Designe2);
@@ -13355,7 +13355,7 @@ stock phone_Show(playerid)
 	PlayerTextDrawSetString(playerid,phone_Hours[playerid],tmp);
 }
 
-stock phone_Hide(playerid)
+public phone_Hide(playerid)
 {
 	TextDrawHideForPlayer(playerid,phone_Designe1);
 	TextDrawHideForPlayer(playerid,phone_Designe2);
@@ -13409,7 +13409,7 @@ stock phone_Hide(playerid)
 	CancelSelectTextDraw(playerid);
 }
 
-stock init_Texts()
+public init_Texts()
 {
 		
 		text_Intro[0] = TextDrawCreate(670.000000, -10.000000, "_");
@@ -14478,7 +14478,7 @@ stock init_Texts()
 		TextDrawSetShadow(payday_Design[2], 0);
 }
 
-stock init_PlayerTexts(i)
+public init_PlayerTexts(i)
 {
 	//Jobs
 	job_TextInfos[i] = CreatePlayerTextDraw(i,500.000000, 122.000000, "_");
@@ -15122,7 +15122,7 @@ public server_FenceRoad(fence,stat)
 	}
 }
 
-stock server_ShowIntroTexts(playerid)
+public server_ShowIntroTexts(playerid)
 {
     TextDrawShowForPlayer(playerid,text_Intro[0]);
 	TextDrawShowForPlayer(playerid,text_Intro[1]);
@@ -15133,7 +15133,7 @@ stock server_ShowIntroTexts(playerid)
 	TextDrawShowForPlayer(playerid,text_Intro[6]);
 }
 
-stock server_HideIntroTexts(playerid)
+public server_HideIntroTexts(playerid)
 {
 	TextDrawHideForPlayer(playerid,text_Intro[0]);
 	TextDrawHideForPlayer(playerid,text_Intro[1]);
@@ -15144,7 +15144,7 @@ stock server_HideIntroTexts(playerid)
 	TextDrawHideForPlayer(playerid,text_Intro[6]);
 }
 
-stock server_BadNames(playerid)
+public server_BadNames(playerid)
 {
 	new bool:YesOrNo = false,playerName[32];
 	GetPlayerName(playerid,playerName,sizeof(playerName));
@@ -15193,7 +15193,7 @@ stock server_BadNames(playerid)
 	return 1;
 }
 
-stock init_PickupsAndLabels()
+public init_PickupsAndLabels()
 {
 	// Los Santos
     CreateDynamicPickup(1582, 1, 2109.1106,-1788.5276,13.5608,0,0,-1,PICKUP_STREAM_DISTANCE); // D�pot pizza
@@ -15450,13 +15450,13 @@ stock init_PickupsAndLabels()
 	
 }
 
-stock init_MapIcon()
+public init_MapIcon()
 {
 	CreateDynamicMapIcon(1958.0336,-2182.2905,13.5469,5,COLOR_WHITE,-1,-1,-1,500.0);  // A�roport
 	CreateDynamicMapIcon(696.9516,-1185.7286,15.5819,27,COLOR_WHITE,-1,-1,-1,500.0);  // Garage N�on
 }
 
-stock init_Actors()
+public init_Actors()
 {
 	// Actor Jobs
 	// LS
@@ -15566,7 +15566,7 @@ stock init_Actors()
 	CreateDynamicSalrpActor(71, 919.7765, -2370.7874, 13.2474, 208.3816, 0, true ,0, 0,""); // Prison acceuil
 }
 
-stock init_Mapping()
+public init_Mapping()
 {
 	//                          ============================
 	//                              Anti BUG - Ne pas sup
@@ -15745,7 +15745,7 @@ stock init_Mapping()
 	return 0;
 }
 
-stock server_DefaultVariables(playerid)
+public server_DefaultVariables(playerid)
 {
     gPlayerMask[playerid]=0;
     gPlayerFreq[playerid]=0;
@@ -15954,7 +15954,7 @@ stock server_DefaultVariables(playerid)
 	police_FlashBall[playerid]=false;
 }
 
-stock server_DefaultStats(playerid)
+public server_DefaultStats(playerid)
 {
     static e_Blank[e_Player];
     PlayerInfo[playerid] = e_Blank;
@@ -16083,7 +16083,7 @@ stock server_DefaultStats(playerid)
 //==================================[HEURE & DATES]==========================
 
 
-stock GetClosestPlayer(p1)
+public GetClosestPlayer(p1)
 {
 	new x,Float:dis,Float:dis2,p;
 	p = -1;
@@ -16106,7 +16106,7 @@ stock GetClosestPlayer(p1)
 	return p;
 }
 
-stock PayDay(i)
+public PayDay(i)
 {
     PlayerInfo[i][pPayDayHad]=0;
 	new string[512];
@@ -16392,7 +16392,7 @@ stock PayDay(i)
 	return 1;
 }
 
-stock strtok(const string[], &index)
+public strtok(const string[], &index)
 {
 	new length = strlen(string);
 	while ((index < length) && (string[index] <= ' '))
@@ -16428,7 +16428,7 @@ public split(const strsrc[], strdest[][], delimiter)
 	return 1;
 }
 
-stock OnPlayerRegister(playerid, pass[])
+public OnPlayerRegister(playerid, pass[])
 {
 	if(IsPlayerConnected(playerid))
 	{
@@ -16438,7 +16438,7 @@ stock OnPlayerRegister(playerid, pass[])
 	return 1;
 }
 
-stock OnPlayerUpdateSQL(playerid)
+public OnPlayerUpdateSQL(playerid)
 {
     if(IsPlayerConnected(playerid))
 	{
@@ -16855,7 +16855,7 @@ public OnPlayerUpdate(playerid)
 	return 1;
 }
 
-stock speedometer_Update(playerid,text,type)
+public speedometer_Update(playerid,text,type)
 {
 	if(text==1)//Moteur
 	{
@@ -17223,7 +17223,7 @@ public OnPlayerLogin(playerid,pass[])
 	return 1;
 }
 
-stock accessory_Load(playerid)
+public accessory_Load(playerid)
 {
     new a = 0;
 	for(new i=0; i<5; i++)
@@ -17259,7 +17259,7 @@ stock accessory_Load(playerid)
 	return 1;
 }
 
-stock accessory_Save(playerid,index)
+public accessory_Save(playerid,index)
 {
     MySQLCheckConnexion();
 	format(sql,sizeof(sql),"UPDATE salrp_users_accessories SET Model=%d, Bone=%d, Pos_x=%f, Pos_y=%f, Pos_z=%f, Rot_x=%f, Rot_y=%f, Rot_z=%f, Off_x=%f, Off_y=%f, Off_z=%f WHERE SQLid=%d AND IndexZ=%d",
@@ -17269,7 +17269,7 @@ stock accessory_Save(playerid,index)
 	return 1;
 }
 
-stock inventory_Load(playerid)
+public inventory_Load(playerid)
 {
     format(sql, sizeof(sql), "SELECT * FROM salrp_users_inventories WHERE SQLid=%d", PlayerInfo[playerid][pSQLID]);
 	mysql_query(MYSQL,sql);
@@ -17290,7 +17290,7 @@ stock inventory_Load(playerid)
 	return 1;
 }
 
-stock inventory_UpdateItem(playerid,modelid,quant)
+public inventory_UpdateItem(playerid,modelid,quant)
 {
 	new bool:found=false;
 	if(!server_IsValidItem(modelid))
@@ -17316,7 +17316,7 @@ stock inventory_UpdateItem(playerid,modelid,quant)
 	return 1;
 }
 
-stock inventory_GetItemQuantityIn(playerid,modelmin,modelmax)
+public inventory_GetItemQuantityIn(playerid,modelmin,modelmax)
 {
     /*if(!server_IsValidItem(modelmin))
 	    {return 1;}*/
@@ -17328,7 +17328,7 @@ stock inventory_GetItemQuantityIn(playerid,modelmin,modelmax)
 	return 0;
 }
 
-stock inventory_GetItemQuantity(playerid,modelid)
+public inventory_GetItemQuantity(playerid,modelid)
 {
     if(!server_IsValidItem(modelid))
 	    {return 1;}
@@ -17340,7 +17340,7 @@ stock inventory_GetItemQuantity(playerid,modelid)
 	return 0;
 }
 
-stock inventory_ResetItemQuant(playerid,modelid,quant)
+public inventory_ResetItemQuant(playerid,modelid,quant)
 {
 	new bool:found=false;
 	if(!server_IsValidItem(modelid))
@@ -17366,7 +17366,7 @@ stock inventory_ResetItemQuant(playerid,modelid,quant)
 	return 1;
 }
 
-stock accessory_ShowDialog(playerid)
+public accessory_ShowDialog(playerid)
 {
     new string[256]="{FFFFFF}Slot\t{FFFFFF}Statut\n",
 		tmpString[48];
@@ -17383,7 +17383,7 @@ stock accessory_ShowDialog(playerid)
 	return 1;
 }
 
-stock server_IsValidItem(modelid)
+public server_IsValidItem(modelid)
 {
 	switch(modelid)
 	{
@@ -17397,7 +17397,7 @@ stock server_IsValidItem(modelid)
 	return false;
 }
 
-stock msg_Admin(color,const string[],level)
+public msg_Admin(color,const string[],level)
 {
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -17410,7 +17410,7 @@ stock msg_Admin(color,const string[],level)
 	return 1;
 }
 
-stock msg_OOC(color,const string[])
+public msg_OOC(color,const string[])
 {
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -17422,7 +17422,7 @@ stock msg_OOC(color,const string[])
 	}
 }
 
-stock msg_OOCNews(color,const string[])
+public msg_OOCNews(color,const string[])
 {
     for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -17434,7 +17434,7 @@ stock msg_OOCNews(color,const string[])
 	}
 }
 
-stock msg_Radio(member, color, string[])
+public msg_Radio(member, color, string[])
 {
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -17446,7 +17446,7 @@ stock msg_Radio(member, color, string[])
 	}
 }
 
-stock SendFamilyMessage(family, color, string[])
+public SendFamilyMessage(family, color, string[])
 {
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -17458,7 +17458,7 @@ stock SendFamilyMessage(family, color, string[])
 	}
 }
 
-stock msg_Taxi(color, string[])
+public msg_Taxi(color, string[])
 {
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -17470,7 +17470,7 @@ stock msg_Taxi(color, string[])
 	}
 }
 
-stock msg_Job(jobId, color, string[])
+public msg_Job(jobId, color, string[])
 {
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -17482,7 +17482,7 @@ stock msg_Job(jobId, color, string[])
 	}
 }
 
-stock msg_Answer(playerid,const string[],giveplayerid)
+public msg_Answer(playerid,const string[],giveplayerid)
 {
 	new tmp[358];
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
@@ -17501,7 +17501,7 @@ stock msg_Answer(playerid,const string[],giveplayerid)
 	}
 }
 
-stock msg_Helper(color, string[])
+public msg_Helper(color, string[])
 {
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -17513,7 +17513,7 @@ stock msg_Helper(color, string[])
 	}
 }
 
-stock msg_City(cityid,color,string[])
+public msg_City(cityid,color,string[])
 {
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -17525,7 +17525,7 @@ stock msg_City(cityid,color,string[])
 	}
 }
 
-stock msg_County(countid,color,string[])
+public msg_County(countid,color,string[])
 {
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -34874,7 +34874,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 }
 
-stock ProxDetector(Float:radi, playerid, string[],col1,col2,col3,col4,col5,sendToPlayer)
+public ProxDetector(Float:radi, playerid, string[],col1,col2,col3,col4,col5,sendToPlayer)
 {
 	if(IsPlayerConnected(playerid))
 	{
@@ -34911,7 +34911,7 @@ stock ProxDetector(Float:radi, playerid, string[],col1,col2,col3,col4,col5,sendT
 	return 1;
 }
 
-stock ProxDetectorPoint(Float:radi, Float:x, Float:y, Float:z, string[],col1,col2,col3,col4,col5)
+public ProxDetectorPoint(Float:radi, Float:x, Float:y, Float:z, string[],col1,col2,col3,col4,col5)
 {
 		new Float:posx, Float:posy, Float:posz;
 		new Float:tempposx, Float:tempposy, Float:tempposz;
@@ -34939,7 +34939,7 @@ stock ProxDetectorPoint(Float:radi, Float:x, Float:y, Float:z, string[],col1,col
 		return 1;
 }
 
-stock ProxDetectorS(Float:radi, playerid, targetid)
+public ProxDetectorS(Float:radi, playerid, targetid)
 {
     if(IsPlayerConnected(playerid)&&IsPlayerConnected(targetid))
 	{
@@ -34958,7 +34958,7 @@ stock ProxDetectorS(Float:radi, playerid, targetid)
 	return 0;
 }
 
-stock ProxDetectorTrashHouse(Float:radi, binid, houseid)
+public ProxDetectorTrashHouse(Float:radi, binid, houseid)
 {
     if(trash[binid][used]==1&&house[houseid][used]==1)
 	{
@@ -34974,7 +34974,7 @@ stock ProxDetectorTrashHouse(Float:radi, binid, houseid)
 	return 0;
 }
 
-stock PlayerToPoint(Float:radi, playerid, Float:x, Float:y, Float:z)
+public PlayerToPoint(Float:radi, playerid, Float:x, Float:y, Float:z)
 {
     if(IsPlayerConnected(playerid))
 	{
@@ -34991,7 +34991,7 @@ stock PlayerToPoint(Float:radi, playerid, Float:x, Float:y, Float:z)
 	return 0;
 }
 
-stock GetVehicleShiftPos(vehicleid, style, &Float:x, &Float:y, &Float:z, Float:distance)
+public GetVehicleShiftPos(vehicleid, style, &Float:x, &Float:y, &Float:z, Float:distance)
 {
     new Float:a;
 	GetVehiclePos(vehicleid, x, y, z);
@@ -35025,7 +35025,7 @@ stock GetVehicleShiftPos(vehicleid, style, &Float:x, &Float:y, &Float:z, Float:d
 	return true;
 }
 
-stock server_Link(playerid, Float:rangeX, Float:var1_x, Float:var1_y, Float:var1_z, Float:var1_a, var1_int, var1_vw, var1_timer, var1_text[], Float:var2_x, Float:var2_y, Float:var2_z, Float:var2_a, var2_int, var2_vw, var2_timer, var2_text[], back)
+public server_Link(playerid, Float:rangeX, Float:var1_x, Float:var1_y, Float:var1_z, Float:var1_a, var1_int, var1_vw, var1_timer, var1_text[], Float:var2_x, Float:var2_y, Float:var2_z, Float:var2_a, var2_int, var2_vw, var2_timer, var2_text[], back)
 {
 	if(PlayerToPoint(rangeX, playerid, var1_x, var1_y, var1_z))
 	{
@@ -35056,7 +35056,7 @@ stock server_Link(playerid, Float:rangeX, Float:var1_x, Float:var1_y, Float:var1
 	return 1;
 }
 
-stock CustomPickups(i)
+public CustomPickups(i)
 { 
 	if(IsPlayerConnected(i))
 	{
@@ -35195,7 +35195,7 @@ public AddsOn()
 	return 1;
 }
 
-stock ClearChatbox(playerid, lines)
+public ClearChatbox(playerid, lines)
 {
 	if (IsPlayerConnected(playerid))
 	{
@@ -36179,7 +36179,7 @@ public StartingTheVehicle(playerid)
     }
     return 1;
 }
-stock gang_TimerVoleCar(playerid)
+public gang_TimerVoleCar(playerid)
 {
 	if(gang_PlayerVoleCar[playerid] == 1)
 	{
@@ -36233,7 +36233,7 @@ public StartingTheVehicleVoler(playerid)
     }
     return 1;
 }
-stock gym_SetCombatStyle(playerid, combatStyle, definitif)
+public gym_SetCombatStyle(playerid, combatStyle, definitif)
 {
 	if(definitif)
 		{PlayerInfo[playerid][pCombatStyle] = combatStyle;}
@@ -36253,7 +36253,7 @@ stock gym_SetCombatStyle(playerid, combatStyle, definitif)
 		    {SetPlayerFightingStyle (playerid, FIGHT_STYLE_NORMAL);}
 	}
 }
-stock skill_Set(playerid)
+public skill_Set(playerid)
 {
     /*SetPlayerSkillLevel(playerid, WEAPONSKILL_PISTOL, 200);
 	SetPlayerSkillLevel(playerid, WEAPONSKILL_PISTOL_SILENCED, 200);
@@ -36570,7 +36570,7 @@ public SafeSetPlayerHealth(playerid,Float:amount)
 	return 1;
 }
 
-stock SafeGivePlayerHeath(playerid,Float:amount)
+public SafeGivePlayerHeath(playerid,Float:amount)
 {
     if(IsPlayerNPC(playerid))
 		{return 1;}
@@ -36587,7 +36587,7 @@ stock SafeGivePlayerHeath(playerid,Float:amount)
 	return 1;
 }
 
-stock SafeSetPlayerArmour(playerid,Float:amount)
+public SafeSetPlayerArmour(playerid,Float:amount)
 {
     if(IsPlayerNPC(playerid))
 		{return 1;}
@@ -36602,7 +36602,7 @@ stock SafeSetPlayerArmour(playerid,Float:amount)
 	return 1;
 }
 
-stock SafeGivePlayerArmour(plyid,Float:amounttogive)
+public SafeGivePlayerArmour(plyid,Float:amounttogive)
 {
     if(IsPlayerNPC(plyid))
 		{return 1;}
@@ -36619,13 +36619,13 @@ stock SafeGivePlayerArmour(plyid,Float:amounttogive)
 	return 1;
 }
 
-stock SafeSetVehicleHealth(carid,Float:amount)
+public SafeSetVehicleHealth(carid,Float:amount)
 {
  	vehicle[carid][cHealth]=amount;
  	SetVehicleHealth(carid,amount);
 }
 
-stock SafeSetPlayerPos(playerid,Float:x,Float:y,Float:z)
+public SafeSetPlayerPos(playerid,Float:x,Float:y,Float:z)
 {
 	SetPlayerPos(playerid,x,y,z);
 	PlayerInfo[playerid][pCurrentPos][0]=x;
@@ -36637,7 +36637,7 @@ stock SafeSetPlayerPos(playerid,Float:x,Float:y,Float:z)
 	Streamer_UpdateEx(playerid, x, y, z, PlayerInfo[playerid][pVirWorld], PlayerInfo[playerid][pInt]);
 }
 
-stock SafeSetVehiclePos(carid,Float:x,Float:y,Float:z)
+public SafeSetVehiclePos(carid,Float:x,Float:y,Float:z)
 {
 	SetVehiclePos(carid,x,y,z);
 	for(new i=0; i<MAX_PLAYERS_CURRENT+1; i++)
@@ -36654,7 +36654,7 @@ stock SafeSetVehiclePos(carid,Float:x,Float:y,Float:z)
 	}
 }
 
-stock SafeGivePlayerMoney(plyid, amounttogive,reason[])
+public SafeGivePlayerMoney(plyid, amounttogive,reason[])
 {
     PlayerInfo[plyid][pCash]+=amounttogive;
 	GivePlayerMoney(plyid,amounttogive);
@@ -36676,7 +36676,7 @@ stock SafeGivePlayerMoney(plyid, amounttogive,reason[])
 	return 1;
 }
 
-stock anticheat_AirBreak(playerid)
+public anticheat_AirBreak(playerid)
 {
 	if(PlayerInfo[playerid][pAdmin] > 0 || inscription_Step[playerid] > 0)
 	    {return 1;}
@@ -36749,7 +36749,7 @@ public atm_Repair(id,phase)
 	return 1;
 }
 
-stock atm_CheckRob(playerid)
+public atm_CheckRob(playerid)
 {
 	if(PlayerInfo[playerid][pMember] >= 200 && PlayerInfo[playerid][pRank] > 1 && FactionInfo[PlayerInfo[playerid][pMember]-200][fType] == 1)
 	{
@@ -37294,7 +37294,7 @@ public timer_Decrement(i)
         return 1;
 }
 
-stock anticheat_Check(playerid)
+public anticheat_Check(playerid)
 {
 	if(IsPlayerNPC(playerid) || AdminDuty[playerid] == 1 || gPlayerLoad[playerid] == 0)
 	    {return 1;}
@@ -37451,7 +37451,7 @@ stock anticheat_Check(playerid)
 	return 1;
 }
 
-stock anticheat_VehicleHealth(playerid)
+public anticheat_VehicleHealth(playerid)
 {
 	if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
 	{
@@ -37505,7 +37505,7 @@ public anticheat_AFK(i)
 	return 1;
 }
 
-stock SafeResetPlayerMoney(playerid,amount)
+public SafeResetPlayerMoney(playerid,amount)
 {
     if(IsPlayerNPC(playerid))
 		{return 1;}
@@ -37520,7 +37520,7 @@ stock SafeResetPlayerMoney(playerid,amount)
 	return 1;
 }
 
-stock SafeGivePlayerWeapon(plyid, weaponid, ammo)
+public SafeGivePlayerWeapon(plyid, weaponid, ammo)
 {
     ScriptWeaponUpdated[plyid] = 1;
  	new s = GetWeaponSlot(weaponid);
@@ -37532,7 +37532,7 @@ stock SafeGivePlayerWeapon(plyid, weaponid, ammo)
 	return 1;
 }
 
-stock SafeSetPlayerAmmo(plyid, weaponslot, ammo)
+public SafeSetPlayerAmmo(plyid, weaponslot, ammo)
 {
     ScriptWeaponUpdated[plyid]=1;
     ScriptWeaponsAmmo[plyid][weaponslot] = ammo;
@@ -37541,7 +37541,7 @@ stock SafeSetPlayerAmmo(plyid, weaponslot, ammo)
     return 1;
 }
 
-stock SafeResetPlayerWeapons(plyid)
+public SafeResetPlayerWeapons(plyid)
 {
     ScriptWeaponUpdated[plyid] = 1;
     for (new i=0; i<13; i++)
@@ -37554,7 +37554,7 @@ stock SafeResetPlayerWeapons(plyid)
 	return 1;
 }
 
-stock RemovePlayerWeapon(playerid, weaponid)
+public RemovePlayerWeapon(playerid, weaponid)
 {
     ScriptWeaponUpdated[playerid] = 1;
 	new plyWeapons[12] = 0;
@@ -37578,7 +37578,7 @@ stock RemovePlayerWeapon(playerid, weaponid)
 	return 1;
 }
 
-stock anticheat_TP(playerid)
+public anticheat_TP(playerid)
 {
 	if(PlayerInfo[playerid][pAdmin] > 0 || inscription_Step[playerid] > 0)
 	    {return 1;}
@@ -37630,7 +37630,7 @@ public ClearKnock(playerid)
 	KnockedDown[playerid] = 0;
 }
 
-stock CheckPlayerDistanceToVehicle(Float:radi, playerid, vehicleid)
+public CheckPlayerDistanceToVehicle(Float:radi, playerid, vehicleid)
 {
 	if(IsPlayerConnected(playerid))
 	{
@@ -37718,14 +37718,14 @@ public bank_ResetRob()
 	bank_LaserObject[17] = CreateDynamicObject(19082, 2148.7849121094, 1612.3449707031, 994.89099121094, 0, 0, 0,-1,-1,-1, STREAM_DISTANCE);
 }
 
-stock GetVehicleSpeed(vehicleid)
+public GetVehicleSpeed(vehicleid)
 {
     new Float:X, Float:Y, Float:Z;
 	GetVehicleVelocity(vehicleid, X, Y, Z);
     return floatround(floatsqroot(X * X + Y * Y + Z * Z) * 154);
 }
 
-stock anticheat_GetPlayerSpeed(playerid, get3d)
+public anticheat_GetPlayerSpeed(playerid, get3d)
 {
 	new Float: x, Float: y, Float: z;
 	if (IsPlayerInAnyVehicle (playerid))
@@ -37736,7 +37736,7 @@ stock anticheat_GetPlayerSpeed(playerid, get3d)
 	return floatround(floatsqroot((get3d)?(x*x+y*y+z*z):(x*x+y*y))*100.0*1.6);
 }
 
-stock IsCheatPosition (playerid)
+public IsCheatPosition (playerid)
 {
 	for (new i = 0; i < sizeof (CheatPositions); ++i)
 		if (IsPlayerInRangeOfPoint (playerid, 5.0, CheatPositions[i][0], CheatPositions[i][1],CheatPositions [i][2]))
@@ -37744,7 +37744,7 @@ stock IsCheatPosition (playerid)
 	return false;
 }
 
-stock GetSquareDistance (Float: x1, Float: y1, Float: z1, Float: x2, Float: y2, Float: z2)
+public GetSquareDistance (Float: x1, Float: y1, Float: z1, Float: x2, Float: y2, Float: z2)
 {
 	x1 -= x2;
 	y1 -= y2;
@@ -53255,7 +53255,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 		{ShowPlayerDialog(playerid,53,DIALOG_STYLE_INPUT,"{8B8B00}� Tel �{FFFFFF} MP3","{FFFFFF}Entrez un lien stream :","Lire","Annuler");}
 	return 1;
 }
-stock pay_showDialog(playerid,prices)
+public pay_showDialog(playerid,prices)
 {
     if(prices<=0)
 		{return pay_Reset(playerid);}
@@ -53290,7 +53290,7 @@ stock pay_showDialog(playerid,prices)
 	SelectTextDraw(playerid,0x00FF00AA);
 	return 1;
 }
-stock pay_validPay(playerid,moyen)
+public pay_validPay(playerid,moyen)
 {
     if(pay_tempPrice[playerid]<=0)
 	{
@@ -54444,7 +54444,7 @@ stock pay_validPay(playerid,moyen)
 	OnPlayerUpdateSQL(playerid);
 	return 1;
 }
-stock pay_Reset(playerid)
+public pay_Reset(playerid)
 {
     pay_tempPrice[playerid] = -1;
 	pay_tempType[playerid] = -1;
@@ -54767,7 +54767,7 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
 	return 1;
 }
 
-stock permis_End(playerid,type,reason[])
+public permis_End(playerid,type,reason[])
 {
 	new carid = GetPlayerVehicleID(playerid);
 	new string[256];
@@ -55071,7 +55071,7 @@ public server_TimerArmour(playerid)
     player_ArmourVip[playerid]=0;
 }
 
-stock Float:GetDistanceBetweenPlayers(p1,p2)
+public Float:GetDistanceBetweenPlayers(p1,p2)
 {
 	new Float:x1,Float:y1,Float:z1,Float:x2,Float:y2,Float:z2;
 	if(!IsPlayerConnected(p1) || !IsPlayerConnected(p2))
@@ -55081,7 +55081,7 @@ stock Float:GetDistanceBetweenPlayers(p1,p2)
 	return floatsqroot(floatpower(floatabs(floatsub(x2,x1)),2)+floatpower(floatabs(floatsub(y2,y1)),2)+floatpower(floatabs(floatsub(z2,z1)),2));
 }
 
-stock GetDistanceToPoint(playerid,Float:x2,Float:y2,Float:z2)
+public GetDistanceToPoint(playerid,Float:x2,Float:y2,Float:z2)
 {
 	new Float:dis;
 	new Float:x1,Float:y1,Float:z1;
@@ -55091,7 +55091,7 @@ stock GetDistanceToPoint(playerid,Float:x2,Float:y2,Float:z2)
 	return floatround(dis);
 }
 
-stock GetGangColor(colorid)
+public GetGangColor(colorid)
 {
 	if(colorid != -1)
 	{
@@ -55123,7 +55123,7 @@ stock GetGangColor(colorid)
     return COLOR_DEFAULT;
 }
 
-stock GetLocationName(id)
+public GetLocationName(id)
 {
 	new name[32]="Aucune";
 	switch (id)
@@ -55137,7 +55137,7 @@ stock GetLocationName(id)
     return name;
 }
 
-stock GetFactionName(id)
+public GetFactionName(id)
 {
 	new name[32]="Aucune";
 	switch (id)
@@ -55157,7 +55157,7 @@ stock GetFactionName(id)
     return name;
 }
 
-stock GetFactionRank(id,rank)
+public GetFactionRank(id,rank)
 {
 	new name[32]="Aucun";
 	if(id>=1 && id <= 4)
@@ -55216,7 +55216,7 @@ stock GetFactionRank(id,rank)
     return name;
 }
 
-stock GetOriginName(id)
+public GetOriginName(id)
 {
     new name[32]="Aucune";
     switch (id)
@@ -55232,7 +55232,7 @@ stock GetOriginName(id)
 	return name;
 }
 
-stock GetLangName(id)
+public GetLangName(id)
 {
 	new name[32]="Aucune";
 	switch (id)
@@ -55258,7 +55258,7 @@ stock GetLangName(id)
     return name;
 }
 
-stock GetJobName(id)
+public GetJobName(id)
 {
 	new name[32]="Aucun";
 	switch (id)
@@ -55288,7 +55288,7 @@ stock GetJobName(id)
     return name;
 }
 
-stock GetAdminName(id)
+public GetAdminName(id)
 {
 	new name[32]="Mod�rateur";
 	switch (id)
@@ -55301,7 +55301,7 @@ stock GetAdminName(id)
     return name;
 }
 
-stock GetSexName(id)
+public GetSexName(id)
 {
     new name[32];
 	switch (id)
@@ -55312,7 +55312,7 @@ stock GetSexName(id)
 	return name;
 }
 
-stock GetCityName(id)
+public GetCityName(id)
 {
     new name[32];
 	switch (id)
@@ -55335,7 +55335,7 @@ stock GetCityName(id)
 	return name;
 }
 
-stock GetKeyJobName(id)
+public GetKeyJobName(id)
 {
     new name[32];
 	switch (id)
@@ -55348,7 +55348,7 @@ stock GetKeyJobName(id)
 	return name;
 }
 
-stock GetInteriorName(id)
+public GetInteriorName(id)
 {
     new name[32];
 	switch (id)
@@ -55366,7 +55366,7 @@ stock GetInteriorName(id)
 }
 
 
-stock GetDealerShipName(id)
+public GetDealerShipName(id)
 {
     new name[32];
 	switch (id)
@@ -55381,7 +55381,7 @@ stock GetDealerShipName(id)
 	return name;
 }
 
-stock GetInteriorInfo(id, &Int, &Float:x, &Float:y, &Float:z, &Float:a)
+public GetInteriorInfo(id, &Int, &Float:x, &Float:y, &Float:z, &Float:a)
 {
     switch(id)
 	{
@@ -55404,7 +55404,7 @@ stock GetInteriorInfo(id, &Int, &Float:x, &Float:y, &Float:z, &Float:a)
 	}
 }
 
-stock GetCityPlayer(playerid)
+public GetCityPlayer(playerid)
 {
     new Float:x, Float:y, Float:z;
 	GetPlayerPos(playerid,x,y,z);
@@ -55439,7 +55439,7 @@ stock GetCityPlayer(playerid)
 	else return -1;
 }
 
-stock GetCityPos(Float:x, Float:y)
+public GetCityPos(Float:x, Float:y)
 {
     if(x >= -994.2332 && x < 2932.5674 && y >= -2964.7822 && y < 499.1327)
 	    {return 0;} // LS
@@ -55470,7 +55470,7 @@ stock GetCityPos(Float:x, Float:y)
 	else return -1;
 }
 
-stock GetCountyPos(Float:x, Float:y)
+public GetCountyPos(Float:x, Float:y)
 {
 	if((x >= 81.405517 && x < 2944.000000 && y >= -2834.340332 && y < 511.659667) || (x >= -976.656982 && x < 87.343017 && y >= -344.465240 && y < 369.534759))
 	    {return 0;} // Comt� de LS
@@ -55481,7 +55481,7 @@ stock GetCountyPos(Float:x, Float:y)
     else return -1;
 }
 
-stock GetCountyPlayer(playerid)
+public GetCountyPlayer(playerid)
 {
 	new Float:x,Float:y,Float:z;
 	GetPlayerPos(playerid,x,y,z);
@@ -55489,7 +55489,7 @@ stock GetCountyPlayer(playerid)
 	return GetCountyPos(x, y);
 }
 
-stock GetCityCounty(playerid)
+public GetCityCounty(playerid)
 {
 	if(PlayerInfo[playerid][pCity] == 0 || PlayerInfo[playerid][pCity] == 6 || PlayerInfo[playerid][pCity] == 7 || PlayerInfo[playerid][pCity] == 8 || PlayerInfo[playerid][pCity] == 9)
 		{return 0;}
@@ -55500,7 +55500,7 @@ stock GetCityCounty(playerid)
 	else return 3;
 }
 
-stock UnderscoreToSpace(nameTmp[])
+public UnderscoreToSpace(nameTmp[])
 {
 	new posTmp = strfind(nameTmp,"_", true);
 	if( posTmp != -1 )
@@ -55508,7 +55508,7 @@ stock UnderscoreToSpace(nameTmp[])
 	return 1;
 }
 
-stock MinNumber(...)
+public MinNumber(...)
 {
 	new count = numargs(), minnum=99999, argMin;
 	for(new i; i < count; i ++)
@@ -55519,7 +55519,7 @@ stock MinNumber(...)
 	return argMin;
 }
 
-stock player_GetNearHospital(playerid)
+public player_GetNearHospital(playerid)
 {
 	new tmpHospital=0, tmpD[10], tmpId[10], idx;
 	for(new d=0; d<totalInteriors; d++)
@@ -55531,7 +55531,7 @@ stock player_GetNearHospital(playerid)
 	return tmpId[tmpHospital];
 }
 
-stock player_IsNearHouse(playerid)
+public player_IsNearHouse(playerid)
 {
     for(new i = 0; i<totalHouses; i++)
 	{
@@ -55543,7 +55543,7 @@ stock player_IsNearHouse(playerid)
 	return -1;
 }
 
-stock player_IsNearBizz(playerid)
+public player_IsNearBizz(playerid)
 {
     for(new i = 0; i<totalBizz; i++)
 	{
@@ -55555,7 +55555,7 @@ stock player_IsNearBizz(playerid)
 	return -1;
 }
 
-stock player_IsNearGarage(playerid)
+public player_IsNearGarage(playerid)
 {
     for(new i = 0; i<totalGarages; i++)
 	{
@@ -55567,7 +55567,7 @@ stock player_IsNearGarage(playerid)
 	return -1;
 }
 
-stock player_IsNearAtm(playerid)
+public player_IsNearAtm(playerid)
 {
     for(new i = 0; i<totalATMs; i++)
 	{
@@ -55577,7 +55577,7 @@ stock player_IsNearAtm(playerid)
 	return -1;
 }
 
-stock player_IsNearPhone(playerid)
+public player_IsNearPhone(playerid)
 {
     for(new i = 0; i<totalPhoneCabs; i++)
 	{
@@ -55587,7 +55587,7 @@ stock player_IsNearPhone(playerid)
 	return -1;
 }
 
-stock player_IsNearMap(playerid)
+public player_IsNearMap(playerid)
 {
     for(new i = 0; i<totalMaps; i++)
 	{
@@ -55597,7 +55597,7 @@ stock player_IsNearMap(playerid)
 	return -1;
 }
 
-stock player_IsNearDistributor(playerid)
+public player_IsNearDistributor(playerid)
 {
     for(new i = 0; i<totalDistribs; i++)
 	{
@@ -55607,7 +55607,7 @@ stock player_IsNearDistributor(playerid)
 	return -1;
 }
 
-stock player_IsNearBody(playerid)
+public player_IsNearBody(playerid)
 {
     for(new i = 0; i<totalBodies; i++)
 	{
@@ -55617,7 +55617,7 @@ stock player_IsNearBody(playerid)
 	return -1;
 }
 
-stock player_IsNearSign(playerid)
+public player_IsNearSign(playerid)
 {
     for(new i = 0; i<totalSigns; i++)
 	{
@@ -55627,7 +55627,7 @@ stock player_IsNearSign(playerid)
 	return -1;
 }
 
-stock player_IsNearBin(playerid)
+public player_IsNearBin(playerid)
 {
     for(new i = 0; i<totalBins; i++)
 	{
@@ -55637,7 +55637,7 @@ stock player_IsNearBin(playerid)
 	return -1;
 }
 
-stock player_IsNearDealerShip(playerid)
+public player_IsNearDealerShip(playerid)
 {
     for(new i = 0; i<totalDealerShip; i++)
 	{
@@ -55647,7 +55647,7 @@ stock player_IsNearDealerShip(playerid)
 	return -1;
 }
 
-stock player_IsAtNpcPoint(playerid, type, Float:cercle)
+public player_IsAtNpcPoint(playerid, type, Float:cercle)
 {
     for(new i=0; i<MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -55657,7 +55657,7 @@ stock player_IsAtNpcPoint(playerid, type, Float:cercle)
 	return -1;
 }
 
-stock player_IsAtActorPoint(playerid, type, Float:cercle)
+public player_IsAtActorPoint(playerid, type, Float:cercle)
 {
     for(new i=0; i<Streamer_CountItems(STREAMER_TYPE_ACTOR)+1; i++)
 	{
@@ -55667,7 +55667,7 @@ stock player_IsAtActorPoint(playerid, type, Float:cercle)
 	return -1;
 }
 
-stock player_IsAtBedPoint(playerid)
+public player_IsAtBedPoint(playerid)
 {
     if(IsPlayerInRangeOfPoint(playerid,1.0,-3441.3567,478.4872,57.6132)) 		return 0;
     else if(IsPlayerInRangeOfPoint(playerid,1.0,-3441.2600,474.9741,57.6132)) 	return 1;
@@ -55676,7 +55676,7 @@ stock player_IsAtBedPoint(playerid)
 	return -1;
 }
 
-stock job_GetRandomVar(var, cityid)
+public job_GetRandomVar(var, cityid)
 {
 	switch(var)
 	{
@@ -55700,7 +55700,7 @@ stock job_GetRandomVar(var, cityid)
 	return job_GetRandomVar(var, cityid);
 }
 
-stock job_SetSkin(playerid,jobid)
+public job_SetSkin(playerid,jobid)
 {
 	new tmpGenre=PlayerInfo[playerid][pSex];
 	
@@ -55780,7 +55780,7 @@ stock job_SetSkin(playerid,jobid)
 	return 1;
 }
 
-stock player_Divorce(playerid)
+public player_Divorce(playerid)
 {
 	new connected=-1;
 	for(new i=0; i<MAX_PLAYERS_CURRENT+1; i++)
@@ -55797,7 +55797,7 @@ stock player_Divorce(playerid)
 	return 1;
 }
 
-stock player_Mask(playerid,bool:showName)
+public player_Mask(playerid,bool:showName)
 {
     for(new i=0; i<MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -56036,7 +56036,7 @@ public job_Apply(playerid, jobid, stepid)
 	return 1;
 }
 
-stock GetInvalidCreateModel(modelid)
+public GetInvalidCreateModel(modelid)
 {
     switch(modelid)
 	{
@@ -56045,7 +56045,7 @@ stock GetInvalidCreateModel(modelid)
 	return 0;
 }
 
-stock GetItemName(modelid)
+public GetItemName(modelid)
 {
 	new name[32]="Aucun";
 	switch(modelid)
@@ -56100,7 +56100,7 @@ stock GetItemName(modelid)
 	return name;
 }
 
-stock GetWepName(modelid)
+public GetWepName(modelid)
 {
 	new name[32]="Aucune";
     switch(modelid)
@@ -56153,7 +56153,7 @@ stock GetWepName(modelid)
 	return name;
 }
 
-stock ConvertirTexte (Texte[])
+public ConvertirTexte (Texte[])
 {
 	new coriginal[22] = {192, 199, 200, 201, 202, 203, 207, 217, 219, 220, 224, 226, 231, 232, 233, 234, 235, 238, 239, 249, 251, 252};
     new cconvertis[22] = {128, 133, 134, 135, 136, 137, 141, 146, 148, 149, 151, 153, 156, 157, 158, 159, 160, 163, 164, 169, 171, 172};
@@ -56171,7 +56171,7 @@ stock ConvertirTexte (Texte[])
     }
 }
 
-stock CreateShamalInt(vehicleid, Float:X, Float:Y, Float:Z)
+public CreateShamalInt(vehicleid, Float:X, Float:Y, Float:Z)
 {
         CreateDynamicObject(14404, X, Y, Z, 0.0, 0.0, 0.0);
         CreateDynamicObject(1562, floatadd(X, difc[0][0]), floatadd(Y, difc[0][1]), floatsub(Z, difc[0][2]), 0.0, 0.0, difc[0][3]);
@@ -56190,14 +56190,14 @@ stock CreateShamalInt(vehicleid, Float:X, Float:Y, Float:Z)
         ShamalPos[vehicleid][0] = X, ShamalPos[vehicleid][1] = Y, ShamalPos[vehicleid][2] = Z;
 }
 
-stock CreateAndroInt(vehicleid, Float:X, Float:Y, Float:Z)
+public CreateAndroInt(vehicleid, Float:X, Float:Y, Float:Z)
 {
         CreateDynamicObject(14548, X, Y, Z, 0.0, 0.0, 0.0);
         CreateDynamicObject(14550, floatadd(X, difc[0][0]), floatadd(Y, difc[0][1]), floatsub(Z, difc[0][2]), 0.0, 0.0, difc[0][3]);
         AndroPos[vehicleid][0] = X, AndroPos[vehicleid][1] = Y, AndroPos[vehicleid][2] = Z;
 }
 
-stock SetPlayerPosInShamal(playerid, shamalid)
+public SetPlayerPosInShamal(playerid, shamalid)
 {
         SafeSetPlayerPos(playerid, ShamalPos[shamalid][0],
         floatsub(ShamalPos[shamalid][1], 5.87),
@@ -56206,7 +56206,7 @@ stock SetPlayerPosInShamal(playerid, shamalid)
         SetCameraBehindPlayer(playerid);
 }
 
-stock SetPlayerPosInAndro(playerid, android)
+public SetPlayerPosInAndro(playerid, android)
 {
         SafeSetPlayerPos(playerid, AndroPos[android][0],
         floatsub(AndroPos[android][1], 5.87),
@@ -56215,21 +56215,21 @@ stock SetPlayerPosInAndro(playerid, android)
         SetCameraBehindPlayer(playerid);
 }
 
-stock ShamalExists(vehicleid)
+public ShamalExists(vehicleid)
 {
         if (floatsqroot(floatadd(ShamalPos[vehicleid][0], floatadd(ShamalPos[vehicleid][1], ShamalPos[vehicleid][2]))))
         	{return 1;}
         return 0;
 }
 
-stock AndroExists(vehicleid)
+public AndroExists(vehicleid)
 {
         if (floatsqroot(floatadd(AndroPos[vehicleid][0], floatadd(AndroPos[vehicleid][1], AndroPos[vehicleid][2]))))
         	{return 1;}
         return 0;
 }
 
-stock randomEx(randval)
+public randomEx(randval)
 {
         new rand1 = random(2), rand2;
         if (!rand1) rand2 -= random(randval);
@@ -56237,7 +56237,7 @@ stock randomEx(randval)
         return rand2;
 }
 
-stock tuning_RemoveComponent(carid, component)
+public tuning_RemoveComponent(carid, component)
 {
 	switch(component)
 	{
@@ -56376,7 +56376,7 @@ public OnVehicleDeath(vehicleid, killerid)
 	return 1;
 }
 
-stock B_IsTrailer(vehicleid) {
+public B_IsTrailer(vehicleid) {
     switch(GetVehicleModel(vehicleid))
     {
         case 435, 450, 584, 591, 606: return 1;
@@ -56384,7 +56384,7 @@ stock B_IsTrailer(vehicleid) {
     return 0;
 }
 
-stock SetCarBlinking(veh, bool:side)
+public SetCarBlinking(veh, bool:side)
 {
     if(IsCarBlinking(veh))
 		{return DisableCarBlinking(veh);}
@@ -56439,7 +56439,7 @@ stock SetCarBlinking(veh, bool:side)
     return 1;
 }
 
-stock DisableCarBlinking(veh)
+public DisableCarBlinking(veh)
 {
 	if(!IsCarBlinking(veh))
 		{return 1;}
@@ -56459,7 +56459,7 @@ stock DisableCarBlinking(veh)
     return 1;
 }
 
-stock IsCarBlinking(vehicleid)
+public IsCarBlinking(vehicleid)
 {
     if(Blink[vehicleid][0] == -1 && Blink[vehicleid][1] == -1)
 		{return 0;}
@@ -56512,7 +56512,7 @@ public Decodage(playerid)
 	}
 }
 
-stock bizz_ShowDialogGestion(playerid)
+public bizz_ShowDialogGestion(playerid)
 {
 	new bizid = gPlayerInBizz[playerid];
     new bigstring[512];
@@ -56532,7 +56532,7 @@ stock bizz_ShowDialogGestion(playerid)
 	return 1;
 }
 
-stock uniquebizz_ShowDialogGestion(playerid,bizid)
+public uniquebizz_ShowDialogGestion(playerid,bizid)
 {
     new bigstring[512];
     new totoprods = sbizz[bizid][ubMaxProduits]-sbizz[bizid][ubProduits];
@@ -56562,7 +56562,7 @@ stock uniquebizz_ShowDialogGestion(playerid,bizid)
 	return 1;
 }
 
-stock gang_ShowDialogEdit(playerid)
+public gang_ShowDialogEdit(playerid)
 {
     new facID = PlayerInfo[playerid][pMember]-200;
 	new string[512];
@@ -56572,7 +56572,7 @@ stock gang_ShowDialogEdit(playerid)
 	return 1;
 }
 
-stock faction_ShowDialogSafe(playerid)
+public faction_ShowDialogSafe(playerid)
 {
     new facID = PlayerInfo[playerid][pMember]-200;
 	new string[512];
@@ -56583,7 +56583,7 @@ stock faction_ShowDialogSafe(playerid)
 	return 1;
 }
 
-stock mafia_ShowDialogGestion(playerid)
+public mafia_ShowDialogGestion(playerid)
 {
     new id = PlayerInfo[playerid][pLeader]-200;
     new Megastring[512];
@@ -56594,7 +56594,7 @@ stock mafia_ShowDialogGestion(playerid)
 	return 1;
 }
 
-stock body_ShowDialog(playerid,bodyid)
+public body_ShowDialog(playerid,bodyid)
 {
     player_Variable[playerid] = bodyid; player_Dialog[playerid] = 0;
     ShowPlayerDialog(playerid,140,DIALOG_STYLE_LIST,"� Cadavre �","{FFFFFF}- D�placer le cadavre ..\n- Bruler le cadavre\n- Enterrer le cadavre\n[L�gale] Inspecter le cadavre\n[L�gale] Enlever le cadavre","Valider","Annuler");
@@ -56606,7 +56606,7 @@ public StopCameraEffect(playerid)
     return SetPlayerDrunkLevel(playerid, 0), 1;
 }
 
-stock bizz_ShowDialogTuning(playerid)
+public bizz_ShowDialogTuning(playerid)
 {
     vehicle_Save(GetPlayerVehicleID(playerid),1,0);
 	new string[512];
@@ -56616,7 +56616,7 @@ stock bizz_ShowDialogTuning(playerid)
 	return 1;
 }
 
-stock bag_Load(playerid)
+public bag_Load(playerid)
 {
 	if(PlayerInfo[playerid][pBag] == 0 || bag[playerid][statut]==1 || bag[playerid][show] == 0)
 	    {return 1;}
@@ -56633,7 +56633,7 @@ stock bag_Load(playerid)
 	return 1;
 }
 
-stock bag_ShowDialog(playerid,targetid)
+public bag_ShowDialog(playerid,targetid)
 {
 	if(IsPlayerConnected(targetid))
 	{
@@ -56647,7 +56647,7 @@ stock bag_ShowDialog(playerid,targetid)
 	return 1;
 }
 
-stock car_Buy(playerid,carid, priceZ)
+public car_Buy(playerid,carid, priceZ)
 {
     if(PlayerInfo[playerid][pCar][0] == -1 || PlayerInfo[playerid][pCar][1] == -1 || PlayerInfo[playerid][pCar][2] == -1 || PlayerInfo[playerid][pCar][3] == -1 && PlayerInfo[playerid][pCarDev4] == 1 || PlayerInfo[playerid][pCar][4] == -1 && PlayerInfo[playerid][pCarDev5] == 1 || PlayerInfo[playerid][pCar][5] == -1 && PlayerInfo[playerid][pCarDev6] == 1)
 	{
@@ -56761,7 +56761,7 @@ public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
     return 1;
 }
 
-stock GetWeaponModel(weaponid)
+public GetWeaponModel(weaponid)
 {
 	switch(weaponid)
 	{
@@ -56798,7 +56798,7 @@ stock GetWeaponModel(weaponid)
 	return 0;
 }
 
-stock player_CheckEnter(playerid)
+public player_CheckEnter(playerid)
 {
     new string[64];
 	if(PlayerInfo[playerid][pMember] == 10 || AdminDuty[playerid] == 1)
@@ -57069,7 +57069,7 @@ stock player_CheckEnter(playerid)
 	return 1;
 }
 
-stock player_CheckInteraction(playerid)
+public player_CheckInteraction(playerid)
 {
 	if(GetPlayerState(playerid) != 1)
 	    {return 1;}
@@ -57753,7 +57753,7 @@ public OnPlayerPickUpDynamicPickup(playerid,pickupid)
 	return 1;
 }
 
-stock Convert(number)
+public Convert(number)
 {
 	new hours = 0, mins = 0, secs = 0, string[30];
 	hours = floatround(number / 3600);
@@ -57770,7 +57770,7 @@ stock Convert(number)
 	return string;
 }
 
-stock drop_Throw(playerid, item, amo, times)
+public drop_Throw(playerid, item, amo, times)
 {
 	if(IsABadWeapon(item))
 	    {return 1;}
@@ -57801,7 +57801,7 @@ stock drop_Throw(playerid, item, amo, times)
  	drop_Save(droped);
 	return 1;
 }
-stock drop_Remove(aDropSlotId)
+public drop_Remove(aDropSlotId)
 {
 	drop[aDropSlotId][pos][0] = 0.0;
 	drop[aDropSlotId][pos][1] = 0.0;
@@ -57813,7 +57813,7 @@ stock drop_Remove(aDropSlotId)
 	drop_Save(aDropSlotId);
 }
 
-stock drop_PlayerOnPickup(p)
+public drop_PlayerOnPickup(p)
 {
  	for(new i=0; i<totalDrops; i++)
  	{
@@ -57834,7 +57834,7 @@ stock drop_PlayerOnPickup(p)
  	}
 }
 
-stock drop_PlayerWeapon(playerid)
+public drop_PlayerWeapon(playerid)
 {
     new playerweapons[13][2];
 	for(new i=0;i<13;i++)
@@ -57854,7 +57854,7 @@ stock drop_PlayerWeapon(playerid)
 	return 1;
 }
 
-stock drop_PlayerCash(playerid)
+public drop_PlayerCash(playerid)
 {
 	new Cash = PlayerInfo[playerid][pCash]/6;
 	if(PlayerInfo[playerid][pCash] > 10000) { Cash = 1000; }
@@ -57863,7 +57863,7 @@ stock drop_PlayerCash(playerid)
 	return 1;
 }
 
-stock tag_Remove(tagId)
+public tag_Remove(tagId)
 {
 	tag[tagId][pos][0] = 0.0;
 	tag[tagId][pos][1] = 0.0;
@@ -57894,7 +57894,7 @@ public ClearAnim(playerid)
 	return 1;
 }
 
-stock removeDriveBy(playerid)
+public removeDriveBy(playerid)
 {
     new Float:fX,Float:fY,Float:fZ;
 
@@ -58018,7 +58018,7 @@ public DestroyActorChatBubble(playerid)
 	return 1;
 }
 
-stock IsPlayerFacingPlayer(playerid, targetid, Float:dOffset)
+public IsPlayerFacingPlayer(playerid, targetid, Float:dOffset)
 {
         new
                 Float:pX,
@@ -58043,7 +58043,7 @@ stock IsPlayerFacingPlayer(playerid, targetid, Float:dOffset)
         return false;
 }
 
-stock AngleInRangeOfAngle(Float:a1, Float:a2, Float:rangeZ)
+public AngleInRangeOfAngle(Float:a1, Float:a2, Float:rangeZ)
 {
 
         a1 -= a2;
@@ -58053,7 +58053,7 @@ stock AngleInRangeOfAngle(Float:a1, Float:a2, Float:rangeZ)
 
 }
 
-stock msg_Vip(color, string[])
+public msg_Vip(color, string[])
 {
     for(new i; i<MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -58065,7 +58065,7 @@ stock msg_Vip(color, string[])
 	}
 }
 
-stock msg_Wt(channel, color, string[])
+public msg_Wt(channel, color, string[])
 {
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -58077,7 +58077,7 @@ stock msg_Wt(channel, color, string[])
 	}
 }
 
-stock server_CheckEmail(email[]) // verification de l'adresse email
+public server_CheckEmail(email[]) // verification de l'adresse email
 {
     new bool:ValideMail=true;
     if(strlen(email) < 6 || strlen(email) > 31)
@@ -58106,7 +58106,7 @@ stock server_CheckEmail(email[]) // verification de l'adresse email
 	return false;
 }
 
-stock msg_Newbie(color, string[])
+public msg_Newbie(color, string[])
 {
 	for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 	{
@@ -58118,7 +58118,7 @@ stock msg_Newbie(color, string[])
 	}
 }
 
-stock IsValidSkin(skinid)
+public IsValidSkin(skinid)
 {
 	for(new i=0; i<6; i++)
  	{
@@ -58146,7 +58146,7 @@ public KickAll()
 	}
 }
 
-stock tel_generateNewNumber()
+public tel_generateNewNumber()
 {
 	new randphone=0;
 	for(new i=0; i<30; i++)
@@ -58158,7 +58158,7 @@ stock tel_generateNewNumber()
 	return randphone;
 }
 
-stock tel_IsUsed(number)
+public tel_IsUsed(number)
 {
 	format(sql, sizeof(sql), "SELECT id FROM Salrp_users WHERE PhoneNr=%d", number);
 	mysql_query(MYSQL,sql);
@@ -58167,7 +58167,7 @@ stock tel_IsUsed(number)
  	return numbertel;
 }
 
-stock GetPlayer2DZone(playerid, zone[], len)
+public GetPlayer2DZone(playerid, zone[], len)
 {
 	if(PlayerInfo[playerid][pInt] == 0 && PlayerInfo[playerid][pVirWorld] == 0)
 	{
@@ -58221,7 +58221,7 @@ public OnVehiclePaintjob(playerid, vehicleid, paintjobid)
 	return 1;
 }
 
-stock IsPlayerInInvalidNosVehicle(playerid)
+public IsPlayerInInvalidNosVehicle(playerid)
 {
         new vehicleid = GetPlayerVehicleID(playerid);
         #define MAX_INVALID_NOS_VEHICLES 52
@@ -58241,7 +58241,7 @@ stock IsPlayerInInvalidNosVehicle(playerid)
         return false;
 }
 
-stock IsComponentidCompatible(modelid, componentid)
+public IsComponentidCompatible(modelid, componentid)
 {
     if(componentid == 1025 || componentid == 1073 || componentid == 1074 || componentid == 1075 || componentid == 1076 ||
          componentid == 1077 || componentid == 1078 || componentid == 1079 || componentid == 1080 || componentid == 1081 ||
@@ -58332,7 +58332,7 @@ stock IsComponentidCompatible(modelid, componentid)
     return false;
 }
 
-stock HexToInt(string[])
+public HexToInt(string[])
 {
   if (string[0]==0) return 0;
   new i;
@@ -58344,13 +58344,13 @@ stock HexToInt(string[])
   }
   return res;
 }
-stock RGB( red, green, blue, alpha )
+public RGB( red, green, blue, alpha )
 {
 	return (red * 16777216) + (green * 65536) + (blue * 256) + alpha;
 }
 //==============================================================================
 
-stock vehicle_GetId(player_sqlid)
+public vehicle_GetId(player_sqlid)
 {
     for(new i=1; i<=totalVehicles; i++)
 	{
@@ -58694,7 +58694,7 @@ public vehicle_Load()
 	return 1;
 }
 
-stock vehicle_Save(id,tunning,trunk)
+public vehicle_Save(id,tunning,trunk)
 {
     new esc_owner[32],message[64],licence[16];
 	mysql_escape_string(vehicle[id][cOwner], esc_owner, sizeof(esc_owner), MYSQL);
@@ -58728,7 +58728,7 @@ stock vehicle_Save(id,tunning,trunk)
 }
 
 
-stock tuning_Load(vehicleid)
+public tuning_Load(vehicleid)
 {
 	SetVehicleVirtualWorld(vehicleid, vehicle[vehicleid][cVW]);
 	LinkVehicleToInterior(vehicleid, vehicle[vehicleid][cInt]);
@@ -58751,25 +58751,25 @@ stock tuning_Load(vehicleid)
     return 1;
 }
 
-stock server_TogglePlayerSpectating(playerid,toggle)
+public server_TogglePlayerSpectating(playerid,toggle)
 {
 	PlayerInfo[playerid][pSpetacte]=toggle;
 	return TogglePlayerSpectating(playerid,toggle);
 }
 
-stock server_PlayerSpectatePlayer(playerid, targetplayerid, mode = SPECTATE_MODE_NORMAL)
+public server_PlayerSpectatePlayer(playerid, targetplayerid, mode = SPECTATE_MODE_NORMAL)
 {
 	PlayerInfo[playerid][pSpetacte]=1;
 	return PlayerSpectatePlayer(playerid, targetplayerid, mode);
 }
 
-stock server_PlayerSpectateVehicle(playerid, targetvehicleid, mode = SPECTATE_MODE_NORMAL)
+public server_PlayerSpectateVehicle(playerid, targetvehicleid, mode = SPECTATE_MODE_NORMAL)
 {
 	PlayerInfo[playerid][pSpetacte]=1;
     return PlayerSpectateVehicle(playerid, targetvehicleid, mode);
 }
 
-stock server_SetPlayerInterior(playerid,id)
+public server_SetPlayerInterior(playerid,id)
 {
 	SetPlayerInterior(playerid,id);
 	PlayerInfo[playerid][pInt]=id;
@@ -58784,7 +58784,7 @@ stock server_SetPlayerInterior(playerid,id)
 	return 1;
 }
 
-stock server_SetPlayerVirtualWorld(playerid,id)
+public server_SetPlayerVirtualWorld(playerid,id)
 {
 	SetPlayerVirtualWorld(playerid,id);
 	PlayerInfo[playerid][pVirWorld]=id;
@@ -58910,7 +58910,7 @@ public camera_RemoveFlash(playerid)
 }
 
 
-stock anticheat_Ping(i)
+public anticheat_Ping(i)
 {
 	if(gPlayerSpawn[i] != 0)
 		{return 1;}
@@ -58926,7 +58926,7 @@ stock anticheat_Ping(i)
 	return 1;
 }
 
-stock GetXYInFrontOfPlayer(playerid, &Float:x, &Float:y, Float:distance)
+public GetXYInFrontOfPlayer(playerid, &Float:x, &Float:y, Float:distance)
 {
         new Float:a;
         GetPlayerPos(playerid, x, y, a);
@@ -58939,7 +58939,7 @@ stock GetXYInFrontOfPlayer(playerid, &Float:x, &Float:y, Float:distance)
         y += (distance * floatcos(-a, degrees));
 }
 
-stock Elevator_Initialize()
+public Elevator_Initialize()
 {
 	Obj_Elevator 			= CreateDynamicObject(18755, 1786.678100, -1303.459472, GROUND_Z_COORD + ELEVATOR_OFFSET, 0.000000, 0.000000, 270.000000,-1,-1,-1,STREAM_DISTANCE);
 	Obj_ElevatorDoors[0] 	= CreateDynamicObject(18757, X_DOOR_CLOSED, -1303.459472, GROUND_Z_COORD, 0.000000, 0.000000, 270.000000,-1,-1,-1,STREAM_DISTANCE);
@@ -58967,7 +58967,7 @@ stock Elevator_Initialize()
 	return 1;
 }
 
-stock Elevator_Destroy()
+public Elevator_Destroy()
 {
 	if(IsValidDynamicObject(Obj_Elevator)) DestroyDynamicObject(Obj_Elevator);
 	if(IsValidDynamicObject(Obj_ElevatorDoors[0]))DestroyDynamicObject(Obj_ElevatorDoors[0]);
@@ -58982,7 +58982,7 @@ stock Elevator_Destroy()
 	return 1;
 }
 
-stock Elevator_OpenDoors()
+public Elevator_OpenDoors()
 {
 	new Float:x, Float:y, Float:z;
 	GetDynamicObjectPos(Obj_ElevatorDoors[0], x, y, z);
@@ -58991,7 +58991,7 @@ stock Elevator_OpenDoors()
 	return 1;
 }
 
-stock Elevator_CloseDoors()
+public Elevator_CloseDoors()
 {
     if(ElevatorState == ELEVATOR_STATE_MOVING)
 	    return 0;
@@ -59003,21 +59003,21 @@ stock Elevator_CloseDoors()
 	return 1;
 }
 
-stock Floor_OpenDoors(floorid)
+public Floor_OpenDoors(floorid)
 {
     MoveDynamicObject(Obj_FloorDoors[floorid][0], X_DOOR_L_OPENED, -1303.171142, GetDoorsZCoordForFloor(floorid), DOORS_SPEED);
 	MoveDynamicObject(Obj_FloorDoors[floorid][1], X_DOOR_R_OPENED, -1303.171142, GetDoorsZCoordForFloor(floorid), DOORS_SPEED);
 	return 1;
 }
 
-stock Floor_CloseDoors(floorid)
+public Floor_CloseDoors(floorid)
 {
     MoveDynamicObject(Obj_FloorDoors[floorid][0], X_DOOR_CLOSED, -1303.171142, GetDoorsZCoordForFloor(floorid), DOORS_SPEED);
 	MoveDynamicObject(Obj_FloorDoors[floorid][1], X_DOOR_CLOSED, -1303.171142, GetDoorsZCoordForFloor(floorid), DOORS_SPEED);
 	return 1;
 }
 
-stock Elevator_MoveToFloor(floorid)
+public Elevator_MoveToFloor(floorid)
 {
 	ElevatorState = ELEVATOR_STATE_MOVING;
 	ElevatorFloor = floorid;
@@ -59047,7 +59047,7 @@ public Elevator_TurnToIdle()
 	return 1;
 }
 
-stock RemoveFirstQueueFloor()
+public RemoveFirstQueueFloor()
 {
 	// Removes the data in ElevatorQueue[0], and reorders the queue accordingly.
 
@@ -59058,7 +59058,7 @@ stock RemoveFirstQueueFloor()
 	return 1;
 }
 
-stock AddFloorToQueue(floorid)
+public AddFloorToQueue(floorid)
 {
 	new slot = -1;
 	for(new i; i < sizeof(ElevatorQueue); i ++)
@@ -59079,7 +59079,7 @@ stock AddFloorToQueue(floorid)
 	return 0;
 }
 
-stock ResetElevatorQueue()
+public ResetElevatorQueue()
 {
 	// Resets the queue.
 
@@ -59091,7 +59091,7 @@ stock ResetElevatorQueue()
 	return 1;
 }
 
-stock IsFloorInQueue(floorid)
+public IsFloorInQueue(floorid)
 {
 	// Checks if the specified floor is currently part of the queue.
 
@@ -59101,7 +59101,7 @@ stock IsFloorInQueue(floorid)
 	return 0;
 }
 
-stock ReadNextFloorInQueue()
+public ReadNextFloorInQueue()
 {
 	// Reads the next floor in the queue, closes doors, and goes to it.
 
@@ -59113,7 +59113,7 @@ stock ReadNextFloorInQueue()
 	return 1;
 }
 
-stock DidPlayerRequestElevator(playerid)
+public DidPlayerRequestElevator(playerid)
 {
 	for(new i; i < sizeof(FloorRequestedBy); i ++)
 	    if(FloorRequestedBy[i] == playerid)
@@ -59121,7 +59121,7 @@ stock DidPlayerRequestElevator(playerid)
 	return 0;
 }
 
-stock ShowElevatorDialog(playerid)
+public ShowElevatorDialog(playerid)
 {
 	new string[512];
 	for(new i; i < sizeof(ElevatorQueue); i ++)
@@ -59137,7 +59137,7 @@ stock ShowElevatorDialog(playerid)
 	return 1;
 }
 
-stock CallElevator(playerid, floorid)
+public CallElevator(playerid, floorid)
 {
 	// Calls the elevator (also used with the elevator dialog).
 
@@ -59149,13 +59149,13 @@ stock CallElevator(playerid, floorid)
 	return 1;
 }
 
-stock Float:GetElevatorZCoordForFloor(floorid)
+public Float:GetElevatorZCoordForFloor(floorid)
     return (GROUND_Z_COORD + FloorZOffsets[floorid] + ELEVATOR_OFFSET); // A small offset for the elevator object itself.
 
-stock Float:GetDoorsZCoordForFloor(floorid)
+public Float:GetDoorsZCoordForFloor(floorid)
 	return (GROUND_Z_COORD + FloorZOffsets[floorid]);
 
-stock GetVehicleRotation (vehicleid, &Float: heading,  &Float: attitude,  &Float: bank)
+public GetVehicleRotation (vehicleid, &Float: heading,  &Float: attitude,  &Float: bank)
 {
     new Float: quat_w, Float: quat_x, Float: quat_y, Float: quat_z;
     GetVehicleRotationQuat (vehicleid, quat_w, quat_x, quat_y, quat_z);
@@ -59164,7 +59164,7 @@ stock GetVehicleRotation (vehicleid, &Float: heading,  &Float: attitude,  &Float
     return 1;
 }
 
-stock ConvertNonNormaQuatToEuler(Float: qw, Float: qx, Float: qy, Float: qz, &Float: heading, &Float: attitude, &Float: bank)
+public ConvertNonNormaQuatToEuler(Float: qw, Float: qx, Float: qy, Float: qz, &Float: heading, &Float: attitude, &Float: bank)
 {
     new Float: sqw = qw * qw;
     new Float: sqx = qx * qx;
@@ -59178,7 +59178,7 @@ stock ConvertNonNormaQuatToEuler(Float: qw, Float: qx, Float: qy, Float: qz, &Fl
     return 1;
 }
 
-stock IsPlayerAiming(playerid)
+public IsPlayerAiming(playerid)
 {
 	new anim = GetPlayerAnimationIndex(playerid);
 	if (((anim >= 1160) && (anim <= 1163)) || (anim == 1167) || (anim == 1365) || (anim == 1643) || (anim == 1453) || (anim == 220))
@@ -59187,12 +59187,12 @@ stock IsPlayerAiming(playerid)
 	
 }
 
-stock msg_Client(playerid, color, const msg[])
+public msg_Client(playerid, color, const msg[])
 {
 	return SendClientMessage(playerid,color,msg);
 }
 
-stock msg_Box(playerid, color[], prefixInfo[], msg[], timeclose)
+public msg_Box(playerid, color[], prefixInfo[], msg[], timeclose)
 {
 
 	KillTimer(infoBoxTimer[playerid]);
@@ -59216,7 +59216,7 @@ public infoBoxClose(playerid)
 	return 1;
 }
 
-stock msg_cFormated(playerid, color, const msg[], {Float,_}:...)
+public msg_cFormated(playerid, color, const msg[], {Float,_}:...)
 {
 	new len = strlen(msg),d=0,posArg = 3;
 	new dest[512];
@@ -59299,7 +59299,7 @@ stock msg_cFormated(playerid, color, const msg[], {Float,_}:...)
 }
 
 
-stock msg_aFormated(color, const msg[], {Float,_}:...)
+public msg_aFormated(color, const msg[], {Float,_}:...)
 {
 	new len = strlen(msg),d=0,posArg = 2;
 	new dest[128];
@@ -59381,8 +59381,8 @@ stock msg_aFormated(color, const msg[], {Float,_}:...)
 	return SendClientMessageToAll(color,dest);
 }
 
-stock ConvertToColor(RR,GG,BB,AA)return (RR*16777216)+(GG*65536)+(BB*256)+AA;
-stock _UpdateOPA(playerid=INVALID_PLAYER_ID) //my version of foreach (I made it before Y_Less did! publicly anyway)
+public ConvertToColor(RR,GG,BB,AA)return (RR*16777216)+(GG*65536)+(BB*256)+AA;
+public _UpdateOPA(playerid=INVALID_PLAYER_ID) //my version of foreach (I made it before Y_Less did! publicly anyway)
 {
 	_OnlinePlayers=0;
 	for(new ply;ply<MAX_PLAYERS;ply++)
@@ -59441,12 +59441,12 @@ FadePlayerConnect(playerid)
 	_pStep[playerid]=-1;
 	return 1;
 }
-stock FadePlayerDisconnect(playerid)
+public FadePlayerDisconnect(playerid)
 {
 	_UpdateOPA(playerid);
 	return 1;
 }
-stock StopPlayerFade(playerid)
+public StopPlayerFade(playerid)
 {
 	_pStep[playerid]=0;
 	_pHold[playerid]=0;
@@ -59495,7 +59495,7 @@ public _UpdateFadeTimer()
 	}
 }
 
-stock date( UnixTimestamp,  _form=0 )
+public date( UnixTimestamp,  _form=0 )
 {
 
 	new timestamp=UnixTimestamp+3600; // Decalage de 1h
@@ -59588,15 +59588,15 @@ public drop_Remove(dropid) { return 1; }
 public anticheat_Check(playerid) { return 1; }
 public timer_Decrement(i) { return 1; }
 public atm_CheckRob() { return 1; }
-stock SafeSetPlayerHealth(playerid, Float:health) { SetPlayerHealth(playerid, health); return 1; }
+public SafeSetPlayerHealth(playerid, Float:health) { SetPlayerHealth(playerid, health); return 1; }
 public CreateAndroInt(vehicleid) { return 1; }
 public SetPlayerPosInAndro(playerid, vehicleid) { return 1; }
-stock SafeSetPlayerPos(playerid, Float:x, Float:y, Float:z) { SetPlayerPos(playerid, x, y, z); return 1; }
-stock randomEx(min, max) { return random(max - min + 1) + min; }
-stock SafeGivePlayerMoney(playerid, amount) { GivePlayerMoney(playerid, amount); return 1; }
-stock SafeSetPlayerArmour(playerid, Float:armour) { SetPlayerArmour(playerid, armour); return 1; }
-stock gym_SetCombatStyle(playerid, style, skill) { SetPlayerSkillLevel(playerid, skill, style); return 1; }
-stock GetGangColor(gangid) { return -1; }
-stock GetCityName(playerid, city[], len) { city[0] = '\0'; #pragma unused playerid, len return 1; }
-stock GetInteriorName(interiorid, name[], len) { name[0] = '\0'; #pragma unused interiorid, len return 1; }
+public SafeSetPlayerPos(playerid, Float:x, Float:y, Float:z) { SetPlayerPos(playerid, x, y, z); return 1; }
+public randomEx(min, max) { return random(max - min + 1) + min; }
+public SafeGivePlayerMoney(playerid, amount) { GivePlayerMoney(playerid, amount); return 1; }
+public SafeSetPlayerArmour(playerid, Float:armour) { SetPlayerArmour(playerid, armour); return 1; }
+public gym_SetCombatStyle(playerid, style, skill) { SetPlayerSkillLevel(playerid, skill, style); return 1; }
+public GetGangColor(gangid) { return -1; }
+public GetCityName(playerid, city[], len) { city[0] = '\0'; #pragma unused playerid, len return 1; }
+public GetInteriorName(interiorid, name[], len) { name[0] = '\0'; #pragma unused interiorid, len return 1; }
 //===============================FIN DU SCRIPT==================================
