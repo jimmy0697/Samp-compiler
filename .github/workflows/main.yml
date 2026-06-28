@@ -12,14 +12,14 @@ jobs:
 
       - name: Download pawncc
         run: |
-          wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
-          tar -xzf pawnc-3.10.10-linux.tar.gz
+          wget https://github.com/pawn-lang/compiler/releases/download/v3.10.4/pawnc-3.10.4-linux.tar.gz
+          tar -xzf pawnc-3.10.4-linux.tar.gz
 
       - name: Compile
         run: |
-          export LD_LIBRARY_PATH=$PWD/pawnc-3.10.10-linux/lib:$LD_LIBRARY_PATH
+          export LD_LIBRARY_PATH=$PWD/pawnc-3.10.4-linux/lib:$LD_LIBRARY_PATH
           set +e
-          pawnc-3.10.10-linux/bin/pawncc -i$PWD/include gamemodes/SALRP.pwn -w0 -d0 > compile_log.txt 2>&1
+          pawnc-3.10.4-linux/bin/pawncc -i$PWD/include gamemodes/SALRP.pwn -w0 -d0 > compile_log.txt 2>&1
           echo "EXIT:$?" >> compile_log.txt
           ls -la gamemodes/SALRP.amx >> compile_log.txt 2>&1
 
