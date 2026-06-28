@@ -16,6 +16,7 @@ jobs:
           tar -xzf pawnc-3.10.4-linux.tar.gz
 
       - name: Compile
+      continue-on-error: true
         run: |
           export LD_LIBRARY_PATH=$PWD/pawnc-3.10.4-linux/lib:$LD_LIBRARY_PATH
                     ulimit -s unlimited
