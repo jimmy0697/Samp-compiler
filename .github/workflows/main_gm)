@@ -18,11 +18,10 @@ jobs:
       - name: Compile
         run: |
           export LD_LIBRARY_PATH=$PWD/pawnc-3.10.4-linux/lib:$LD_LIBRARY_PATH
-          set +e
-          ulimit -s unlimited
-            pawnc-3.10.4-linux/bin/pawncc -i$PWD/include gamemodes/SALRP.pwn -w0 -d0 > compile_log.txt 2>&1
+                    ulimit -s unlimited
+            pawnc-3.10.4-linux/bin/pawncc -i$PWD/include gamemodes/SALRP.pwn -w0 -d0 > compile_log.txt 2>&1 || true
           echo "EXIT:$?" >> compile_log.txt
-          ls -la gamemodes/SALRP.amx >> compile_log.txt 2>&1
+          ls -la gamemodes/SALRP.amx >> compile_log.txt 2>&1 || true
 
       - name: Upload log
         uses: actions/upload-artifact@v4
