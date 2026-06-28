@@ -180,7 +180,7 @@ forward speedometer_Hide(playerid);
 forward GetWeaponSlot(weaponid);
 forward GetCheatName(cheatid);
 forward GetBizzActor(bizzid);
-forward OnPlayerCheat(playerid, cheatid, optionid=0, bool:kick=true);
+forward OnPlayerCheat(playerid, cheatid, optionid, bool:kick);
 forward ResetPlayerIntVar(playerid);
 forward SetPlayerCriminal(playerid,temoin,victim,reason[],nb);
 forward phone_SMS(playerid,giveplayerid,text[]);
@@ -420,8 +420,8 @@ forward vehicle_GetId(player_sqlid);
 forward vehicle_Save(id,tunning,trunk);
 forward tuning_Load(vehicleid);
 forward server_TogglePlayerSpectating(playerid,toggle);
-forward server_PlayerSpectatePlayer(playerid, targetplayerid, mode = SPECTATE_MODE_NORMAL);
-forward server_PlayerSpectateVehicle(playerid, targetvehicleid, mode = SPECTATE_MODE_NORMAL);
+forward server_PlayerSpectatePlayer(playerid, targetplayerid, mode);
+forward server_PlayerSpectateVehicle(playerid, targetvehicleid, mode);
 forward server_SetPlayerInterior(playerid,id);
 forward server_SetPlayerVirtualWorld(playerid,id);
 forward anticheat_Ping(i);
@@ -456,7 +456,7 @@ forward SafeResetPlayerWeapons(playerid);
 
 forward msg_Box(playerid, color[], prefixInfo[], msg[], timeclose);
 forward ConvertToColor(RR,GG,BB,AA);
-forward _UpdateOPA(playerid=INVALID_PLAYER_ID);
+forward _UpdateOPA(playerid);
 forward FadePlayerDisconnect(playerid);
 forward StopPlayerFade(playerid);
 forward date(UnixTimestamp, _form);
@@ -9316,7 +9316,7 @@ public GetBizzActor(bizzid)
 	return name;
 }
 
-public OnPlayerCheat(playerid, cheatid, optionid=0, bool:kick=true)
+forward OnPlayerCheat(playerid, cheatid, optionid, bool:kick);
 {
 	new string[128],option[32]="",wep[32];
 	if(optionid > 0)
