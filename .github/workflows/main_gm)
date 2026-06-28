@@ -12,15 +12,15 @@ jobs:
 
       - name: Download pawncc
         run: |
-          wget https://github.com/pawn-lang/compiler/releases/download/v3.10.4/pawnc-3.10.4-linux.tar.gz
-          tar -xzf pawnc-3.10.4-linux.tar.gz
+          wget https://github.com/pawn-lang/compiler/releases/download/v3.10.9/pawnc-3.10.9-linux.tar.gz
+          tar -xzf pawnc-3.10.9-linux.tar.gz
 
       - name: Compile
       continue-on-error: true
         run: |
-          export LD_LIBRARY_PATH=$PWD/pawnc-3.10.4-linux/lib:$LD_LIBRARY_PATH
+          export LD_LIBRARY_PATH=$PWD/pawnc-3.10.9-linux/lib:$LD_LIBRARY_PATH
                     ulimit -s unlimited
-            pawnc-3.10.4-linux/bin/pawncc -i$PWD/include gamemodes/SALRP.pwn -w0 -d0 > compile_log.txt 2>&1; echo EXITCODE=$? >> compile_log.txt || true
+            pawnc-3.10.9-linux/bin/pawncc -i$PWD/include gamemodes/SALRP.pwn -w0 -d0 > compile_log.txt 2>&1; echo EXITCODE=$? >> compile_log.txt || true
           echo "EXIT:$?" >> compile_log.txt
           ls -la gamemodes/SALRP.amx >> compile_log.txt 2>&1; echo EXITCODE=$? >> compile_log.txt || true
 
