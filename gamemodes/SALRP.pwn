@@ -327,7 +327,7 @@ forward permis_End(playerid,type,reason[]);
 forward GetDistanceToPoint(playerid,Float:x2,Float:y2,Float:z2);
 forward GetGangColor(colorid);
 forward GetLocationName(id);
-forward GetFactionName(id);
+forward GetFactionName(factionid, dest[], len=sizeof(dest));
 forward GetFactionRank(id,rank);
 forward GetOriginName(id);
 forward GetLangName(id);
@@ -372,7 +372,7 @@ forward ConvertirTexte(Texte[]);
 forward CreateShamalInt(vehicleid, Float:X, Float:Y, Float:Z);
 forward CreateAndroInt(vehicleid, Float:X, Float:Y, Float:Z);
 forward SetPlayerPosInShamal(playerid, shamalid);
-forward SetPlayerPosInAndro(playerid, android);
+forward SafeResetPlayerWeapons(playerid);
 forward ShamalExists(vehicleid);
 forward AndroExists(vehicleid);
 forward randomEx(randval);
@@ -449,9 +449,9 @@ forward TimerKick(playerid);
 forward MySQLJail(playerid);
 forward MySQLKick(playerid);
 forward MySQLBan(playerid);
-forward fire_StartFire(playerid);
+forward fire_StartFire(Float:x,Float:y,Float:z);
 forward job_ResetFreeze(playerid);
-forward GetFactionName(factionid);
+forward GetFactionName(factionid, dest[], len=sizeof(dest));
 forward SafeResetPlayerWeapons(playerid);
 
 forward msg_Box(playerid, color[], prefixInfo[], msg[], timeclose);
@@ -8406,7 +8406,6 @@ public OnRconCommand(cmd[])
 	return 1;
 }
 
-forward fire_StartFire(Float:x,Float:y,Float:z)
 {
     CreateExplosion(x, y, z, 1, 500);
     CreateExplosion(x+2, y, z, 1, 500);
@@ -37565,7 +37564,7 @@ public SafeResetPlayerWeapons(plyid)
     for (new i=0; i<13; i++)
 	{
 		ScriptWeapons[plyid][i] = 0;
-		ScriptWeaponsAmmo[plyid][i] = 0;
+public SafeResetPlayerWeapons(playerid)
 	}
 	ResetPlayerWeapons(plyid);
 	ScriptWeaponUpdated[plyid] = 0;
