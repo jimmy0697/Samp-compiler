@@ -8406,7 +8406,7 @@ public OnRconCommand(cmd[])
 	return 1;
 }
 
-public fire_StartFire(Float:x,Float:y,Float:z)
+forward fire_StartFire(Float:x,Float:y,Float:z)
 {
     CreateExplosion(x, y, z, 1, 500);
     CreateExplosion(x+2, y, z, 1, 500);
