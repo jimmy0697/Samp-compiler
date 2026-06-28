@@ -48,8 +48,8 @@ stock SafeSetVehicleHealth(vehicleid, Float:health) { SetVehicleHealth(vehicleid
 stock SafeResetPlayerWeapons(playerid) { ResetPlayerWeapons(playerid); return 1; }
 stock SafeGivePlayerWeapon(playerid, weaponid, ammo) { GivePlayerWeapon(playerid, weaponid, ammo); return 1; }
 stock job_GetRandomVar(jobid) { return jobid; }
-stock GetKeyJobName(keyid, dest[], len=sizeof(dest)) { dest[0]=0; #pragma unused keyid,len; return 1; }
-stock GetFactionName(factionid, dest[], len=sizeof(dest)) { dest[0]=0; #pragma unused factionid,len; return 1; }
+stock GetKeyJobName(keyid, dest[], len=sizeof(dest)) { dest[0]=0; return 1; }
+stock GetFactionName(factionid, dest[], len=sizeof(dest)) { dest[0]=0; return 1; }
 forward MySQLReloadBans();
 forward faction_CheckReload();
 forward seed_Timer();
