@@ -35,7 +35,7 @@ Fix loading string from DataBase
 									Includes
 ================================================================================
 */
-stock permis_End(playerid, type, reason[]="") { return 1; }
+stock permis_End(playerid, type, reason[]) { return 1; }
 stock GetJobName(id) { return 0; }
 stock player_GetNearHospital(playerid) { return 0; }
 stock GetOriginName(id) { new s[32]="Inconnu"; return _:s; }
@@ -45,9 +45,15 @@ stock job_SetSkin(playerid, jobid) { return 1; }
 stock Float:GetDistanceBetweenPlayers(p1, p2) { return 0.0; }
 stock SafeResetPlayerMoney(playerid, amount) { ResetPlayerMoney(playerid); GivePlayerMoney(playerid, amount); return 1; }
 stock GetCityCounty(playerid) { return 0; }
-stock ConvertirTexte(texte[], size=sizeof(texte)) { return 1; }
-stock SafeSetPlayerAmmo(playerid, weaponid, ammo) { SetPlayerAmmo(playerid, weaponid, ammo); return 1; }
+stock ConvertirTexte(Texte[]) { return 1; }
+stock SafeSetPlayerAmmo(plgid, weaponslot, ammo) { SetPlayerAmmo(plgid, weaponslot, ammo); return 1; }
 stock GetVehicleSpeed(vehicleid) { new Float:vx,Float:vy,Float:vz; GetVehicleVelocity(vehicleid,vx,vy,vz); return 0; }
+stock skill_Set(playerid, skill, level) { return 1; }
+stock GetItemName(itemid) { return 0; }
+stock GetCityPlayer(playerid) { return 0; }
+stock GetCountyPlayer(playerid) { return 0; }
+stock pay_showDialog(playerid, amount) { return 1; }
+stock GetCityPos(Float:x, Float:y) { return 0; }
 
 #include <streamer> 															// Streamer
 #include <a_samp>                												// SA:MP
@@ -16398,7 +16404,7 @@ public PayDay(i)
 	return 1;
 }
 
-public strtok(const string[], &index)
+stock strtok(const string[], &index)
 {
 	new length = strlen(string);
 	while ((index < length) && (string[index] <= ' '))
