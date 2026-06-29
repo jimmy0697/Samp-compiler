@@ -9268,31 +9268,6 @@ public GetWeaponSlot(weaponid)
     return -1;
 }
 
-stock GetCheatName(cheatid)
-{
-	new name[32]="Aucun";
-    switch(cheatid)
-	{
-	    case 1:	{name="Speed Hack";}
-	    case 2:	{name="Block Munitions";}
-	    case 3:	{name="Tir Rapide";}
-	    case 4:	{name="Crash par balle";}
-	    case 5:	{name="Cheat Munitions";}
-	    case 6:	{name="Animations";}
-	    case 7:	{name="JetPack";}
-	    case 8:	{name="Fausse Arme";}
-	    case 9:	{name="Cheat Arme";}
-	    case 10: {name="Spec Hack";}
-	    case 11: {name="CarJack Distance";}
-	    case 12: {name="Cheat Vole";}
-	    case 13: {name="Cheat Tuning V�hicule";}
-	    case 14: {name="Wall Ride";}
-	    case 15: {name="Sobeit D�tect�";}
-	    case 16: {name="Cheat DGUN";}
-	    case 17: {name="Cheat TP";}
-	}
-	return name;
-}
 
 public GetCheatName(cheatid)
 {
@@ -9376,10 +9351,6 @@ public SetPlayerCriminal(playerid,temoin,victim,reason[],nb)
 		if(count = cache_get_row_count() && count > 0)
 		{
   			cache_get_value_name_int(0,"Arrested", nbarested);
-}
-}
-}
-public OnPlayerCheat(playerid,cheatid,optionid,bool:kick)
 			cache_get_value_name(0,"Crime1", Field, 128);
 			mysql_escape_string(Field, crime1, sizeof(crime1), MYSQL);
 			cache_get_value_name(0,"Crime2",Field, 128);
