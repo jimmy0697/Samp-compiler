@@ -36,15 +36,18 @@ Fix loading string from DataBase
 ================================================================================
 */
 stock permis_End(playerid, type, reason[]="") { return 1; }
-stock GetJobName(playerid) { return 0; }
+stock GetJobName(id) { return 0; }
 stock player_GetNearHospital(playerid) { return 0; }
-stock GetOriginName(origin) { new s[32]="Inconnu"; return _:s; }
-stock GetFactionRank(factionid, rank) { new s[32]="Inconnu"; return _:s; }
-stock GetLangName(lang) { new s[32]="Inconnu"; return _:s; }
-stock job_SetSkin(playerid, job) { return 1; }
-stock GetDistanceBetweenPlayers(p1, p2) { return 0.0; }
+stock GetOriginName(id) { new s[32]="Inconnu"; return _:s; }
+stock GetFactionRank(id, rank) { new s[32]="Inconnu"; return _:s; }
+stock GetLangName(id) { new s[32]="Inconnu"; return _:s; }
+stock job_SetSkin(playerid, jobid) { return 1; }
+stock Float:GetDistanceBetweenPlayers(p1, p2) { return 0.0; }
 stock SafeResetPlayerMoney(playerid, amount) { ResetPlayerMoney(playerid); GivePlayerMoney(playerid, amount); return 1; }
-stock GetCityCounty(i) { return 0; }
+stock GetCityCounty(playerid) { return 0; }
+stock ConvertirTexte(texte[], size=sizeof(texte)) { return 1; }
+stock SafeSetPlayerAmmo(playerid, weaponid, ammo) { SetPlayerAmmo(playerid, weaponid, ammo); return 1; }
+stock GetVehicleSpeed(vehicleid) { new Float:vx,Float:vy,Float:vz; GetVehicleVelocity(vehicleid,vx,vy,vz); return floatround(floatsqroot(vx*vx+vy*vy+vz*vz)*100); }
 
 #include <streamer> 															// Streamer
 #include <a_samp>                												// SA:MP
