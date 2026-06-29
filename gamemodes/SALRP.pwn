@@ -9294,7 +9294,7 @@ stock GetCheatName(cheatid)
 	return name;
 }
 
-public GetBizzActor(bizzid)
+public GetCheatName(cheatid)
 {
 	new tmpId;
     switch(cheatid)
@@ -12063,7 +12063,7 @@ public IniStatsPanel(playerid)
 		        
 		        new leader[32];
 		        if(PlayerInfo[Clicked[playerid]][pLeader] == 0){format(leader,sizeof(leader),"Aucun");}
-		        else{ strmid(leader,GetFactionName(PlayerInfo[Clicked[playerid]][pLeader]),0,32,32);}
+		else{ GetFactionName(PlayerInfo[Clicked[playerid]][pLeader],leader,sizeof(leader));}
 
 		        new rang = PlayerInfo[Clicked[playerid]][pRank];
 		        new Skin = PlayerInfo[Clicked[playerid]][pChar];
