@@ -9316,7 +9316,7 @@ public GetBizzActor(bizzid)
 	return name;
 }
 
-forward OnPlayerCheat(playerid, cheatid, optionid, bool:kick);
+public OnPlayerCheat(playerid,cheatid,optionid,bool:kick)
 {
 	new string[128],option[32]="",wep[32];
 	if(optionid > 0)
