@@ -44,7 +44,7 @@ Fix loading string from DataBase
 //#include <TSConnector>                                                   		// TeamSpeak
 
 stock GetDealerShipName(id) { return id; }
-stock SafeSetVehicleHealth(vehicleid, Float:health) { SetVehicleHealth(vehicleid, health); return 1; }
+public SafeSetVehicleHealth(carid,Float:amount){SetVehicleHealth(carid,amount);return 1;}
 stock SafeResetPlayerWeapons(playerid) { ResetPlayerWeapons(playerid); return 1; }
 stock SafeGivePlayerWeapon(playerid, weaponid, ammo) { GivePlayerWeapon(playerid, weaponid, ammo); return 1; }
 stock job_GetRandomVar(jobid) { return jobid; }
@@ -450,7 +450,7 @@ forward MySQLJail(playerid,by,reason[],times);
 forward MySQLKick(playerid,by,reason[]);
 forward MySQLBan(playerid,by,reason[],times);
 forward fire_StartFire(Float:x,Float:y,Float:z);
-forward job_ResetFreeze(playerid);
+forward job_ResetFreeze(playerid,other);
 forward GetFactionName(factionid, dest[], len=sizeof(dest));
 forward SafeResetPlayerWeapons(playerid);
 
@@ -9772,9 +9772,9 @@ public player_UpdateLabel(playerid)
 	if(afk_time[playerid] > 10)
 	    {format(afk,sizeof(afk),"{FAAC58}\nAbsent : %s",Convert(afk_time[playerid]));}
 	    
-	if(PlayerInfo[playerid][pArmour] > 65)			{format(armour,sizeof(armour)," - A: {58FA58}%.0f",PlayerInfo[playerid][pArmour]);}
-    else if(PlayerInfo[playerid][pArmour] > 35)		{format(armour,sizeof(armour)," - A: {FAAC58}%.0f",PlayerInfo[playerid][pArmour]);}
-    else if(PlayerInfo[playerid][pArmour] > 0)		{format(armour,sizeof(armour)," - A: {FE2E64}%.0f",PlayerInfo[playerid][pArmour]);}
+	if(floatround(PlayerInfo[playerid][pArmour]) > 65)			{format(armour,sizeof(armour)," - A: {58FA58}%.0f",floatround(PlayerInfo[playerid][pArmour]));}
+    else if(floatround(PlayerInfo[playerid][pArmour]) > 35)		{format(armour,sizeof(armour)," - A: {FAAC58}%.0f",floatround(PlayerInfo[playerid][pArmour]));}
+    else if(floatround(PlayerInfo[playerid][pArmour]) > 0)		{format(armour,sizeof(armour)," - A: {FE2E64}%.0f",floatround(PlayerInfo[playerid][pArmour]));}
     
     if(GetPlayerPing(playerid) > 120)				{format(ping,sizeof(ping),"Pg: {FE2E64}%d",GetPlayerPing(playerid));}
     else if(GetPlayerPing(playerid) > 70)			{format(ping,sizeof(ping),"Pg: {FAAC58}%d",GetPlayerPing(playerid));}
@@ -10505,10 +10505,10 @@ public mecano_Load()
 	    cache_get_value_name_int(0,"Skin6",MecanoInfo[skin][5]);
 	    cache_get_value_name_float(0,"Spawn_x",MecanoInfo[Spawn][0]);
 	    cache_get_value_name_float(0,"Spawn_y",MecanoInfo[Spawn][1]);
-	    cache_get_value_name_float(0,"Spawn_z",MercanoInfo[Spawn][2]);
+	    cache_get_value_name_float(0,"Spawn_z",MecanoInfo[Spawn][2]);
 	    cache_get_value_name_float(0,"Spawn_a",MecanoInfo[Spawn][3]);
 	    cache_get_value_name_int(0,"Interior",MecanoInfo[Interior]);
-	    cache_get_value_name_int(0,"id",MercanoInfo[VW]);
+	    cache_get_value_name_int(0,"id",MecanoInfo[VW]);
 	    cache_get_value_name_float(0,"Entrance_x",MecanoInfo[Entrance][0]);
 	    cache_get_value_name_float(0,"Entrance_y",MecanoInfo[Entrance][1]);
 	    cache_get_value_name_float(0,"Entrance_z",MecanoInfo[Entrance][2]);
@@ -36637,7 +36637,6 @@ public SafeGivePlayerArmour(plyid,Float:amounttogive)
 	return 1;
 }
 
-public SafeSetVehicleHealth(carid,Float:amount)
 {
  	vehicle[carid][cHealth]=amount;
  	SetVehicleHealth(carid,amount);
