@@ -46,7 +46,6 @@ stock Float:GetDistanceBetweenPlayers(p1, p2) { return 0.0; }
 stock SafeResetPlayerMoney(playerid, amount) { ResetPlayerMoney(playerid); GivePlayerMoney(playerid, amount); return 1; }
 stock GetCityCounty(playerid) { return 0; }
 stock ConvertirTexte(Texte[]) { return 1; }
-stock SafeSetPlayerAmmo(plgid, weaponslot, ammo) { SetPlayerAmmo(plgid, weaponslot, ammo); return 1; }
 stock GetVehicleSpeed(vehicleid) { new Float:vx,Float:vy,Float:vz; GetVehicleVelocity(vehicleid,vx,vy,vz); return 0; }
 stock skill_Set(playerid, skill, level) { return 1; }
 stock GetItemName(modelid) { return 0; }
@@ -65,7 +64,7 @@ stock player_IsAtNpcPoint(playerid, type, Float:cercle) { return 0; }
 stock GetAdminName(id) { return 0; }
 stock player_Divorce(playerid) { return 1; }
 stock GetInvalidCreateModel(modelid) { return 0; }
-new mariage_Step[MAX_PLAYERS];
+new mariage_Step[500];
 
 #include <streamer> 															// Streamer
 #include <a_samp>                												// SA:MP
