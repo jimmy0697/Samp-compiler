@@ -35342,7 +35342,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				if(job_ObjectN[playerid] == 0 && (IsPlayerInRangeOfPoint(playerid, 2.0, 2109.1106,-1788.5276,13.5608) || IsPlayerInRangeOfPoint(playerid, 2.0, -1809.9154,941.4058,24.8733) || IsPlayerInRangeOfPoint(playerid, 2.0, 2078.3313,2229.9302,11.0234)))
 				{
 				    if(job_TempVar[playerid] == 5)
-				        {return msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous avez d�j� 5 pizza dans le coffre de votre scooter.");}
+				        {msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous avez d�j� 5 pizza dans le coffre de votre scooter."); return 1;}
                     job_ObjectN[playerid]=1;
                     msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous avez pris une pizza, mettez l� dans le coffre de votre scooter, touche 'Y'.");
 				    SetPlayerSpecialAction(playerid,SPECIAL_ACTION_CARRY);
@@ -35367,7 +35367,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					else if(job_ObjectN[playerid]==0)
 					{
 					    if(job_TempVar[playerid] <= 0)
-					        {return msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Il n'y a plus de pizza dans le coffre !");}
+					        {msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Il n'y a plus de pizza dans le coffre !"); return 1;}
 					    job_TempVar[playerid]--;
 			            job_ObjectN[playerid]=1;
 			            SetPlayerSpecialAction(playerid,SPECIAL_ACTION_CARRY);
@@ -35389,7 +35389,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 							{tmpid=i; break;}
 					}
 					if(tmpid == -1)
-					    {return msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Aucune botte de paille � c�t� de vous.");}
+					    {msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Aucune botte de paille � c�t� de vous."); return 1;}
 					job_HoldingObjectSlot[playerid] = tmpid;
 					AttachDynamicObjectToVehicle(job_Object[playerid][tmpid],carid, -0.099999, -1.500000, 0.700000, 0.000000, 0.000000, 0.000000);
 					if(job_City[playerid]==0)
@@ -35404,7 +35404,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		        if(job_City[playerid] == 4)
 		        {
 		            if(!IsPlayerInRangeOfPoint(playerid, 2.0,-1364.0155,2451.7180,89.8348))
-		                {return msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous n'�tes pas au d�pot de minerai !");}
+		                {msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous n'�tes pas au d�pot de minerai !"); return 1;}
 		            SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE);
 		            RemovePlayerAttachedObject(playerid,job_HoldingObjectSlot[playerid]);
 		            LoopingAnim(playerid, "CARRY", "PUTDWN", 4.1, 0, 1, 1, 0, 0);
@@ -35436,7 +35436,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				if(job_ObjectN[playerid] == 0 && (IsPlayerInRangeOfPoint(playerid, 2.0, 1743.4943,-1587.6168,13.5524) || IsPlayerInRangeOfPoint(playerid, 2.0, -2351.2158,496.2127,30.7586) || IsPlayerInRangeOfPoint(playerid, 2.0, 2267.0444,2291.2073,10.8203)))
 				{
 				    if(job_TempVar[playerid] == 10)
-				        {return msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous avez d�j� 10 lettres dans le coffre de votre scooter.");}
+				        {msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous avez d�j� 10 lettres dans le coffre de votre scooter."); return 1;}
                     job_ObjectN[playerid]=1;
                     msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous avez pris une lettre, mettez l� dans le coffre de votre scooter, touche 'Y'.");
 		            if(player_GetSlotObject(playerid) != -1)
@@ -35459,7 +35459,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					else if(job_ObjectN[playerid]==0)
 					{
 					    if(job_TempVar[playerid] <= 0)
-					        {return msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Il n'y a plus de lettre dans le coffre !");}
+					        {msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Il n'y a plus de lettre dans le coffre !"); return 1;}
 					    job_TempVar[playerid]--;
 			            job_ObjectN[playerid]=1;
 	            		if(player_GetSlotObject(playerid) != -1)
@@ -35487,7 +35487,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		            else if(job_ObjectN[playerid] == 1)
 		            {
 		                if(job_TempVar[playerid] <= 4)
-		                    {return msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous devez d'abord p�cher avant de remonter le filet.");}
+		                    {msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous devez d'abord p�cher avant de remonter le filet."); return 1;}
 						for(new i=0;i <5; i++)
 						{
 						    if(IsValidDynamicObject(job_Object[playerid][i]))
@@ -35504,7 +35504,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					    new Float:x, Float:y, Float:z;
 						GetVehiclePos(job_CarId[playerid],x,y,z);
 					    if(IsPlayerInRangeOfPoint(playerid,3.0,x,y,z))
-							{return msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous devez �tre en dehors du b�teau.");}
+							{msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous devez �tre en dehors du b�teau."); return 1;}
                         if(player_GetSlotObject(playerid) != -1)
                 			{job_HoldingObjectSlot[playerid]=player_GetSlotObject(playerid); SetPlayerAttachedObject( playerid, job_HoldingObjectSlot[playerid], 2969, 1, 0.078208, 0.408122, -0.022683, 358.315582, 90.338638, 0.000000, 1.000000, 1.000000, 1.000000 );}
                         job_ObjectN[playerid]=3;
@@ -35533,7 +35533,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		        new Float:x, Float:y, Float:z;
 				GetVehiclePos(job_CarId[playerid],x,y,z);
 				if(!IsPlayerInRangeOfPoint(playerid,3.5,x,y,z))
-					{return msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous devez �tre � c�t� de votre camion.");}
+					{msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous devez �tre � c�t� de votre camion."); return 1;}
 		        if(job_CheckPoints[playerid] >=0 && job_CheckPoints[playerid] <= 4 && job_ObjectN[playerid] == 1)
 		        {
 					msg_Client(playerid,COLOR_JOB,"{78769D}� Job �{FFFFFF} Vous avez d�pos� le materiau.");
@@ -36047,7 +36047,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
                 //MapAndreas_FindZ_For2DCoord(dynPos[0],dynPos[1],dynPos[3]);
                 dynPos[4] = floatsub(dynPos[2],dynPos[3]);
                 if(dynPos[4] >= 50)
-					{return msg_Client(playerid,COLOR_POLICE, "{007AFF}� Police �{FFFFFF} Vous �tes trop haut pour descendre en rappel.");}
+					{msg_Client(playerid,COLOR_POLICE, "{007AFF}� Police �{FFFFFF} Vous �tes trop haut pour descendre en rappel."); return 1;}
                 if(dynPos[4] <= 2)
 					{return RemovePlayerFromVehicle(playerid);}
                 police_PlayerIsRoped[playerid]=true;
