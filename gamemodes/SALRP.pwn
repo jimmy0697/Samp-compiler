@@ -310,9 +310,9 @@ forward anticheat_Check(playerid);
 forward anticheat_VehicleHealth(playerid);
 forward anticheat_AFK(i);
 forward SafeResetPlayerMoney(playerid,amount);
-forward SafeGivePlayerWeapon(plyid, weaponid, ammo);
+forward SafeGivePlayerWeapon(playerid,weaponid,ammo);
 forward SafeSetPlayerAmmo(plyid, weaponslot, ammo);
-forward SafeResetPlayerWeapons(plyid);
+forward SafeResetPlayerWeapons(playerid);
 forward RemovePlayerWeapon(playerid, weaponid);
 forward anticheat_TP(playerid);
 forward CheckPlayerDistanceToVehicle(Float:radi, playerid, vehicleid);
@@ -335,7 +335,7 @@ forward GetJobName(id);
 forward GetAdminName(id);
 forward GetSexName(id);
 forward GetCityName(id);
-forward GetKeyJobName(id);
+forward GetKeyJobName(keyid,dest[],len=sizeof(dest));
 forward GetInteriorName(id);
 forward GetDealerShipName(id);
 forward GetInteriorInfo(id, &Int, &Float:x, &Float:y, &Float:z, &Float:a);
@@ -361,7 +361,7 @@ forward player_IsNearDealerShip(playerid);
 forward player_IsAtNpcPoint(playerid, type, Float:cercle);
 forward player_IsAtActorPoint(playerid, type, Float:cercle);
 forward player_IsAtBedPoint(playerid);
-forward job_GetRandomVar(var, cityid);
+forward job_GetRandomVar(jobid);
 forward job_SetSkin(playerid,jobid);
 forward player_Divorce(playerid);
 forward player_Mask(playerid,bool:showName);
@@ -446,9 +446,9 @@ forward ConvertNonNormaQuatToEuler(Float: qw, Float: qx, Float: qy, Float: qz, &
 forward IsPlayerAiming(playerid);
 forward msg_Client(playerid, color, const msg[]);
 forward TimerKick(playerid);
-forward MySQLJail(playerid);
-forward MySQLKick(playerid);
-forward MySQLBan(playerid);
+forward MySQLJail(playerid,by,reason[],times);
+forward MySQLKick(playerid,by,reason[]);
+forward MySQLBan(playerid,by,reason[],times);
 forward fire_StartFire(Float:x,Float:y,Float:z);
 forward job_ResetFreeze(playerid);
 forward GetFactionName(factionid, dest[], len=sizeof(dest));
@@ -8406,6 +8406,7 @@ public OnRconCommand(cmd[])
 	return 1;
 }
 
+public fire_StartFire(Float:x,Float:y,Float:z)
 {
     CreateExplosion(x, y, z, 1, 500);
     CreateExplosion(x+2, y, z, 1, 500);
@@ -9375,7 +9376,7 @@ public SetPlayerCriminal(playerid,temoin,victim,reason[],nb)
 		if(count = cache_get_row_count() && count > 0)
 		{
   			cache_get_value_name_int(0,"Arrested", nbarested);
-		    cache_get_value_name_int(0,"Crimes", nbcrimes);
+public OnPlayerCheat(playerid,cheatid,optionid,bool:kick)
 			cache_get_value_name(0,"Crime1", Field, 128);
 			mysql_escape_string(Field, crime1, sizeof(crime1), MYSQL);
 			cache_get_value_name(0,"Crime2",Field, 128);
@@ -37537,7 +37538,7 @@ public SafeResetPlayerMoney(playerid,amount)
 	return 1;
 }
 
-public SafeGivePlayerWeapon(plyid, weaponid, ammo)
+public SafeGivePlayerWeapon(playerid,weaponid,ammo)
 {
     ScriptWeaponUpdated[plyid] = 1;
  	new s = GetWeaponSlot(weaponid);
@@ -37558,7 +37559,7 @@ public SafeSetPlayerAmmo(plyid, weaponslot, ammo)
     return 1;
 }
 
-public SafeResetPlayerWeapons(plyid)
+public SafeResetPlayerWeapons(playerid)
 {
     ScriptWeaponUpdated[plyid] = 1;
     for (new i=0; i<13; i++)
@@ -55352,7 +55353,7 @@ public GetCityName(id)
 	return name;
 }
 
-public GetKeyJobName(id)
+public GetKeyJobName(keyid,dest[],len=sizeof(dest))
 {
     new name[32];
 	switch (id)
@@ -55693,7 +55694,7 @@ public player_IsAtBedPoint(playerid)
 	return -1;
 }
 
-public job_GetRandomVar(var, cityid)
+public job_GetRandomVar(jobid)
 {
 	switch(var)
 	{
