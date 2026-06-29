@@ -476,7 +476,7 @@ forward CallElevator(playerid, floorid);
 forward GetVehicleRotation(vehicleid, &Float: heading, &Float: attitude, &Float: bank);
 forward ConvertNonNormaQuatToEuler(Float: qw, Float: qx, Float: qy, Float: qz, &Float: heading, &Float: attitude, &Float: bank);
 forward IsPlayerAiming(playerid);
-forward msg_Client(playerid, color, const msg[]);
+//forward msg_Client(playerid, color, const msg[]);
 forward TimerKick(playerid);
 forward MySQLJail(playerid,by,reason[],times);
 forward MySQLKick(playerid,by,reason[]);
@@ -59619,7 +59619,7 @@ public GetCityName(playerid, city[], len) { city[0] = '\0'; #pragma unused playe
 public GetInteriorName(interiorid, name[], len) { name[0] = '\0'; #pragma unused interiorid, len return 1; }
 //===============================FIN DU SCRIPT==================================
 
-public msg_Client(playerid, color, const msg[]) { return SendClientMessage(playerid, color, msg); }
+stock msg_Client(playerid, color, const msg[]) { return SendClientMessage(playerid, color, msg); }
 public ShamalExists(vehicleid) { return 1; }
 public CreateShamalInt(vehicleid) { return 1; }
 public SetPlayerPosInShamal(playerid, vehicleid) { return 1; }
