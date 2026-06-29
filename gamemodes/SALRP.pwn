@@ -73,7 +73,7 @@ stock GetInvalidCreateModel(modelid) { return 0; }
 //#include <mapandreas>                                                           // Map San Andreas
 //#include <TSConnector>                                                   		// TeamSpeak
 
-new mariage_Step[500];
+stock mariage_Step(playerid, offer, bot, step) { return 1; }
 stock GetDealerShipName(id) { return id; }
 public SafeSetVehicleHealth(carid,Float:amount){SetVehicleHealth(carid,amount);return 1;}
 stock SafeGivePlayerWeapon(playerid, weaponid, ammo) { GivePlayerWeapon(playerid, weaponid, ammo); return 1; }
@@ -37568,7 +37568,6 @@ public SafeResetPlayerWeapons(playerid)
     for (new i=0; i<13; i++)
 	{
 		ScriptWeapons[plyid][i] = 0;
-public SafeResetPlayerWeapons(playerid)
 	}
 	ResetPlayerWeapons(plyid);
 	ScriptWeaponUpdated[plyid] = 0;
