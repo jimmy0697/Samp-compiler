@@ -35654,7 +35654,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		        for(new i = 0; i <MAX_PLAYERS_CURRENT+1; i++)
 				{
 					if(IsPlayerConnected(i) && PlayerInfo[i][pMember] == PlayerInfo[playerid][pMember])
-						{SetPlayerMarkerForPlayer(i, playerid, COLOR_BK); msg_Client(i, COLOR_BK, string);}
+						{SetPlayerMarkerForPlayer(i, playerid, COLOR_BK); msg_Client(i, COLOR_BK, string); return 1;}
 				}
 			}
 			else
