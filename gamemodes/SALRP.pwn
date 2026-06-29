@@ -1,4 +1,15 @@
 /*
+
+stock permis_End(playerid, type, reason[]="") { return 1; }
+stock GetJobName(playerid) { return 0; }
+stock player_GetNearHospital(playerid) { return 0; }
+stock GetOriginName(origin) { new s[32]="Inconnu"; return _:s; }
+stock GetFactionRank(factionid, rank) { new s[32]="Inconnu"; return _:s; }
+stock GetLangName(lang) { new s[32]="Inconnu"; return _:s; }
+stock job_SetSkin(playerid, job) { return 1; }
+stock GetDistanceBetweenPlayers(p1, p2) { return 0.0; }
+stock SafeResetPlayerMoney(playerid, amount) { ResetPlayerMoney(playerid); GivePlayerMoney(playerid, amount); return 1; }
+stock GetCityCounty(i) { return 0; }
 ================================================================================
 NOM DU SERVEUR : San Andreas Life RolePlay
 UPDATE : 28/07/2017
@@ -9288,7 +9299,7 @@ public GetCheatName(cheatid)
 	    case 14:				{tmpId=80;}
 	    case 2,15,16,17,18,19:	{tmpId=7;}
 	}
-	return name;
+	return tmpId;
 }
 
 public OnPlayerCheat(playerid,cheatid,optionid,bool:kick)
