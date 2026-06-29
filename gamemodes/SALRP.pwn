@@ -54,15 +54,18 @@ stock GetCityPlayer(playerid) { return 0; }
 stock GetCountyPlayer(playerid) { return 0; }
 stock pay_showDialog(playerid, prices) { return 1; }
 stock GetCityPos(Float:x, Float:y) { return 0; }
-stock CheckPlayerDistanceToVehicle(playerid, vehicleid, Float:dist) { return 1; }
-stock SafeSetVehiclePos(vehicleid, Float:x, Float:y, Float:z) { SetVehiclePos(vehicleid,x,y,z); return 1; }
-stock GetLocationName(Float:x, Float:y, Float:z) { return 0; }
+stock CheckPlayerDistanceToVehicle(Float:radi, playerid, vehicleid) { return 1; }
+stock SafeSetVehiclePos(carid, Float:x, Float:y, Float:z) { SetVehiclePos(carid,x,y,z); return 1; }
+stock GetLocationName(id) { return 0; }
 #define COLOR_BLUE 0x0000FFAA
-stock player_Mask(playerid, toggle) { return 1; }
+stock player_Mask(playerid, bool:showName) { return 1; }
 stock RemovePlayerWeapon(playerid, weaponid) { return 1; }
-stock GetWepName(weaponid) { return 0; }
-stock player_IsAtNpcPoint(playerid) { return 0; }
-stock GetAdminName(playerid) { return 0; }
+stock GetWepName(modelid) { return 0; }
+stock player_IsAtNpcPoint(playerid, type, Float:cercle) { return 0; }
+stock GetAdminName(id) { return 0; }
+stock player_Divorce(playerid) { return 1; }
+stock GetInvalidCreateModel(modelid) { return 0; }
+new mariage_Step[MAX_PLAYERS];
 
 #include <streamer> 															// Streamer
 #include <a_samp>                												// SA:MP
