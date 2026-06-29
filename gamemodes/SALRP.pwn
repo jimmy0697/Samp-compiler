@@ -64,7 +64,6 @@ stock player_IsAtNpcPoint(playerid, type, Float:cercle) { return 0; }
 stock GetAdminName(id) { return 0; }
 stock player_Divorce(playerid) { return 1; }
 stock GetInvalidCreateModel(modelid) { return 0; }
-new mariage_Step[500];
 
 #include <streamer> 															// Streamer
 #include <a_samp>                												// SA:MP
@@ -74,9 +73,9 @@ new mariage_Step[500];
 //#include <mapandreas>                                                           // Map San Andreas
 //#include <TSConnector>                                                   		// TeamSpeak
 
+new mariage_Step[500];
 stock GetDealerShipName(id) { return id; }
 public SafeSetVehicleHealth(carid,Float:amount){SetVehicleHealth(carid,amount);return 1;}
-stock SafeResetPlayerWeapons(playerid) { ResetPlayerWeapons(playerid); return 1; }
 stock SafeGivePlayerWeapon(playerid, weaponid, ammo) { GivePlayerWeapon(playerid, weaponid, ammo); return 1; }
 stock job_GetRandomVar(jobid) { return jobid; }
 stock GetKeyJobName(keyid, dest[], len=sizeof(dest)) { dest[0]=0; return 1; }
