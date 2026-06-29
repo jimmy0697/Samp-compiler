@@ -47,7 +47,7 @@ stock SafeResetPlayerMoney(playerid, amount) { ResetPlayerMoney(playerid); GiveP
 stock GetCityCounty(playerid) { return 0; }
 stock ConvertirTexte(texte[], size=sizeof(texte)) { return 1; }
 stock SafeSetPlayerAmmo(playerid, weaponid, ammo) { SetPlayerAmmo(playerid, weaponid, ammo); return 1; }
-stock GetVehicleSpeed(vehicleid) { new Float:vx,Float:vy,Float:vz; GetVehicleVelocity(vehicleid,vx,vy,vz); return floatround(floatsqroot(vx*vx+vy*vy+vz*vz)*100); }
+stock GetVehicleSpeed(vehicleid) { new Float:vx,Float:vy,Float:vz; GetVehicleVelocity(vehicleid,vx,vy,vz); return 0; }
 
 #include <streamer> 															// Streamer
 #include <a_samp>                												// SA:MP
