@@ -49,11 +49,20 @@ stock ConvertirTexte(Texte[]) { return 1; }
 stock SafeSetPlayerAmmo(plgid, weaponslot, ammo) { SetPlayerAmmo(plgid, weaponslot, ammo); return 1; }
 stock GetVehicleSpeed(vehicleid) { new Float:vx,Float:vy,Float:vz; GetVehicleVelocity(vehicleid,vx,vy,vz); return 0; }
 stock skill_Set(playerid, skill, level) { return 1; }
-stock GetItemName(itemid) { return 0; }
+stock GetItemName(modelid) { return 0; }
 stock GetCityPlayer(playerid) { return 0; }
 stock GetCountyPlayer(playerid) { return 0; }
-stock pay_showDialog(playerid, amount) { return 1; }
+stock pay_showDialog(playerid, prices) { return 1; }
 stock GetCityPos(Float:x, Float:y) { return 0; }
+stock CheckPlayerDistanceToVehicle(playerid, vehicleid, Float:dist) { return 1; }
+stock SafeSetVehiclePos(vehicleid, Float:x, Float:y, Float:z) { SetVehiclePos(vehicleid,x,y,z); return 1; }
+stock GetLocationName(Float:x, Float:y, Float:z) { return 0; }
+#define COLOR_BLUE 0x0000FFAA
+stock player_Mask(playerid, toggle) { return 1; }
+stock RemovePlayerWeapon(playerid, weaponid) { return 1; }
+stock GetWepName(weaponid) { return 0; }
+stock player_IsAtNpcPoint(playerid) { return 0; }
+stock GetAdminName(playerid) { return 0; }
 
 #include <streamer> 															// Streamer
 #include <a_samp>                												// SA:MP
