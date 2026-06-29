@@ -77,7 +77,7 @@ stock mariage_Step(playerid, offer, bot, step) { return 1; }
 stock GetDealerShipName(id) { return id; }
 public SafeSetVehicleHealth(carid,Float:amount){SetVehicleHealth(carid,amount);return 1;}
 stock SafeResetPlayerWeapons(playerid) { ResetPlayerWeapons(playerid); return 1; }
-stock SafeSetPlayerAmmo(plgid, weaponslot, ammo) { SetPlayerAmmo(plgid, weaponslot, ammo); return 1; }
+stock SafeSetPlayerPos(playerid, Float:x, Float:y, Float:z) { SetPlayerPos(playerid,x,y,z); return 1; }
 stock SafeGivePlayerWeapon(playerid, weaponid, ammo) { GivePlayerWeapon(playerid, weaponid, ammo); return 1; }
 stock job_GetRandomVar(jobid) { return jobid; }
 stock GetKeyJobName(keyid, dest[], len=sizeof(dest)) { dest[0]=0; return 1; }
