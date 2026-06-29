@@ -9376,6 +9376,9 @@ public SetPlayerCriminal(playerid,temoin,victim,reason[],nb)
 		if(count = cache_get_row_count() && count > 0)
 		{
   			cache_get_value_name_int(0,"Arrested", nbarested);
+}
+}
+}
 public OnPlayerCheat(playerid,cheatid,optionid,bool:kick)
 			cache_get_value_name(0,"Crime1", Field, 128);
 			mysql_escape_string(Field, crime1, sizeof(crime1), MYSQL);
