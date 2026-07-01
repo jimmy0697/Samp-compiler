@@ -66,15 +66,17 @@ stock player_Divorce(playerid) { return 1; }
 stock GetInvalidCreateModel(modelid) { return 0; }
 
 
+#include <streamer> 															// Streamer
+#include <a_samp>                												// SA:MP
+#include <a_mysql>               												// Gestion du sql
+
 stock SafeSetPlayerAmmo(playerid, weaponid, ammo)
 {
     if(!IsPlayerConnected(playerid)) return 0;
     SetPlayerAmmo(playerid, weaponid, ammo);
     return 1;
 }
-#include <streamer> 															// Streamer
-#include <a_samp>                												// SA:MP
-#include <a_mysql>               												// Gestion du sql
+
 #include <mSelection>                                                    		// Selection
 #include <Encrypt>                                                    			// Cryptage sha1
 //#include <mapandreas>                                                           // Map San Andreas
