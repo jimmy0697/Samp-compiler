@@ -65,6 +65,13 @@ stock GetAdminName(id) { return 0; }
 stock player_Divorce(playerid) { return 1; }
 stock GetInvalidCreateModel(modelid) { return 0; }
 
+
+stock SafeSetPlayerAmmo(playerid, weaponid, ammo)
+{
+    if(!IsPlayerConnected(playerid)) return 0;
+    SetPlayerAmmo(playerid, weaponid, ammo);
+    return 1;
+}
 #include <streamer> 															// Streamer
 #include <a_samp>                												// SA:MP
 #include <a_mysql>               												// Gestion du sql
