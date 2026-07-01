@@ -70,13 +70,6 @@ stock GetInvalidCreateModel(modelid) { return 0; }
 #include <a_samp>                												// SA:MP
 #include <a_mysql>               												// Gestion du sql
 
-stock SafeSetPlayerAmmo(playerid, weaponid, ammo)
-{
-    if(!IsPlayerConnected(playerid)) return 0;
-    SetPlayerAmmo(playerid, weaponid, ammo);
-    return 1;
-}
-
 #include <mSelection>                                                    		// Selection
 #include <Encrypt>                                                    			// Cryptage sha1
 //#include <mapandreas>                                                           // Map San Andreas
